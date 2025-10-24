@@ -82,6 +82,8 @@ export default function Success() {
           clearInterval(stepInterval);
         } else if (data.status === 'in_progress') {
           setStatus('in_progress');
+        } else if (data.status === 'pending') {
+          setStatus('pending');
         }
       } catch (err) {
         console.error('Error polling status:', err);
