@@ -106,7 +106,7 @@ export default function Signup() {
         return;
       }
 
-      const { error: stripeError } = await stripe.redirectToCheckout({ sessionId });
+      const { error: stripeError } = await (stripe as any).redirectToCheckout({ sessionId });
 
       if (stripeError) {
         setError(stripeError.message || 'Failed to redirect to checkout');
