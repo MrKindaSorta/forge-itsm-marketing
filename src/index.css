@@ -91,6 +91,84 @@
     animation: slide-in 0.5s ease-out;
   }
 
+  /* Radix UI Dialog animations (tailwindcss-animate replacements for Tailwind v4) */
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animate-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .animate-in {
+    animation: animate-in 200ms ease-out;
+  }
+
+  .animate-out {
+    animation: animate-out 200ms ease-in;
+  }
+
+  .fade-in-0 {
+    --tw-enter-opacity: 0;
+    animation: animate-in;
+  }
+
+  .fade-out-0 {
+    --tw-exit-opacity: 0;
+    animation: animate-out;
+  }
+
+  .zoom-in-95 {
+    --tw-enter-scale: 0.95;
+    animation: animate-in;
+    transform: scale(0.95);
+  }
+
+  .zoom-out-95 {
+    --tw-exit-scale: 0.95;
+    animation: animate-out;
+    transform: scale(0.95);
+  }
+
+  .slide-in-from-left-1\/2 {
+    animation: animate-in;
+    transform: translateX(-50%);
+  }
+
+  .slide-in-from-top-\[48\%\] {
+    animation: animate-in;
+    transform: translateY(-48%);
+  }
+
+  .slide-out-to-left-1\/2 {
+    animation: animate-out;
+    transform: translateX(-50%);
+  }
+
+  .slide-out-to-top-\[48\%\] {
+    animation: animate-out;
+    transform: translateY(-48%);
+  }
+
+  /* State-based animations for Radix UI */
+  [data-state="open"] {
+    animation: animate-in 200ms ease-out;
+  }
+
+  [data-state="closed"] {
+    animation: animate-out 200ms ease-in;
+  }
+
   /* Gradient utilities */
   .bg-gradient-primary {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
