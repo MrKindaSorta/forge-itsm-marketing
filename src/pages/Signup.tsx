@@ -154,7 +154,7 @@ export default function Signup() {
             <div className="space-y-6">
               <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold">Choose Your Plan</h1>
-                <p className="text-muted-foreground">Start with a 14-day free trial. No credit card required.</p>
+                <p className="text-muted-foreground">Start with a 30-day free trial. No credit card required.</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
@@ -381,7 +381,7 @@ export default function Signup() {
                       </Badge>
                     </div>
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <span>14-day free trial, then</span>
+                      <span>30-day free trial, then</span>
                       <span className="font-semibold text-foreground">
                         ${plans.find(p => p.id === selectedPlan)?.price}/month
                       </span>
@@ -423,11 +423,7 @@ export default function Signup() {
             <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-green-600" />
-                <span>14-day free trial</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-600" />
-                <span>No credit card required</span>
+                <span>30-day free trial</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-green-600" />
