@@ -33,7 +33,7 @@ export default function Landing() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link to="/signup">
                 <Button size="lg" className="gap-2 h-14 px-8 text-lg">
-                  Start Free Trial
+                  Start 30-Day Free Trial
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
@@ -42,21 +42,6 @@ export default function Landing() {
                   See How It Works
                 </Button>
               </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-sm sm:text-base text-muted-foreground pt-6 max-w-2xl mx-auto">
-              <div className="flex items-center justify-center gap-2">
-                <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-                <span>Setup in 5 minutes</span>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-                <span>No training required</span>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
-                <span>Cancel anytime</span>
-              </div>
             </div>
           </div>
         </div>
@@ -186,7 +171,7 @@ export default function Landing() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                See What You're <span className="text-primary">Overpaying</span> For
+                <span className="text-primary">Feature Comparison</span>
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground">
                 Same features. Way better price. Zero BS.
@@ -238,7 +223,7 @@ export default function Landing() {
                     <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
                   </tr>
                   <tr className="border-b border-border hover:bg-muted/20">
-                    <td className="p-4">Unlimited End-Users</td>
+                    <td className="p-4">Unlimited End-Users (Ticket Submitters)</td>
                     <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
                     <td className="p-4 text-center"><X className="h-5 w-5 text-destructive mx-auto" /><div className="text-xs text-muted-foreground">$19/user</div></td>
                     <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
@@ -251,6 +236,15 @@ export default function Landing() {
                   </tr>
                 </tbody>
               </table>
+
+              <p className="text-sm text-muted-foreground mt-4">
+                *Forge ITSM is not currently HIPAA-compliant for PHI storage. While our infrastructure
+                (Cloudflare Workers, D1, R2) meets HIPAA technical safeguards including encryption at
+                rest and in transit, we do not currently have a Business Associate Agreement (BAA) in
+                place. Healthcare organizations should not store Protected Health Information (PHI) in
+                tickets until we obtain enterprise-level BAA coverage. Your data remains secure, but
+                regulatory compliance for PHI requires the BAA. <a href="/terms" className="underline">See terms</a>.
+              </p>
             </div>
 
             <div className="mt-8 text-center">
@@ -270,13 +264,10 @@ export default function Landing() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             Ready to Stop Overpaying?
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto opacity-90">
-            Join IT teams who are saving thousands while getting better tools.
-          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup">
               <Button size="lg" variant="secondary" className="gap-2 h-14 px-8 text-lg">
-                Start Free Trial
+                Start 30-Day Free Trial
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
@@ -291,7 +282,7 @@ export default function Landing() {
             </Link>
           </div>
           <p className="text-sm opacity-75 pt-4">
-            14-day free trial • No credit card required • Cancel anytime
+            30-day free trial • No credit card required • Cancel anytime
           </p>
         </div>
       </section>

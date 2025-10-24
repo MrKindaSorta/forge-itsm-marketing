@@ -17,11 +17,11 @@ export default function Features() {
             Everything You Need to Manage IT Tickets
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A complete ITSM solution built for small and medium-sized IT teams. All features included at every price tier.
+            A complete ITSM solution built for small and medium-sized IT teams.
           </p>
           <Link to="/signup">
             <Button size="xl" className="gap-2">
-              Start Free Trial
+              Start 30-Day Free Trial
               <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
@@ -33,9 +33,6 @@ export default function Features() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Features</h2>
-            <p className="text-lg text-muted-foreground">
-              Powerful tools that keep your IT department running smoothly
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -48,7 +45,7 @@ export default function Features() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Create, assign, track, and resolve tickets with ease. Multiple views, filters, and bulk actions to handle tickets efficiently.
+                  Create, assign, track, and resolve tickets with ease. Inline edits for status/priority from list view—instant saves. Multiple views, filters, and bulk actions to handle tickets efficiently.
                 </p>
               </CardContent>
             </Card>
@@ -118,7 +115,7 @@ export default function Features() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Automate repetitive tasks with custom rules. Auto-assign tickets, set priorities, send notifications, and more.
+                  Keyword-based auto-assign; auto-close stales after 7 days. Automate repetitive tasks with custom rules to reduce manual work.
                 </p>
               </CardContent>
             </Card>
@@ -202,7 +199,7 @@ export default function Features() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Built on Cloudflare's global network. Role-based access control, secure authentication, and automatic backups.
+                  Built on Cloudflare's global network. Role-based access control, secure authentication, and GDPR-compliant with 30-day point-in-time backups. Not HIPAA-ready—avoid PHI (see terms).
                 </p>
               </CardContent>
             </Card>
@@ -332,6 +329,13 @@ export default function Features() {
                       <div className="text-sm text-muted-foreground">Update contact info and preferences</div>
                     </div>
                   </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Mobile-Responsive</div>
+                      <div className="text-sm text-muted-foreground">On-the-go ticket submissions from any device</div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -369,6 +373,13 @@ export default function Features() {
                       <div className="text-sm text-muted-foreground">Configure and analyze your system</div>
                     </div>
                   </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Smart Search</div>
+                      <div className="text-sm text-muted-foreground">Sticky filters and saved views (e.g., 'High-priority open')</div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -396,23 +407,9 @@ export default function Features() {
                   <CardTitle>Form Builder</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    Customize your ticket creation form with drag-and-drop. Add custom fields, reorder sections, and make fields required or optional.
+                  <p className="text-muted-foreground">
+                    Drag-and-drop ticket portal builder—no code. Add custom fields, reorder sections, and make fields required or optional.
                   </p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Text, number, date, and dropdown fields
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Conditional field visibility
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      No coding required
-                    </li>
-                  </ul>
                 </CardContent>
               </Card>
 
@@ -424,23 +421,9 @@ export default function Features() {
                   <CardTitle>SLA Rules</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-muted-foreground">
                     Define custom SLA targets based on priority and category. Set different response and resolution times for different ticket types.
                   </p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Priority-based timeframes
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Business hours calculation
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Visual SLA indicators
-                    </li>
-                  </ul>
                 </CardContent>
               </Card>
 
@@ -452,23 +435,9 @@ export default function Features() {
                   <CardTitle>Automation Engine</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    Create automation rules with if-this-then-that logic. Reduce manual work and ensure consistency across your team.
+                  <p className="text-muted-foreground">
+                    Keyword-based auto-assign; auto-close stales after 7 days. Create automation rules with if-this-then-that logic to reduce manual work.
                   </p>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Auto-assign based on category
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Set priority automatically
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
-                      Send notifications on conditions
-                    </li>
-                  </ul>
                 </CardContent>
               </Card>
 
@@ -509,12 +478,12 @@ export default function Features() {
         <div className="container mx-auto px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Ready to Experience It Yourself?</h2>
           <p className="text-xl max-w-2xl mx-auto opacity-90">
-            Try all features free for 14 days. No credit card required.
+            Try all features free for 30 days. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup">
               <Button size="xl" variant="secondary" className="gap-2">
-                Start Free Trial
+                Start 30-Day Free Trial
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
