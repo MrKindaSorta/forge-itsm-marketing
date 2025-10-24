@@ -8,8 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
 
-// Initialize Stripe (replace with your publishable key)
-const stripePromise = loadStripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY');
+// Initialize Stripe
+const stripePromise = loadStripe('pk_live_51RgszMP3jQScPlwjBriazzwq4dT2qcv5L2DzlW99IpVnVdeoB7NCebqll7hYZDVn2JCTFGPKD8nXMUfMttxOIff600Hqrfe9iY');
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -32,14 +32,14 @@ export default function Signup() {
     {
       id: 'starter',
       name: 'Starter',
-      price: 49.99,
+      price: 59.99,
       agents: 3,
       features: ['Up to 3 Agents', 'Unlimited Users', 'All Features', 'Email Support']
     },
     {
       id: 'professional',
       name: 'Professional',
-      price: 69.99,
+      price: 79.99,
       agents: 5,
       popular: true,
       features: ['Up to 5 Agents', 'Unlimited Users', 'All Features', 'Priority Support']
