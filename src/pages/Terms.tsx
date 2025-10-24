@@ -1,171 +1,155 @@
 export default function Terms() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
+      <h1 className="text-4xl font-bold mb-8">Forge ITSM Terms of Service</h1>
       <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-muted-foreground">
         <p className="text-sm">
-          <strong>Last Updated:</strong> January 2025
+          <strong>Effective Date:</strong> October 24, 2025
+        </p>
+        <p>
+          These Terms of Service ("Terms") govern your access to and use of Forge ITSM ("Service"), a web-based IT ticketing system provided by Forge Underground, and Joshua Klimek (developer). By accessing or using the Service, you ("you," "user," "customer") agree to these Terms. If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have authority to bind such entity.
         </p>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">1. Acceptance of Terms</h2>
+          <h2 className="text-2xl font-semibold text-foreground">1. Description of Service</h2>
           <p>
-            By accessing or using Forge ITSM ("the Service"), you agree to be bound by these Terms of Service.
-            If you do not agree to these terms, you may not use the Service.
+            The Service provides a self-serve IT ticketing platform with features including ticket management, SLA tracking, custom fields, automations, and user portals. Hosted on Cloudflare infrastructure. Each subscription deploys an isolated instance. Service is provided "as is" and may contain bugs or interruptions, as it is a new platform. We are confident in its current state, but we are actively developing new tools and additions. It is possible you may have to refresh from time to time, we offer notifications when updates are pushed to production but we strive to do this in the early hours of the morning to prevent any interruptions. (CST)
           </p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">2. Description of Service</h2>
+          <h2 className="text-2xl font-semibold text-foreground">2. Eligibility</h2>
           <p>
-            Forge ITSM provides a cloud-based IT service management and ticketing platform. The Service is
-            offered on a subscription basis with different pricing tiers based on the number of agents.
+            You must be 18+ and capable of forming a binding contract. Businesses must comply with applicable laws. We may refuse service at our discretion.
           </p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">3. Account Registration</h2>
-          <p>
-            To use the Service, you must create an account. You agree to:
-          </p>
+          <h2 className="text-2xl font-semibold text-foreground">3. Accounts and Security</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Provide accurate, current, and complete information during registration</li>
-            <li>Maintain and update your information to keep it accurate</li>
-            <li>Maintain the security of your password and account</li>
-            <li>Accept all responsibility for activity under your account</li>
-            <li>Notify us immediately of any unauthorized use of your account</li>
+            <li>Create an account with accurate information.</li>
+            <li>Maintain account confidentiality; you are responsible for all activity under your account.</li>
+            <li>Notify us immediately of unauthorized use.</li>
+            <li>We are not liable for losses from unauthorized access, users may use weak passwords, we offer password requirements within the site and it is up to you as the agreeing party to configure these as you see fit.</li>
           </ul>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">4. Subscription and Payment</h2>
-          <p>
-            <strong>Free Trial:</strong> We offer a 14-day free trial with no credit card required.
-          </p>
-          <p>
-            <strong>Paid Subscriptions:</strong> After the trial period, you must select a paid plan to
-            continue using the Service. Subscriptions are billed monthly in advance.
-          </p>
-          <p>
-            <strong>Payment:</strong> You authorize us to charge your payment method on a recurring basis.
-            Prices are subject to change with 30 days notice.
-          </p>
-          <p>
-            <strong>Refunds:</strong> We do not provide refunds for partial subscription periods.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">5. Cancellation</h2>
-          <p>
-            You may cancel your subscription at any time. Cancellations take effect at the end of the current
-            billing period. You will retain access until that time. No refunds are provided for the remaining
-            portion of a billing period.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">6. Acceptable Use</h2>
-          <p>
-            You agree not to use the Service to:
-          </p>
+          <h2 className="text-2xl font-semibold text-foreground">4. Subscriptions and Payments</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Violate any laws or regulations</li>
-            <li>Infringe on intellectual property rights</li>
-            <li>Transmit malware, viruses, or harmful code</li>
-            <li>Attempt to gain unauthorized access to the Service or related systems</li>
-            <li>Interfere with or disrupt the Service</li>
-            <li>Use the Service to send spam or unsolicited communications</li>
+            <li><strong>Trial:</strong> 30-day free trial; charges will occur automatically after trial expiry if not cancelled. If there is an issue with cancellation reach out immediately. forgeundergroundproject@gmail.com</li>
+            <li><strong>Paid Plans:</strong> Monthly or annual billing via Stripe. Prices: Starter $59.99/mo (3 agents); Professional $79.99/mo (10 agents); Business $100 base + $9.99 per extra agent).</li>
+            <li><strong>Payments:</strong> Auto-renew unless canceled. Late payments may cause termination.</li>
+            <li><strong>Taxes:</strong> You pay all applicable taxes.</li>
+            <li><strong>Changes:</strong> Upgrade immediate; downgrade next cycle.</li>
+            <li><strong>Cancellation:</strong> Via account dashboard; access until period end. No refunds except as required by law.</li>
           </ul>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">7. Data and Privacy</h2>
-          <p>
-            Your use of the Service is also governed by our Privacy Policy. We collect and use data as
-            described in that policy. You retain ownership of all data you submit to the Service.
-          </p>
-          <p>
-            <strong>Data Retention:</strong> After account cancellation, we retain your data for 30 days
-            to allow for reactivation, after which it is permanently deleted.
-          </p>
+          <h2 className="text-2xl font-semibold text-foreground">5. User Content and Data</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>You retain ownership of your data (tickets, etc.).</li>
+            <li>You grant us a worldwide, non-exclusive license to host, backup, and process your data for Service operation.</li>
+            <li>You are responsible for data accuracy, legality, and backups. Export data before cancellation.</li>
+            <li>On termination: Data retained 30 days for reactivation; then permanently deleted.</li>
+            <li>Contact forgeundergroundproject@gmail.com for data exports if system export fails.</li>
+            <li>Backups: 30-day point-in-time restore available; not guaranteed against loss.</li>
+          </ul>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">8. Service Availability</h2>
-          <p>
-            We strive to provide 99.9% uptime but do not guarantee uninterrupted access. The Service may be
-            temporarily unavailable for maintenance, updates, or due to circumstances beyond our control.
-          </p>
+          <h2 className="text-2xl font-semibold text-foreground">6. Prohibited Use</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>No illegal activities, spam, or interference with Service.</li>
+            <li>No reverse engineering, scraping, or unauthorized access.</li>
+            <li>Comply with Acceptable Use Policy (incorporated herein).</li>
+          </ul>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">9. Intellectual Property</h2>
-          <p>
-            The Service, including all software, content, and trademarks, is owned by Forge ITSM and protected
-            by intellectual property laws. You may not copy, modify, distribute, or reverse engineer any part
-            of the Service.
-          </p>
+          <h2 className="text-2xl font-semibold text-foreground">7. Intellectual Property</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Service and all content (code, UI, docs) are our property or licensed to us. No transfer except as needed for Service use.</li>
+            <li>Your feedback may be used without compensation.</li>
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">8. Third-Party Services</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Integrates with Stripe (payments), Cloudflare (hosting). Your use subject to their terms.</li>
+            <li>We are not liable for third-party failures.</li>
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">9. Disclaimers and HIPAA Notice</h2>
+          <div className="space-y-3">
+            <p>
+              <strong>AS IS BASIS:</strong> Service provided "AS IS" WITHOUT WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR PURPOSE, OR NON-INFRINGEMENT. New platform may have bugs, downtime, or errors. We disclaim all liability for interruptions. We will work with you as fast as possible to resolve issues.
+            </p>
+            <p>
+              <strong>HIPAA/PHI:</strong> Service is NOT HIPAA compliant. No Business Associate Agreement (BAA) with Cloudflare. Do NOT store Protected Health Information (PHI) or sensitive medical data. You assume all risk and liability for any PHI use, including fines or breaches. GDPR-compliant via Cloudflare; see Privacy Policy for details.
+            </p>
+            <p>
+              <strong>Security:</strong> While we use reasonable security (e.g., encryption, RBAC), no system is impenetrable. You must use strong passwords and secure practices.
+            </p>
+          </div>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">10. Limitation of Liability</h2>
+          <div className="space-y-3">
+            <p>
+              <strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</strong> Our total liability shall not exceed fees paid by you in the prior 12 months.
+            </p>
+            <p>
+              <strong>NO CONSEQUENTIAL DAMAGES:</strong> No indirect, incidental, special, punitive, or consequential damages (e.g., lost profits, data loss), even if advised of possibility.
+            </p>
+            <p>
+              <strong>Indemnification:</strong> You indemnify us against claims arising from your use, data, or violations.
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">11. Termination</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>We may suspend/terminate for breach, non-payment, or at discretion with notice. Email will be used based on the users data at signup.</li>
+            <li>On termination: Access ends; data as per Section 5.</li>
+            <li>Surviving provisions: 4,5,6,7,8,9,10,11,12,13.</li>
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">12. Governing Law and Disputes</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Governed by laws of Minnesota, USA, without conflicts principles.</li>
+            <li>Disputes: Exclusive jurisdiction in Anoka courts. No class actions; arbitration via AAA if elected.</li>
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold text-foreground">13. Changes to Terms</h2>
           <p>
-            To the maximum extent permitted by law, Forge ITSM shall not be liable for any indirect,
-            incidental, special, consequential, or punitive damages, or any loss of profits or revenues.
-            Our total liability shall not exceed the amount you paid in the 12 months preceding the claim.
+            We may update Terms with 30 days' notice (email/dashboard). Continued use constitutes acceptance.
           </p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">11. Disclaimer of Warranties</h2>
-          <p>
-            The Service is provided "as is" without warranties of any kind, either express or implied,
-            including but not limited to warranties of merchantability, fitness for a particular purpose,
-            and non-infringement.
-          </p>
+          <h2 className="text-2xl font-semibold text-foreground">14. Miscellaneous</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Entire agreement; supersedes priors.</li>
+            <li>Severability: Invalid provisions do not affect others.</li>
+            <li>No waiver unless written.</li>
+            <li>Contact: forgeundergroundproject@gmail.com.</li>
+          </ul>
         </section>
 
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">12. Indemnification</h2>
-          <p>
-            You agree to indemnify and hold harmless Forge ITSM from any claims, damages, losses, or expenses
-            arising from your use of the Service or violation of these Terms.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">13. Modifications to Terms</h2>
-          <p>
-            We may modify these Terms at any time. We will notify you of material changes via email or through
-            the Service. Continued use of the Service after changes constitutes acceptance of the new Terms.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">14. Termination</h2>
-          <p>
-            We may terminate or suspend your account and access to the Service at any time, with or without
-            cause, with or without notice. Upon termination, your right to use the Service immediately ceases.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">15. Governing Law</h2>
-          <p>
-            These Terms shall be governed by and construed in accordance with the laws of the United States,
-            without regard to conflict of law provisions.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">16. Contact Information</h2>
-          <p>
-            If you have questions about these Terms, please contact us at:
-            <br />
-            <a href="mailto:legal@forge-itsm.com" className="text-primary hover:underline">
-              legal@forge-itsm.com
-            </a>
+        <section className="space-y-4 pt-6 border-t">
+          <p className="font-medium text-foreground">
+            By using the Service, you acknowledge reading, understanding, and agreeing to these Terms.
           </p>
         </section>
       </div>
