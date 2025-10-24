@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import SubdomainLoginModal from '@/components/SubdomainLoginModal';
 
 export default function Navigation() {
   return (
@@ -27,11 +28,11 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" asChild>
-              <a href="https://forge-itsm.pages.dev/auth/login" target="_blank" rel="noopener noreferrer">
+            <SubdomainLoginModal>
+              <Button variant="ghost" size="sm">
                 Sign In
-              </a>
-            </Button>
+              </Button>
+            </SubdomainLoginModal>
             <Link to="/signup">
               <Button size="sm">Get Started</Button>
             </Link>
