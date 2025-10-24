@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -7,9 +8,25 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
 
+// Initialize Stripe (replace with your publishable key)
+const stripePromise = loadStripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY');
+
 export default function Signup() {
   const [step, setStep] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Form data
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    companyName: '',
+    subdomain: '',
+  });
 
   const plans = [
     {
@@ -35,6 +52,72 @@ export default function Signup() {
       features: ['Up to 10 Agents', 'Unlimited Users', 'All Features', 'Priority Support', '$9.99/additional agent']
     }
   ];
+
+  // Handle final form submission and Stripe checkout
+  const handleCheckout = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      // Validate subdomain availability
+      const checkResponse = await fetch('https://itsm-backend.joshua-r-klimek.workers.dev/api/provision/check-subdomain', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subdomain: formData.subdomain }),
+      });
+
+      const { available, error: availabilityError } = await checkResponse.json();
+
+      if (!available) {
+        setError(availabilityError || 'Subdomain is not available');
+        setLoading(false);
+        return;
+      }
+
+      // Create Stripe checkout session
+      const sessionResponse = await fetch('https://itsm-backend.joshua-r-klimek.workers.dev/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          plan: selectedPlan,
+          subdomain: formData.subdomain,
+          email: formData.email,
+          password: formData.password,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          companyName: formData.companyName,
+        }),
+      });
+
+      const { sessionId, error: sessionError } = await sessionResponse.json();
+
+      if (sessionError) {
+        setError(sessionError);
+        setLoading(false);
+        return;
+      }
+
+      // Redirect to Stripe Checkout
+      const stripe = await stripePromise;
+      if (!stripe) {
+        setError('Failed to load Stripe');
+        setLoading(false);
+        return;
+      }
+
+      const { error: stripeError } = await stripe.redirectToCheckout({ sessionId });
+
+      if (stripeError) {
+        setError(stripeError.message || 'Failed to redirect to checkout');
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error('Checkout error:', err);
+      setError('An unexpected error occurred. Please try again.');
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-muted/30 py-12">
@@ -137,28 +220,61 @@ export default function Signup() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="John" required />
+                      <Input
+                        id="firstName"
+                        placeholder="John"
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                        required
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Doe" required />
+                      <Input
+                        id="lastName"
+                        placeholder="Doe"
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address *</Label>
-                    <Input id="email" type="email" placeholder="john.doe@company.com" required />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="john.doe@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      required
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="password">Password *</Label>
-                    <Input id="password" type="password" placeholder="Create a strong password" required />
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="Create a strong password"
+                      value={formData.password}
+                      onChange={(e) => setFormData({...formData, password: e.target.value})}
+                      required
+                    />
                     <p className="text-xs text-muted-foreground">At least 8 characters with letters and numbers</p>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="confirmPassword">Confirm Password *</Label>
-                    <Input id="confirmPassword" type="password" placeholder="Re-enter your password" required />
+                    <Input
+                      id="confirmPassword"
+                      type="password"
+                      placeholder="Re-enter your password"
+                      value={formData.confirmPassword}
+                      onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                      required
+                    />
                   </div>
 
                   <div className="flex gap-4 pt-4">
@@ -184,10 +300,16 @@ export default function Signup() {
                 <CardDescription>Tell us about your organization</CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Signup complete! This will integrate with Stripe in the final version.'); }}>
+                <form className="space-y-4" onSubmit={handleCheckout}>
                   <div className="space-y-2">
                     <Label htmlFor="companyName">Company Name *</Label>
-                    <Input id="companyName" placeholder="Acme Inc." required />
+                    <Input
+                      id="companyName"
+                      placeholder="Acme Inc."
+                      value={formData.companyName}
+                      onChange={(e) => setFormData({...formData, companyName: e.target.value})}
+                      required
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -225,7 +347,13 @@ export default function Signup() {
                   <div className="space-y-2">
                     <Label htmlFor="subdomain">Subdomain *</Label>
                     <div className="flex items-center gap-2">
-                      <Input id="subdomain" placeholder="acme" required />
+                      <Input
+                        id="subdomain"
+                        placeholder="acme"
+                        value={formData.subdomain}
+                        onChange={(e) => setFormData({...formData, subdomain: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '')})}
+                        required
+                      />
                       <span className="text-sm text-muted-foreground whitespace-nowrap">.forge-itsm.com</span>
                     </div>
                     <p className="text-xs text-muted-foreground">This will be your unique URL to access the system</p>
@@ -260,14 +388,29 @@ export default function Signup() {
                     </div>
                   </div>
 
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg p-3 text-sm">
+                      {error}
+                    </div>
+                  )}
+
                   <div className="flex gap-4 pt-4">
-                    <Button type="button" variant="outline" onClick={() => setStep(2)} className="gap-2">
+                    <Button type="button" variant="outline" onClick={() => setStep(2)} disabled={loading} className="gap-2">
                       <ArrowLeft className="h-4 w-4" />
                       Back
                     </Button>
-                    <Button type="submit" className="flex-1 gap-2">
-                      Start Free Trial
-                      <ArrowRight className="h-4 w-4" />
+                    <Button type="submit" className="flex-1 gap-2" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
+                          Processing...
+                        </>
+                      ) : (
+                        <>
+                          Start Free Trial
+                          <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
                     </Button>
                   </div>
                 </form>
