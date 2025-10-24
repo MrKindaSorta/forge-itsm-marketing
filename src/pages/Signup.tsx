@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { loadStripe } from '@stripe/stripe-js';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
-
-// Initialize Stripe
-const stripePromise = loadStripe('pk_live_51RgszMP3jQScPlwjBriazzwq4dT2qcv5L2DzlW99IpVnVdeoB7NCebqll7hYZDVn2JCTFGPKD8nXMUfMttxOIff600Hqrfe9iY');
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -90,7 +86,7 @@ export default function Signup() {
         }),
       });
 
-      const { sessionId, error: sessionError } = await sessionResponse.json();
+      const { url, error: sessionError } = await sessionResponse.json();
 
       if (sessionError) {
         setError(sessionError);
@@ -98,18 +94,11 @@ export default function Signup() {
         return;
       }
 
-      // Redirect to Stripe Checkout
-      const stripe = await stripePromise;
-      if (!stripe) {
-        setError('Failed to load Stripe');
-        setLoading(false);
-        return;
-      }
-
-      const { error: stripeError } = await (stripe as any).redirectToCheckout({ sessionId });
-
-      if (stripeError) {
-        setError(stripeError.message || 'Failed to redirect to checkout');
+      // Redirect to Stripe Checkout URL
+      if (url) {
+        window.location.href = url;
+      } else {
+        setError('Failed to get checkout URL');
         setLoading(false);
       }
     } catch (err) {
