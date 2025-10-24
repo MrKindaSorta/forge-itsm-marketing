@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Signup from './pages/Signup';
+import Success from './pages/Success';
 import './index.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="terms" element={<Terms />} />
           <Route path="privacy" element={<Privacy />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="signup/success" element={<Success />} />
         </Route>
       </Routes>
     </BrowserRouter>
