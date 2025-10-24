@@ -189,4 +189,117 @@
     background: rgba(34, 42, 69, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  /* Color utilities for Tailwind v4 - explicit definitions */
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .bg-foreground {
+    background-color: hsl(var(--foreground));
+  }
+
+  .bg-card {
+    background-color: hsl(var(--card));
+  }
+
+  .bg-popover {
+    background-color: hsl(var(--popover));
+  }
+
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+
+  .bg-secondary {
+    background-color: hsl(var(--secondary));
+  }
+
+  .bg-muted {
+    background-color: hsl(var(--muted));
+  }
+
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+
+  .bg-destructive {
+    background-color: hsl(var(--destructive));
+  }
+
+  .bg-muted\/50 {
+    background-color: hsl(var(--muted) / 0.5);
+  }
+
+  .bg-destructive\/10 {
+    background-color: hsl(var(--destructive) / 0.1);
+  }
+
+  .bg-background\/95 {
+    background-color: hsl(var(--background) / 0.95);
+  }
+
+  .bg-background\/60 {
+    background-color: hsl(var(--background) / 0.6);
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+
+  .text-card-foreground {
+    color: hsl(var(--card-foreground));
+  }
+
+  .text-popover-foreground {
+    color: hsl(var(--popover-foreground));
+  }
+
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+
+  .text-primary-foreground {
+    color: hsl(var(--primary-foreground));
+  }
+
+  .text-secondary-foreground {
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .text-accent-foreground {
+    color: hsl(var(--accent-foreground));
+  }
+
+  .text-destructive {
+    color: hsl(var(--destructive));
+  }
+
+  .text-destructive-foreground {
+    color: hsl(var(--destructive-foreground));
+  }
+
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+
+  .border-input {
+    border-color: hsl(var(--input));
+  }
+
+  .border-destructive {
+    border-color: hsl(var(--destructive));
+  }
+
+  .ring-ring {
+    --tw-ring-color: hsl(var(--ring));
+  }
+
+  .ring-offset-background {
+    --tw-ring-offset-color: hsl(var(--background));
+  }
 }
