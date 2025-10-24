@@ -1,17 +1,16 @@
 export default function Privacy() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
+      <h1 className="text-4xl font-bold mb-8">Forge ITSM Privacy Policy</h1>
       <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-muted-foreground">
         <p className="text-sm">
-          <strong>Last Updated:</strong> January 2025
+          <strong>Last Updated:</strong> October 24, 2025
         </p>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">1. Introduction</h2>
           <p>
-            Forge ITSM ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy
-            explains how we collect, use, disclose, and safeguard your information when you use our Service.
+            Forge ITSM ("we," "our," or "us"), operated by Forge Underground and Joshua Klimek, a solo developer, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web-based ITSM ticketing Service hosted on Cloudflare.
           </p>
         </section>
 
@@ -24,11 +23,11 @@ export default function Privacy() {
             <li>Name and email address</li>
             <li>Company name</li>
             <li>Password (encrypted)</li>
-            <li>Billing information (processed securely through Stripe)</li>
+            <li>Billing information (processed via Stripe)</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-foreground">Usage Data</h3>
-          <p>We automatically collect certain information when you use the Service:</p>
+          <p>Automatically collected:</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>IP address and device information</li>
             <li>Browser type and version</li>
@@ -39,95 +38,77 @@ export default function Privacy() {
 
           <h3 className="text-xl font-semibold text-foreground">Customer Data</h3>
           <p>
-            When you use our Service, you may upload or create content including tickets, user information,
-            knowledge base articles, and other data. You retain full ownership of this data.
+            You upload/create: tickets (e.g., requestor, assignee, status, priority, description), custom fields, knowledge base articles. You retain ownership.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">3. How We Use Your Information</h2>
-          <p>We use the information we collect to:</p>
+          <p>To:</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Provide, operate, and maintain the Service</li>
-            <li>Process your subscription and payments</li>
-            <li>Send administrative information and updates</li>
-            <li>Respond to your inquiries and provide customer support</li>
-            <li>Improve and optimize the Service</li>
-            <li>Detect and prevent fraud or abuse</li>
+            <li>Provide, operate, maintain the Service (isolated per-client instances on Cloudflare Pages, Wrangler APIs, D1 DB)</li>
+            <li>Process subscriptions/payments</li>
+            <li>Send administrative updates/support responses</li>
+            <li>Improve/optimize Service</li>
+            <li>Detect/prevent fraud/abuse</li>
             <li>Comply with legal obligations</li>
           </ul>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">4. How We Share Your Information</h2>
-          <p>We do not sell your personal information. We may share information in the following circumstances:</p>
+          <p>We do not sell personal information. Sharing only:</p>
 
           <h3 className="text-xl font-semibold text-foreground">Service Providers</h3>
-          <p>
-            We use third-party service providers to help us operate the Service:
-          </p>
           <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Cloudflare:</strong> Hosting and content delivery</li>
-            <li><strong>Stripe:</strong> Payment processing</li>
+            <li><strong>Cloudflare:</strong> Hosting, APIs, DB (GDPR-compliant; no HIPAA BAA)</li>
+            <li><strong>Stripe:</strong> Payments</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-foreground">Legal Requirements</h3>
           <p>
-            We may disclose information if required by law or in response to valid legal requests from
-            authorities.
+            Disclosure if required by law or valid requests.
           </p>
 
           <h3 className="text-xl font-semibold text-foreground">Business Transfers</h3>
           <p>
-            If we are involved in a merger, acquisition, or sale of assets, your information may be
-            transferred. We will notify you of any such change.
+            In merger/acquisition/sale; notify you.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">5. Data Security</h2>
-          <p>
-            We implement appropriate technical and organizational security measures to protect your information,
-            including:
-          </p>
+          <p>Measures:</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Encryption of data in transit (HTTPS/TLS)</li>
-            <li>Encryption of sensitive data at rest</li>
-            <li>Regular security assessments</li>
-            <li>Access controls and authentication</li>
-            <li>Automatic backups</li>
+            <li>Encryption in transit (TLS 1.3) and at rest (AES-256)</li>
+            <li>Role-based access controls</li>
+            <li>Regular assessments</li>
+            <li>30-day point-in-time backups/restores via D1</li>
           </ul>
           <p>
-            However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute
-            security.
+            No method is 100% secure; we disclaim absolute guarantees.
+          </p>
+          <p>
+            <strong>HIPAA Notice:</strong> Not HIPAA-compliant. Do not store PHI; you assume all risk.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">6. Data Retention</h2>
           <p>
-            We retain your information for as long as your account is active or as needed to provide the Service.
-          </p>
-          <p>
-            <strong>After Cancellation:</strong> When you cancel your account, we retain your data for 30 days
-            to allow for reactivation. After 30 days, all data is permanently deleted.
+            As long as account active or needed for Service. Post-cancellation: 30 days for reactivation; then permanent deletion. Export data anytime.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">7. Your Rights</h2>
-          <p>You have the right to:</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Access:</strong> Request a copy of your personal information</li>
-            <li><strong>Correct:</strong> Update inaccurate or incomplete information</li>
-            <li><strong>Delete:</strong> Request deletion of your personal information</li>
-            <li><strong>Export:</strong> Download your data in a portable format</li>
-            <li><strong>Object:</strong> Object to processing of your information</li>
+            <li>Access, correct, delete, export, object to processing</li>
           </ul>
           <p>
-            To exercise these rights, contact us at{' '}
-            <a href="mailto:privacy@forge-itsm.com" className="text-primary hover:underline">
-              privacy@forge-itsm.com
+            Contact:{' '}
+            <a href="mailto:forgeundergroundproject@gmail.com" className="text-primary hover:underline">
+              forgeundergroundproject@gmail.com
             </a>
           </p>
         </section>
@@ -135,70 +116,50 @@ export default function Privacy() {
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">8. Cookies and Tracking</h2>
           <p>
-            We use cookies and similar tracking technologies to enhance your experience. Cookies are small
-            text files stored on your device.
-          </p>
-          <p>We use cookies for:</p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Authentication and security</li>
-            <li>Remembering your preferences</li>
-            <li>Analytics and performance monitoring</li>
-          </ul>
-          <p>
-            You can control cookies through your browser settings. Disabling cookies may limit some functionality.
+            Used for authentication, preferences, analytics. Control via browser; disabling may limit functionality.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">9. Children's Privacy</h2>
           <p>
-            The Service is not intended for users under the age of 18. We do not knowingly collect information
-            from children. If we become aware that we have collected information from a child, we will delete it.
+            Not for under 18; delete if collected knowingly.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">10. International Data Transfers</h2>
           <p>
-            Your information may be transferred to and processed in countries other than your own. We take
-            appropriate safeguards to ensure your information receives adequate protection.
+            To/from countries via Cloudflare; safeguards include EU Data Residency options.
           </p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">11. California Privacy Rights</h2>
+          <h2 className="text-2xl font-semibold text-foreground">11. California Privacy Rights (CCPA)</h2>
           <p>
-            If you are a California resident, you have additional rights under the California Consumer Privacy
-            Act (CCPA), including the right to know what personal information we collect and how we use it.
+            Residents: Right to know, delete, opt-out of sales (none occur).
           </p>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-foreground">12. GDPR Rights (European Users)</h2>
+          <h2 className="text-2xl font-semibold text-foreground">12. GDPR Rights (EEA Users)</h2>
           <p>
-            If you are located in the European Economic Area (EEA), you have rights under the General Data
-            Protection Regulation (GDPR), including rights to access, rectification, erasure, and data
-            portability.
+            Access, rectification, erasure, portability, objection.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">13. Changes to This Privacy Policy</h2>
           <p>
-            We may update this Privacy Policy from time to time. We will notify you of material changes via
-            email or through the Service. Your continued use after changes constitutes acceptance.
+            Updates notified via email/Service. Continued use = acceptance.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">14. Contact Us</h2>
           <p>
-            If you have questions or concerns about this Privacy Policy, please contact us at:
-          </p>
-          <p>
-            <strong>Email:</strong>{' '}
-            <a href="mailto:privacy@forge-itsm.com" className="text-primary hover:underline">
-              privacy@forge-itsm.com
+            <a href="mailto:forgeundergroundproject@gmail.com" className="text-primary hover:underline">
+              forgeundergroundproject@gmail.com
             </a>
           </p>
         </section>
