@@ -32,7 +32,7 @@ export default function Pricing() {
               <CardTitle className="text-2xl">Starter</CardTitle>
               <CardDescription>Perfect for small IT teams</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">$49.99</div>
+                <div className="text-4xl font-bold">$59.99</div>
                 <div className="text-sm text-muted-foreground">/month</div>
               </div>
             </CardHeader>
@@ -90,7 +90,7 @@ export default function Pricing() {
               <CardTitle className="text-2xl">Professional</CardTitle>
               <CardDescription>For growing IT departments</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">$69.99</div>
+                <div className="text-4xl font-bold">$79.99</div>
                 <div className="text-sm text-muted-foreground">/month</div>
               </div>
             </CardHeader>
@@ -201,7 +201,7 @@ export default function Pricing() {
 
         <div className="text-center mt-8">
           <p className="text-muted-foreground">
-            All plans include a <span className="font-semibold text-foreground">14-day free trial</span>. No credit card required.
+            All plans include a <span className="font-semibold text-foreground">30-day free trial</span>. Cancel anytime.
           </p>
         </div>
       </section>
@@ -231,8 +231,8 @@ export default function Pricing() {
                 <tbody>
                   <tr className="border-b bg-primary/5">
                     <td className="p-4 font-semibold">Forge ITSM</td>
-                    <td className="p-4 text-center font-bold text-primary">$49.99/mo</td>
-                    <td className="p-4 text-center font-bold text-primary">$69.99/mo</td>
+                    <td className="p-4 text-center font-bold text-primary">$59.99/mo</td>
+                    <td className="p-4 text-center font-bold text-primary">$79.99/mo</td>
                     <td className="p-4 text-center font-bold text-primary">$119.99/mo</td>
                   </tr>
                   <tr className="border-b">
@@ -480,7 +480,7 @@ export default function Pricing() {
         <div className="container mx-auto px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Ready to Save Thousands?</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Start your 14-day free trial. No credit card required. Cancel anytime.
+            Start your 30-day free trial. Cancel anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup">
