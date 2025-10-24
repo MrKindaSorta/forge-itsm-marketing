@@ -338,3 +338,31 @@ INSERT INTO system_settings (
     "dashboard:view": ["agent", "manager", "admin"]
   }'
 );
+
+-- ========== FORM CONFIGURATIONS TABLE ==========
+CREATE TABLE IF NOT EXISTS form_configurations (
+  id TEXT PRIMARY KEY,
+  config_json TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Insert default form configuration
+INSERT INTO form_configurations (id, config_json) VALUES (
+  'default',
+  '{"priorities": [{"value": "low", "label": "Low", "color": "blue"}, {"value": "medium", "label": "Medium", "color": "yellow"}, {"value": "high", "label": "High", "color": "orange"}, {"value": "urgent", "label": "Urgent", "color": "red"}], "categories": [{"value": "hardware", "label": "Hardware"}, {"value": "software", "label": "Software"}, {"value": "network", "label": "Network"}, {"value": "access", "label": "Access Request"}, {"value": "other", "label": "Other"}]}'
+);
+
+-- ========== BRANDING CONFIGURATION TABLE ==========
+CREATE TABLE IF NOT EXISTS branding_configuration (
+  id TEXT PRIMARY KEY,
+  config_json TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Insert default branding configuration
+INSERT INTO branding_configuration (id, config_json) VALUES (
+  'default',
+  '{"logo_url": null, "primary_color": "#3b82f6", "company_name": "ITSM System"}'
+);
