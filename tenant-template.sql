@@ -369,3 +369,11 @@ INSERT INTO system_settings (
   0,
   '{"ticket:create":["user","agent","manager","admin"],"ticket:view:own":["user","agent","manager","admin"],"ticket:view:all":["agent","manager","admin"],"ticket:edit":["agent","manager","admin"],"ticket:delete":["manager","admin"],"ticket:assign":["manager","admin"],"ticket:close":["manager","admin"],"ticket:resolve":["agent","manager","admin"],"user:view":["agent","manager","admin"],"user:create":["admin","manager"],"user:edit":["manager","admin"],"user:delete":["admin","manager"],"settings:view":["manager","admin"],"settings:edit":["admin"],"customize:view":["manager","admin"],"customize:edit":["admin","manager"],"reports:view":["agent","manager","admin"],"reports:export":["manager","admin"],"kb:view":["user","agent","manager","admin"],"kb:create":["agent","manager","admin"],"kb:edit":["agent","manager","admin"],"kb:delete":["manager","admin"],"dashboard:view":["agent","manager","admin"]}'
 );
+
+-- Insert default knowledge base categories
+INSERT INTO categories (name, icon, color, display_order, created_at) VALUES
+  ('Getting Started', 'Rocket', 'text-blue-500', 0, datetime('now')),
+  ('Common Issues', 'AlertCircle', 'text-orange-500', 1, datetime('now')),
+  ('How-To Guides', 'BookOpen', 'text-green-500', 2, datetime('now')),
+  ('Account & Billing', 'CreditCard', 'text-purple-500', 3, datetime('now')),
+  ('FAQs', 'HelpCircle', 'text-yellow-500', 4, datetime('now'));
