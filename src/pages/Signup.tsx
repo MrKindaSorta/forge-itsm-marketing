@@ -116,21 +116,21 @@ export default function Signup() {
           <div className="mb-8">
             <div className="flex items-center justify-center gap-2">
               <div className={`flex items-center gap-2 ${step >= 1 ? 'text-primary' : 'text-muted-foreground'}`}>
-                <div className={`h-8 w-8 rounded-full flex items-center justify-center border-2 ${step >= 1 ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'}`}>
+                <div className={`h-8 w-8 rounded-full flex items-center justify-center border-2 transition-all ${step >= 1 ? 'border-primary bg-primary text-primary-foreground shadow-lg glow-primary' : 'border-border'}`}>
                   {step > 1 ? <Check className="h-4 w-4" /> : '1'}
                 </div>
                 <span className="text-sm font-medium hidden sm:inline">Choose Plan</span>
               </div>
-              <div className={`h-0.5 w-12 ${step >= 2 ? 'bg-primary' : 'bg-muted-foreground/30'}`} />
+              <div className={`h-0.5 w-12 transition-all ${step >= 2 ? 'bg-primary' : 'bg-border'}`} />
               <div className={`flex items-center gap-2 ${step >= 2 ? 'text-primary' : 'text-muted-foreground'}`}>
-                <div className={`h-8 w-8 rounded-full flex items-center justify-center border-2 ${step >= 2 ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'}`}>
+                <div className={`h-8 w-8 rounded-full flex items-center justify-center border-2 transition-all ${step >= 2 ? 'border-primary bg-primary text-primary-foreground shadow-lg glow-primary' : 'border-border'}`}>
                   {step > 2 ? <Check className="h-4 w-4" /> : '2'}
                 </div>
                 <span className="text-sm font-medium hidden sm:inline">Account Info</span>
               </div>
-              <div className={`h-0.5 w-12 ${step >= 3 ? 'bg-primary' : 'bg-muted-foreground/30'}`} />
+              <div className={`h-0.5 w-12 transition-all ${step >= 3 ? 'bg-primary' : 'bg-border'}`} />
               <div className={`flex items-center gap-2 ${step >= 3 ? 'text-primary' : 'text-muted-foreground'}`}>
-                <div className={`h-8 w-8 rounded-full flex items-center justify-center border-2 ${step >= 3 ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'}`}>
+                <div className={`h-8 w-8 rounded-full flex items-center justify-center border-2 transition-all ${step >= 3 ? 'border-primary bg-primary text-primary-foreground shadow-lg glow-primary' : 'border-border'}`}>
                   {step > 3 ? <Check className="h-4 w-4" /> : '3'}
                 </div>
                 <span className="text-sm font-medium hidden sm:inline">Company Details</span>
@@ -150,16 +150,16 @@ export default function Signup() {
                 {plans.map((plan) => (
                   <Card
                     key={plan.id}
-                    className={`relative cursor-pointer transition-all ${
+                    className={`relative cursor-pointer transition-all glass-card ${
                       selectedPlan === plan.id
-                        ? 'border-2 border-primary shadow-lg'
-                        : 'hover:border-primary/50'
+                        ? 'border-2 border-primary glow-primary scale-105'
+                        : 'hover:scale-102 hover:border-primary/50'
                     }`}
                     onClick={() => setSelectedPlan(plan.id)}
                   >
                     {plan.popular && (
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <Badge className="bg-primary">Most Popular</Badge>
+                        <Badge className="bg-gradient-to-r from-primary to-primary/80 shadow-lg">Most Popular</Badge>
                       </div>
                     )}
                     <CardHeader>
@@ -173,7 +173,7 @@ export default function Signup() {
                       <ul className="space-y-2">
                         {plan.features.map((feature, index) => (
                           <li key={index} className="flex items-center gap-2 text-sm">
-                            <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                            <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -199,7 +199,7 @@ export default function Signup() {
 
           {/* Step 2: Account Info */}
           {step === 2 && (
-            <Card>
+            <Card className="glass-card">
               <CardHeader>
                 <CardTitle>Create Your Account</CardTitle>
                 <CardDescription>Set up your login credentials</CardDescription>
@@ -283,7 +283,7 @@ export default function Signup() {
 
           {/* Step 3: Company Details */}
           {step === 3 && (
-            <Card>
+            <Card className="glass-card">
               <CardHeader>
                 <CardTitle>Company Information</CardTitle>
                 <CardDescription>Tell us about your organization</CardDescription>

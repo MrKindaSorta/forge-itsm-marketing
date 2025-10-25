@@ -36,9 +36,9 @@ export default function Features() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Ticket className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Ticket Management</CardTitle>
@@ -50,9 +50,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>SLA Management</CardTitle>
@@ -64,9 +64,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Users className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>User Management</CardTitle>
@@ -78,9 +78,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <FileText className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Knowledge Base</CardTitle>
@@ -92,9 +92,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Settings className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Custom Fields</CardTitle>
@@ -106,9 +106,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Automation Rules</CardTitle>
@@ -120,9 +120,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <BarChart3 className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Reports & Analytics</CardTitle>
@@ -134,9 +134,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Bell className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Real-time Notifications</CardTitle>
@@ -148,9 +148,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Database className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Asset Management</CardTitle>
@@ -162,9 +162,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <MessageSquare className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Internal Notes</CardTitle>
@@ -176,9 +176,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Tags className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Categories & Tags</CardTitle>
@@ -190,9 +190,9 @@ export default function Features() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Secure & Reliable</CardTitle>
@@ -295,42 +295,42 @@ export default function Features() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <Card>
+              <Card className="glass-card">
                 <CardHeader>
                   <CardTitle className="text-2xl">User Portal</CardTitle>
                   <p className="text-muted-foreground">Clean, simple interface for end users</p>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Submit Tickets</div>
                       <div className="text-sm text-muted-foreground">Easy form with guided fields</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Track Progress</div>
                       <div className="text-sm text-muted-foreground">View status and updates</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Browse Knowledge Base</div>
                       <div className="text-sm text-muted-foreground">Self-service help articles</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Manage Profile</div>
                       <div className="text-sm text-muted-foreground">Update contact info and preferences</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Mobile-Responsive</div>
                       <div className="text-sm text-muted-foreground">On-the-go ticket submissions from any device</div>
@@ -339,42 +339,42 @@ export default function Features() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="glass-card">
                 <CardHeader>
                   <CardTitle className="text-2xl">Agent Backend</CardTitle>
                   <p className="text-muted-foreground">Powerful workspace for IT professionals</p>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Full Ticket Management</div>
                       <div className="text-sm text-muted-foreground">Assign, prioritize, and resolve</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Dashboard & Metrics</div>
                       <div className="text-sm text-muted-foreground">Real-time performance insights</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">User & Asset Management</div>
                       <div className="text-sm text-muted-foreground">Centralized IT administration</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Reports & Customization</div>
                       <div className="text-sm text-muted-foreground">Configure and analyze your system</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Smart Search</div>
                       <div className="text-sm text-muted-foreground">Sticky filters and saved views (e.g., 'High-priority open')</div>
@@ -399,9 +399,9 @@ export default function Features() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <Card>
+              <Card className="glass-card">
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                     <Settings className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Form Builder</CardTitle>
@@ -413,9 +413,9 @@ export default function Features() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="glass-card">
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>SLA Rules</CardTitle>
@@ -427,9 +427,9 @@ export default function Features() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="glass-card">
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                     <Zap className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Automation Engine</CardTitle>
@@ -441,9 +441,9 @@ export default function Features() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="glass-card">
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
                     <Tags className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle>Categories & Branding</CardTitle>
@@ -454,15 +454,15 @@ export default function Features() {
                   </p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <CheckCircle2 className="h-4 w-4 text-green-500" />
                       Custom categories and subcategories
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <CheckCircle2 className="h-4 w-4 text-green-500" />
                       Upload your logo
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <CheckCircle2 className="h-4 w-4 text-green-500" />
                       Brand colors and themes
                     </li>
                   </ul>

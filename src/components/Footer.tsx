@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="border-t py-12 bg-background">
+    <footer className="border-t border-border/40 py-12 bg-muted/20">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md">
                 <span className="text-primary-foreground font-bold">F</span>
               </div>
               <span className="font-bold">Forge ITSM</span>
@@ -20,12 +20,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Product</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/features" className="hover:text-foreground transition-colors">
+                <Link to="/features" className="hover:text-primary transition-colors">
                   Features
                 </Link>
               </li>
               <li>
-                <Link to="/pricing" className="hover:text-foreground transition-colors">
+                <Link to="/pricing" className="hover:text-primary transition-colors">
                   Pricing
                 </Link>
               </li>
@@ -34,7 +34,7 @@ export default function Footer() {
                   href="https://forge-itsm.pages.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Demo
                 </a>
@@ -45,12 +45,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/about" className="hover:text-foreground transition-colors">
+                <Link to="/about" className="hover:text-primary transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-foreground transition-colors">
+                <Link to="/contact" className="hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -60,19 +60,19 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Legal</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/terms" className="hover:text-foreground transition-colors">
+                <Link to="/terms" className="hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-foreground transition-colors">
+                <Link to="/privacy" className="hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Forge ITSM. Built with care by a solo developer.</p>
         </div>
       </div>

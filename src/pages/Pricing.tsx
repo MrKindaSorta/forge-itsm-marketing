@@ -27,7 +27,7 @@ export default function Pricing() {
       <section className="container mx-auto px-4 pb-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Starter Plan */}
-          <Card className="relative">
+          <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
               <CardTitle className="text-2xl">Starter</CardTitle>
               <CardDescription>Perfect for small IT teams</CardDescription>
@@ -39,51 +39,51 @@ export default function Pricing() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span className="font-semibold">Up to 3 Agents</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Unlimited End Users</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Unlimited Tickets</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>SLA Management</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Knowledge Base</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Custom Fields</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Automation Rules</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Reports & Analytics</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Email Support</span>
                 </div>
               </div>
               <Link to="/signup" className="block">
-                <Button className="w-full mt-6">Get Started</Button>
+                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
           </Card>
 
           {/* Professional Plan */}
-          <Card className="relative border-2 border-primary shadow-lg">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-sm font-bold px-4 py-1 rounded-full">
+          <Card className="relative glass-card border-2 border-primary/40 shadow-xl hover:scale-105 transition-transform duration-300">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full shadow-lg glow-primary">
               Most Popular
             </div>
             <CardHeader>
@@ -97,50 +97,50 @@ export default function Pricing() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span className="font-semibold">Up to 5 Agents</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Unlimited End Users</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Unlimited Tickets</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>SLA Management</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Knowledge Base</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Custom Fields</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Automation Rules</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Reports & Analytics</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Priority Email Support</span>
                 </div>
               </div>
               <Link to="/signup" className="block">
-                <Button className="w-full mt-6">Get Started</Button>
+                <Button className="w-full mt-6 shadow-lg hover:shadow-xl transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
           </Card>
 
           {/* Business Plan */}
-          <Card className="relative">
+          <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
               <CardTitle className="text-2xl">Business</CardTitle>
               <CardDescription>For established IT teams</CardDescription>
@@ -152,48 +152,48 @@ export default function Pricing() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span className="font-semibold">Up to 10 Agents</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Unlimited End Users</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Unlimited Tickets</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>SLA Management</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Knowledge Base</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Custom Fields</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Automation Rules</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Reports & Analytics</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span>Priority Email Support</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-600" />
+                  <Check className="h-5 w-5 text-green-500" />
                   <span className="font-semibold">$9.99/additional agent</span>
                 </div>
               </div>
               <Link to="/signup" className="block">
-                <Button className="w-full mt-6">Get Started</Button>
+                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
           </Card>
@@ -218,10 +218,10 @@ export default function Pricing() {
             </div>
 
             {/* Pricing Comparison Table */}
-            <div className="overflow-x-auto rounded-lg border bg-background shadow-sm">
+            <div className="overflow-x-auto rounded-xl glass-card">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b bg-muted/50">
+                  <tr className="border-b-2 border-border/40">
                     <th className="p-4 text-left font-semibold">Provider</th>
                     <th className="p-4 text-center font-semibold">3 Agents</th>
                     <th className="p-4 text-center font-semibold">5 Agents</th>
@@ -229,31 +229,31 @@ export default function Pricing() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b bg-primary/5">
+                  <tr className="border-b border-border/30 bg-primary/10">
                     <td className="p-4 font-semibold">Forge ITSM</td>
                     <td className="p-4 text-center font-bold text-primary">$59.99/mo</td>
                     <td className="p-4 text-center font-bold text-primary">$79.99/mo</td>
                     <td className="p-4 text-center font-bold text-primary">$119.99/mo</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Zendesk Suite</td>
                     <td className="p-4 text-center text-muted-foreground">$165/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$275/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$550/mo</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Freshdesk</td>
                     <td className="p-4 text-center text-muted-foreground">$135/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$225/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$450/mo</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Jira Service Mgmt</td>
                     <td className="p-4 text-center text-muted-foreground">$105/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$175/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$350/mo</td>
                   </tr>
-                  <tr>
+                  <tr className="hover:bg-muted/20 transition-colors">
                     <td className="p-4">ServiceNow</td>
                     <td className="p-4 text-center text-muted-foreground">$300+/mo</td>
                     <td className="p-4 text-center text-muted-foreground">$500+/mo</td>
@@ -265,32 +265,32 @@ export default function Pricing() {
 
             {/* Annual Savings */}
             <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <Card>
+              <Card className="glass-card border-green-500/20">
                 <CardHeader>
                   <CardTitle className="text-lg">3 Agents</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-green-600 mb-2">Save $660-$3,000</div>
+                  <div className="text-3xl font-bold text-green-500 mb-2">Save $660-$3,000</div>
                   <p className="text-sm text-muted-foreground">per year vs competitors</p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="glass-card border-green-500/20">
                 <CardHeader>
                   <CardTitle className="text-lg">5 Agents</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-green-600 mb-2">Save $1,260-$5,160</div>
+                  <div className="text-3xl font-bold text-green-500 mb-2">Save $1,260-$5,160</div>
                   <p className="text-sm text-muted-foreground">per year vs competitors</p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="glass-card border-green-500/20">
                 <CardHeader>
                   <CardTitle className="text-lg">10 Agents</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-green-600 mb-2">Save $2,760-$10,560</div>
+                  <div className="text-3xl font-bold text-green-500 mb-2">Save $2,760-$10,560</div>
                   <p className="text-sm text-muted-foreground">per year vs competitors</p>
                 </CardContent>
               </Card>
@@ -310,10 +310,10 @@ export default function Pricing() {
               </p>
             </div>
 
-            <div className="overflow-x-auto rounded-lg border bg-background shadow-sm">
+            <div className="overflow-x-auto rounded-xl glass-card">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b bg-muted/50">
+                  <tr className="border-b-2 border-border/40">
                     <th className="p-4 text-left font-semibold">Feature</th>
                     <th className="p-4 text-center font-semibold">Forge ITSM</th>
                     <th className="p-4 text-center font-semibold">Zendesk</th>
@@ -322,72 +322,72 @@ export default function Pricing() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Unlimited Tickets</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Unlimited End Users</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Extra cost</td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Extra cost</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">SLA Management</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Automation Rules</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Custom Fields</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Knowledge Base</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Reports & Analytics</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Mobile App</td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Coming Soon</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5 text-muted-foreground text-xs">Coming Soon</td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-4">Asset Management</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Extra cost</td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Higher tier</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-600 mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
-                  <tr>
+                  <tr className="hover:bg-muted/20 transition-colors">
                     <td className="p-4">Setup Consultants Required</td>
-                    <td className="p-4 text-center"><X className="h-5 w-5 text-red-500 mx-auto" /></td>
+                    <td className="p-4 text-center bg-primary/5"><X className="h-5 w-5 text-red-500 mx-auto" /></td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Recommended</td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Optional</td>
                     <td className="p-4 text-center text-muted-foreground text-xs">Often needed</td>
