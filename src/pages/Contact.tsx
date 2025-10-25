@@ -34,8 +34,8 @@ export default function Contact() {
                 <p className="text-muted-foreground mb-4">
                   Send us an email and we'll get back to you within 24 hours.
                 </p>
-                <a href="mailto:support@forge-itsm.com" className="text-primary hover:underline font-medium">
-                  support@forge-itsm.com
+                <a href="mailto:forgeundergroundproject@gmail.com" className="text-primary hover:underline font-medium">
+                  forgeundergroundproject@gmail.com
                 </a>
               </CardContent>
             </Card>
