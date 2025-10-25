@@ -154,7 +154,7 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Most teams are up and running within an hour. The system is designed to be intuitive with no training required.
+                    In testing, most teams were up and running within an hour. The system is designed to be intuitive with no training required.
                   </p>
                 </CardContent>
               </Card>
@@ -165,7 +165,7 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Yes! We can help you migrate ticket history and user data. Contact us to discuss your specific needs.
+                    Not at this time. Though this is something we are working on.
                   </p>
                 </CardContent>
               </Card>
@@ -176,7 +176,7 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    We provide documentation and video tutorials. For larger teams, we can schedule a personalized onboarding session.
+                    At this time we are putting together a training package, and plan to offer onboarding for users who request it in the future. However I think you will find its not necessary. The product is very straight forward and intuitive.
                   </p>
                 </CardContent>
               </Card>
@@ -187,7 +187,7 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    All plans include email support with response within 24 hours. Professional and Business plans receive priority support.
+                    All plans include email support.
                   </p>
                 </CardContent>
               </Card>
