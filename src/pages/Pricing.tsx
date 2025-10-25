@@ -17,7 +17,7 @@ export default function Pricing() {
           </p>
           <div className="inline-block px-4 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
             <p className="text-green-800 dark:text-green-200 font-semibold">
-              💰 Save $2,100 - $7,860 per year compared to competitors
+              💰 Save up to $12,360 per year compared to leading competitors
             </p>
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function Pricing() {
       {/* Competitor Comparison */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Compare</h2>
               <p className="text-lg text-muted-foreground">
@@ -186,44 +186,94 @@ export default function Pricing() {
               </p>
             </div>
 
-            {/* Simplified Pricing Comparison */}
+            {/* Comprehensive Pricing Comparison */}
             <div className="overflow-x-auto rounded-xl glass-card">
-              <table className="w-full">
+              <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b-2 border-border/40">
-                    <th className="p-4 text-left font-semibold">Provider</th>
-                    <th className="p-4 text-center font-semibold">5 Agents</th>
-                    <th className="p-4 text-center font-semibold">Annual Savings</th>
+                    <th className="p-3 text-left font-semibold">Vendor (Plan)</th>
+                    <th className="p-3 text-right font-semibold whitespace-nowrap">Per-Agent /mo</th>
+                    <th className="p-3 text-right font-semibold whitespace-nowrap">3 Agents/yr</th>
+                    <th className="p-3 text-right font-semibold whitespace-nowrap">5 Agents/yr</th>
+                    <th className="p-3 text-right font-semibold whitespace-nowrap">10 Agents/yr</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-border/30 bg-primary/10">
-                    <td className="p-4 font-semibold">Forge ITSM</td>
-                    <td className="p-4 text-center font-bold text-primary text-lg">$79.99/mo</td>
-                    <td className="p-4 text-center font-bold text-foreground">—</td>
+                    <td className="p-3 font-semibold">Forge ITSM – Professional</td>
+                    <td className="p-3 text-right font-bold text-primary">$16.00</td>
+                    <td className="p-3 text-right font-bold text-primary">$719.88</td>
+                    <td className="p-3 text-right font-bold text-primary">$959.88</td>
+                    <td className="p-3 text-right font-bold text-primary">$1,439.88</td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Zendesk Suite Professional</td>
-                    <td className="p-4 text-center text-muted-foreground">$575/mo</td>
-                    <td className="p-4 text-center font-semibold text-green-500">Save $5,940/year</td>
+                    <td className="p-3">Zendesk Suite – Professional<sup className="text-primary">1</sup></td>
+                    <td className="p-3 text-right text-muted-foreground">$115</td>
+                    <td className="p-3 text-right text-muted-foreground">$4,140</td>
+                    <td className="p-3 text-right text-muted-foreground">$6,900</td>
+                    <td className="p-3 text-right text-muted-foreground">$13,800</td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Freshdesk Pro</td>
-                    <td className="p-4 text-center text-muted-foreground">$245/mo</td>
-                    <td className="p-4 text-center font-semibold text-green-500">Save $1,980/year</td>
+                    <td className="p-3">Freshdesk – Pro<sup className="text-primary">2</sup></td>
+                    <td className="p-3 text-right text-muted-foreground">$49</td>
+                    <td className="p-3 text-right text-muted-foreground">$1,764</td>
+                    <td className="p-3 text-right text-muted-foreground">$2,940</td>
+                    <td className="p-3 text-right text-muted-foreground">$5,880</td>
+                  </tr>
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
+                    <td className="p-3">Jira Service Management – Standard<sup className="text-primary">3</sup></td>
+                    <td className="p-3 text-right text-muted-foreground">$20</td>
+                    <td className="p-3 text-right text-muted-foreground">$720</td>
+                    <td className="p-3 text-right text-muted-foreground">$1,200</td>
+                    <td className="p-3 text-right text-muted-foreground">$2,400</td>
+                  </tr>
+                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
+                    <td className="p-3">Zoho Desk – Professional<sup className="text-primary">4</sup></td>
+                    <td className="p-3 text-right text-muted-foreground">$23</td>
+                    <td className="p-3 text-right text-muted-foreground">$828</td>
+                    <td className="p-3 text-right text-muted-foreground">$1,380</td>
+                    <td className="p-3 text-right text-muted-foreground">$2,760</td>
                   </tr>
                   <tr className="hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Jira Service Management Standard</td>
-                    <td className="p-4 text-center text-muted-foreground">$100/mo</td>
-                    <td className="p-4 text-center font-semibold text-green-500">Save $240/year</td>
+                    <td className="p-3">HelpDesk.com – Team<sup className="text-primary">5</sup></td>
+                    <td className="p-3 text-right text-muted-foreground">$29</td>
+                    <td className="p-3 text-right text-muted-foreground">$1,044</td>
+                    <td className="p-3 text-right text-muted-foreground">$1,740</td>
+                    <td className="p-3 text-right text-muted-foreground">$3,480</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
+            {/* Disclaimer */}
             <p className="text-sm text-muted-foreground text-center mt-6">
-              Competitor prices based on 5 agents with comparable features (2025 pricing)
+              Competitor prices based on publicly available pricing as of January 2025. Prices may vary based on region, features selected, and promotional offers. Please verify current pricing on vendor websites.
             </p>
+
+            {/* Source Citations */}
+            <div className="mt-8 p-6 rounded-lg bg-background/50 border border-border/30">
+              <h3 className="font-semibold mb-3 text-sm">Sources:</h3>
+              <ol className="text-xs space-y-2 text-muted-foreground">
+                <li>
+                  <sup className="text-primary">1</sup> Zendesk Suite Professional: <a href="https://support.zendesk.com/hc/en-us/articles/5555300573850-Zendesk-s-2023-Pricing-Update-What-You-Need-To-Know" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zendesk Support - 2023 Pricing Update</a>
+                </li>
+                <li>
+                  <sup className="text-primary">2</sup> Freshdesk Pro: <a href="https://www.freshworks.com/freshdesk/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Freshworks Official Pricing</a> ($49/agent/mo, billed annually)
+                </li>
+                <li>
+                  <sup className="text-primary">3</sup> Jira Service Management Standard: <a href="https://www.atlassian.com/collections/service/pricing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Atlassian Service Collection Pricing</a>
+                </li>
+                <li>
+                  <sup className="text-primary">4</sup> Zoho Desk Professional: <a href="https://www.zoho.com/desk/pricing.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zoho Desk Pricing & Editions</a>
+                </li>
+                <li>
+                  <sup className="text-primary">5</sup> HelpDesk.com Team: <a href="https://www.helpdesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">HelpDesk Official Pricing</a> ($29/user/mo, billed annually)
+                </li>
+              </ol>
+              <p className="text-xs text-muted-foreground mt-4 italic">
+                All competitor pricing information is sourced from publicly available vendor websites. Forge ITSM is not affiliated with any competitors listed. Prices are subject to change by the respective vendors.
+              </p>
+            </div>
           </div>
         </div>
       </section>
