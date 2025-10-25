@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Mail, MessageSquare, HelpCircle } from 'lucide-react';
+import { Mail, HelpCircle } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -14,7 +14,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions? Want to schedule a demo? We're here to help.
+            Have questions? We're here to help.
           </p>
         </div>
       </section>
@@ -22,7 +22,7 @@ export default function Contact() {
       {/* Contact Options */}
       <section className="container mx-auto px-4 pb-12">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-3xl mx-auto">
             <Card>
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -37,23 +37,6 @@ export default function Contact() {
                 <a href="mailto:support@forge-itsm.com" className="text-primary hover:underline font-medium">
                   support@forge-itsm.com
                 </a>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <MessageSquare className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Schedule a Demo</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  See Forge ITSM in action with a personalized walkthrough.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Use the form below to request a demo time.
-                </p>
               </CardContent>
             </Card>
 
@@ -133,7 +116,6 @@ export default function Contact() {
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                     >
                       <option value="general">General Question</option>
-                      <option value="demo">Schedule a Demo</option>
                       <option value="pricing">Pricing Question</option>
                       <option value="technical">Technical Support</option>
                       <option value="partnership">Partnership Inquiry</option>

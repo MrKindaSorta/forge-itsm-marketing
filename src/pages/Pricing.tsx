@@ -319,9 +319,6 @@ export default function Pricing() {
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <Link to="/contact">
-              <Button size="xl" variant="outline">Schedule a Demo</Button>
-            </Link>
           </div>
         </div>
       </section>

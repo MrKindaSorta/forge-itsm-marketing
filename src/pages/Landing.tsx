@@ -269,15 +269,6 @@ export default function Landing() {
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <Link to="/contact">
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-14 px-8 text-lg border-border/60 hover:bg-muted/50 transition-all"
-              >
-                Schedule a Demo
-              </Button>
-            </Link>
           </div>
           <p className="text-sm text-muted-foreground pt-4">
             30-day free trial • No credit card required • Cancel anytime
