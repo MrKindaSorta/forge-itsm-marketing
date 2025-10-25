@@ -95,6 +95,7 @@ export default function Pricing() {
               <div className="pt-4">
                 <div className="text-4xl font-bold">$59.99</div>
                 <div className="text-sm text-muted-foreground">/month</div>
+                <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -142,6 +143,7 @@ export default function Pricing() {
               <div className="pt-4">
                 <div className="text-4xl font-bold">$79.99</div>
                 <div className="text-sm text-muted-foreground">/month</div>
+                <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -189,6 +191,7 @@ export default function Pricing() {
               <div className="pt-4">
                 <div className="text-4xl font-bold">$119.99</div>
                 <div className="text-sm text-muted-foreground">/month + $9.99/additional agent</div>
+                <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -305,6 +308,9 @@ export default function Pricing() {
                   <strong className="text-primary">Your plan: Forge ITSM {forgePlan.name}</strong>
                   <span className="text-muted-foreground"> — {forgePlan.agentLimit}</span>
                 </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  ${forgePlan.yearly.toLocaleString()}/year + applicable sales tax
+                </p>
               </div>
             </div>
 
@@ -333,7 +339,7 @@ export default function Pricing() {
                       <div className="text-2xl font-bold text-primary">
                         ${forgePlan.yearly.toLocaleString()}
                       </div>
-                      <div className="text-xs text-muted-foreground mt-1">per year</div>
+                      <div className="text-xs text-muted-foreground mt-1">per year + tax</div>
                     </td>
                     <td className="p-4 text-center text-muted-foreground">
                       —
@@ -375,6 +381,25 @@ export default function Pricing() {
                   })}
                 </tbody>
               </table>
+            </div>
+
+            {/* Tax Information */}
+            <div className="mt-6 p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+              <div className="flex items-start gap-3">
+                <div className="text-blue-600 dark:text-blue-400 mt-0.5">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-blue-900 dark:text-blue-100 font-semibold mb-1">
+                    Sales Tax Information
+                  </p>
+                  <p className="text-sm text-blue-800 dark:text-blue-200">
+                    Prices shown are before tax. Sales tax will be calculated automatically at checkout based on your location and applicable rates. Tax rates vary by state and country.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Disclaimer */}
@@ -482,6 +507,17 @@ export default function Pricing() {
                 <CardContent>
                   <p className="text-muted-foreground">
                     Not yet, but we're planning to offer annual billing with a discount in the near future. Sign up to stay informed!
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Do prices include sales tax?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    No, prices shown are before tax. Sales tax is calculated automatically at checkout based on your billing location. We use Stripe Tax to ensure accurate tax rates for your state or country. You'll see the exact tax amount before completing your purchase.
                   </p>
                 </CardContent>
               </Card>
