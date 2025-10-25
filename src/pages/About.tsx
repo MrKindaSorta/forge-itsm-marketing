@@ -145,7 +145,7 @@ export default function About() {
         <div className="container mx-auto px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Join IT Teams Who Choose Better Tools</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Start your 14-day free trial today. No credit card required.
+            Start your 30-day free trial today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup">
