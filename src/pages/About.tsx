@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ArrowRight, Heart, Code, Users } from 'lucide-react';
+import { ArrowRight, Heart, Code, Users } from 'lucide-react';
 
 export default function About() {
   return (
@@ -135,103 +135,6 @@ export default function About() {
                   </p>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Highlight */}
-      <section className="bg-muted/50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Honest Pricing</h2>
-              <p className="text-lg text-muted-foreground">
-                Save $2,100 - $7,860 per year compared to competitors
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl">Starter</CardTitle>
-                  <div className="text-4xl font-bold text-primary mt-2">$49.99</div>
-                  <div className="text-sm text-muted-foreground">/month</div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">Up to 3 Agents</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">Unlimited Users</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">All Features</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 border-primary">
-                <CardHeader>
-                  <div className="inline-block bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded mb-2">
-                    Most Popular
-                  </div>
-                  <CardTitle className="text-xl">Professional</CardTitle>
-                  <div className="text-4xl font-bold text-primary mt-2">$69.99</div>
-                  <div className="text-sm text-muted-foreground">/month</div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">Up to 5 Agents</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">Unlimited Users</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">All Features</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl">Business</CardTitle>
-                  <div className="text-4xl font-bold text-primary mt-2">$119.99</div>
-                  <div className="text-sm text-muted-foreground">/month</div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">Up to 10 Agents</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">Unlimited Users</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">$9.99/additional agent</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="text-center mt-8">
-              <Link to="/pricing">
-                <Button size="lg">View Full Pricing Comparison</Button>
-              </Link>
             </div>
           </div>
         </div>
