@@ -3,10 +3,38 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Mail, HelpCircle } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
+import { FAQSchema } from '@/components/SchemaMarkup';
 
 export default function Contact() {
+  const faqs = [
+    {
+      question: "Do you charge per user like Zendesk?",
+      answer: "No. We charge a flat monthly fee based on the number of agents (your IT staff). End-users who submit tickets are unlimited and free."
+    },
+    {
+      question: "Can I cancel anytime?",
+      answer: "Yes. There are no long-term contracts. Cancel anytime from your billing portal."
+    },
+    {
+      question: "Do I need a credit card for the free trial?",
+      answer: "No. The 30-day free trial requires no credit card. You'll only be asked for payment details when you decide to continue after the trial."
+    },
+    {
+      question: "What happens to my data if I cancel?",
+      answer: "You can export all your data before canceling. After cancellation, your data is retained for 30 days in case you change your mind, then permanently deleted."
+    }
+  ];
+
   return (
     <div className="flex flex-col">
+      <SEOHead
+        title="Contact Forge ITSM - Questions About IT Ticketing Software"
+        description="Contact Forge ITSM for questions about our IT ticketing system. Get answers about pricing, features, setup, and support. We're here to help."
+        keywords="contact ITSM, help desk support, ticketing software questions, ITSM customer service"
+        canonical="https://forge-itsm.com/contact"
+      />
+      <FAQSchema faqs={faqs} />
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6">

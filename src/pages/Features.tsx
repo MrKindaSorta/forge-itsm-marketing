@@ -6,10 +6,17 @@ import {
   BarChart3, Bell, Shield, Zap, CheckCircle2,
   ArrowRight, MessageSquare, Tags
 } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
 
 export default function Features() {
   return (
     <div className="flex flex-col">
+      <SEOHead
+        title="Complete IT Ticketing System Features | SLA, Knowledge Base & More"
+        description="Explore Forge ITSM features: ticket management, SLA tracking, knowledge base, real-time notifications, custom fields, automation, reports, and more. All features included in every plan."
+        keywords="IT ticketing features, ITSM features, SLA management, help desk features, knowledge base software, ticket automation, IT service desk, ticket tracking system"
+        canonical="https://forge-itsm.com/features"
+      />
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6">

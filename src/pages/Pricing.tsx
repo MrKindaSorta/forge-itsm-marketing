@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, ArrowRight, Plus, Minus } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
 
 export default function Pricing() {
   const [teamSize, setTeamSize] = useState(10);
@@ -67,6 +68,12 @@ export default function Pricing() {
 
   return (
     <div className="flex flex-col">
+      <SEOHead
+        title="ITSM Pricing Comparison: Forge vs Zendesk vs Freshdesk"
+        description="Compare ITSM software pricing. Forge ITSM starts at $59.99/mo vs Zendesk $115/agent or Freshdesk $49/agent. Save up to $12,360/year with no per-user fees. See the honest pricing breakdown."
+        keywords="ITSM pricing, IT ticketing software cost, Zendesk pricing comparison, Freshdesk pricing, affordable help desk software, ITSM cost calculator, service desk pricing"
+        canonical="https://forge-itsm.com/pricing"
+      />
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6">

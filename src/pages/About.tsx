@@ -2,10 +2,17 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Heart, Code, Users } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
 
 export default function About() {
   return (
     <div className="flex flex-col">
+      <SEOHead
+        title="About Forge ITSM - Built by IT Professionals for IT Teams"
+        description="Learn about Forge ITSM. Created by an IT professional with 10+ years experience who was tired of overpriced, overcomplicated ticketing systems. Simple, honest, and powerful ITSM software."
+        keywords="about Forge ITSM, IT professional software, ITSM company, help desk developer, ticketing system creator"
+        canonical="https://forge-itsm.com/about"
+      />
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6">

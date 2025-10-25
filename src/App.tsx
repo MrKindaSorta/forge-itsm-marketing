@@ -9,6 +9,9 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Signup from './pages/Signup';
 import Success from './pages/Success';
+import VsZendesk from './pages/VsZendesk';
+import VsFreshdesk from './pages/VsFreshdesk';
+import VsServiceNow from './pages/VsServiceNow';
 import './index.css';
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
           <Route path="privacy" element={<Privacy />} />
           <Route path="signup" element={<Signup />} />
           <Route path="signup/success" element={<Success />} />
+          <Route path="vs-zendesk" element={<VsZendesk />} />
+          <Route path="vs-freshdesk" element={<VsFreshdesk />} />
+          <Route path="vs-servicenow" element={<VsServiceNow />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -2,10 +2,20 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, X, Zap, Shield, Users, Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
+import { OrganizationSchema, SoftwareApplicationSchema } from '@/components/SchemaMarkup';
 
 export default function Landing() {
   return (
     <div className="flex flex-col">
+      <SEOHead
+        title="ITSM Software for Small Teams - No Per-User Fees"
+        description="Modern IT ticketing system starting at $59.99/mo. No per-user fees, all features included. Better than Zendesk or Freshdesk. Save up to $12k/year. 30-day free trial."
+        keywords="ITSM software, IT ticketing system, help desk software, Zendesk alternative, Freshdesk alternative, affordable ITSM, service desk software, IT ticket tracking, SLA management"
+        canonical="https://forge-itsm.com"
+      />
+      <OrganizationSchema />
+      <SoftwareApplicationSchema />
       {/* Hero Section - Simplicity Focused */}
       <section className="relative overflow-hidden bg-mesh-gradient">
         <div className="absolute inset-0 bg-dot-pattern opacity-50" />
