@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, X, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 export default function Pricing() {
   return (
@@ -228,105 +228,6 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Feature Comparison */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Feature Comparison</h2>
-              <p className="text-lg text-muted-foreground">
-                All features included at every tier - no upsells or hidden costs
-              </p>
-            </div>
-
-            <div className="overflow-x-auto rounded-xl glass-card">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b-2 border-border/40">
-                    <th className="p-4 text-left font-semibold">Feature</th>
-                    <th className="p-4 text-center font-semibold">Forge ITSM</th>
-                    <th className="p-4 text-center font-semibold">Zendesk</th>
-                    <th className="p-4 text-center font-semibold">Freshdesk</th>
-                    <th className="p-4 text-center font-semibold">Jira SM</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Unlimited Tickets</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Unlimited End Users</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Extra cost</td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Extra cost</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">SLA Management</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Automation Rules</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Custom Fields</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Knowledge Base</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Reports & Analytics</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Mobile App</td>
-                    <td className="p-4 text-center bg-primary/5 text-muted-foreground text-xs">Coming Soon</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Asset Management</td>
-                    <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Extra cost</td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Higher tier</td>
-                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                  </tr>
-                  <tr className="hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Setup Consultants Required</td>
-                    <td className="p-4 text-center bg-primary/5"><X className="h-5 w-5 text-red-500 mx-auto" /></td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Recommended</td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Optional</td>
-                    <td className="p-4 text-center text-muted-foreground text-xs">Often needed</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="bg-muted/50 py-20">
@@ -407,7 +308,7 @@ export default function Pricing() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">Ready to Save Thousands?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Ready to save money?</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Start your 30-day free trial. Cancel anytime.
           </p>
