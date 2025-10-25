@@ -1,9 +1,27 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Plus, Minus } from 'lucide-react';
 
 export default function Pricing() {
+  const [businessAgents, setBusinessAgents] = useState(10);
+
+  // Calculate dynamic Business plan pricing
+  const calculateBusinessPricing = (agents: number) => {
+    const basePrice = 119.99;
+    const additionalAgents = Math.max(0, agents - 10);
+    const monthlyTotal = basePrice + (additionalAgents * 9.99);
+    const yearlyTotal = monthlyTotal * 12;
+    const perAgentMonth = monthlyTotal / agents;
+
+    return {
+      monthly: monthlyTotal.toFixed(2),
+      yearly: yearlyTotal.toFixed(2),
+      perAgent: perAgentMonth.toFixed(2)
+    };
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -186,6 +204,23 @@ export default function Pricing() {
               </p>
             </div>
 
+            {/* Pricing Model Explanation */}
+            <div className="mb-8 p-6 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+              <h3 className="font-semibold mb-3 text-blue-900 dark:text-blue-100">💡 How Forge ITSM Pricing Works</h3>
+              <div className="text-sm text-blue-800 dark:text-blue-200 space-y-2">
+                <p>
+                  <strong>Starter & Professional:</strong> Simple flat-rate pricing. Pay one price for your entire team—no surprises when adding agents within your plan limit.
+                </p>
+                <p>
+                  <strong>Business Plan:</strong> Pay $119.99/mo for up to 10 agents, then just $9.99/mo per additional agent (up to 50 agents).
+                  <span className="font-semibold"> Use the [+] [−] buttons below to see pricing for your team size.</span>
+                </p>
+                <p className="text-xs mt-3 opacity-80">
+                  Unlike competitors who charge per-agent from the start, our flat-rate model means you save more as your team grows.
+                </p>
+              </div>
+            </div>
+
             {/* Comprehensive Pricing Comparison */}
             <div className="overflow-x-auto rounded-xl glass-card">
               <table className="w-full text-sm">
@@ -200,11 +235,52 @@ export default function Pricing() {
                 </thead>
                 <tbody>
                   <tr className="border-b border-border/30 bg-primary/10">
-                    <td className="p-3 font-semibold">Forge ITSM – Professional</td>
-                    <td className="p-3 text-right font-bold text-primary">$16.00</td>
+                    <td className="p-3 font-semibold">Forge ITSM – Starter</td>
+                    <td className="p-3 text-right font-bold text-primary">$20.00*</td>
                     <td className="p-3 text-right font-bold text-primary">$719.88</td>
+                    <td className="p-3 text-right text-muted-foreground">—</td>
+                    <td className="p-3 text-right text-muted-foreground">—</td>
+                  </tr>
+                  <tr className="border-b border-border/30 bg-primary/10">
+                    <td className="p-3 font-semibold">Forge ITSM – Professional</td>
+                    <td className="p-3 text-right font-bold text-primary">$16.00*</td>
+                    <td className="p-3 text-right text-muted-foreground">—</td>
                     <td className="p-3 text-right font-bold text-primary">$959.88</td>
-                    <td className="p-3 text-right font-bold text-primary">$1,439.88</td>
+                    <td className="p-3 text-right text-muted-foreground">—</td>
+                  </tr>
+                  <tr className="border-b border-border/30 bg-primary/10">
+                    <td className="p-3">
+                      <div className="font-semibold">Forge ITSM – Business</div>
+                      <div className="flex items-center gap-2 mt-2">
+                        <button
+                          onClick={() => setBusinessAgents(prev => Math.max(10, prev - 1))}
+                          disabled={businessAgents === 10}
+                          className="px-2 py-1 rounded border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          aria-label="Decrease agent count"
+                        >
+                          <Minus className="h-3 w-3" />
+                        </button>
+                        <span className="text-sm font-medium min-w-[80px] text-center">
+                          {businessAgents} agents
+                        </span>
+                        <button
+                          onClick={() => setBusinessAgents(prev => Math.min(50, prev + 1))}
+                          disabled={businessAgents === 50}
+                          className="px-2 py-1 rounded border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          aria-label="Increase agent count"
+                        >
+                          <Plus className="h-3 w-3" />
+                        </button>
+                      </div>
+                    </td>
+                    <td className="p-3 text-right font-bold text-primary">
+                      ${calculateBusinessPricing(businessAgents).perAgent}*
+                    </td>
+                    <td className="p-3 text-right text-muted-foreground">—</td>
+                    <td className="p-3 text-right text-muted-foreground">—</td>
+                    <td className="p-3 text-right font-bold text-primary">
+                      ${calculateBusinessPricing(businessAgents).yearly}
+                    </td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                     <td className="p-3">Zendesk Suite – Professional<sup className="text-primary">1</sup></td>
@@ -255,22 +331,25 @@ export default function Pricing() {
               <h3 className="font-semibold mb-3 text-sm">Sources:</h3>
               <ol className="text-xs space-y-2 text-muted-foreground">
                 <li>
-                  <sup className="text-primary">1</sup> Zendesk Suite Professional: <a href="https://support.zendesk.com/hc/en-us/articles/5555300573850-Zendesk-s-2023-Pricing-Update-What-You-Need-To-Know" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zendesk Support - 2023 Pricing Update</a>
+                  <sup className="text-primary">1</sup> Zendesk Suite Professional: <a href="https://www.zendesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zendesk Official Pricing</a> ($115/agent/mo)
                 </li>
                 <li>
                   <sup className="text-primary">2</sup> Freshdesk Pro: <a href="https://www.freshworks.com/freshdesk/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Freshworks Official Pricing</a> ($49/agent/mo, billed annually)
                 </li>
                 <li>
-                  <sup className="text-primary">3</sup> Jira Service Management Standard: <a href="https://www.atlassian.com/collections/service/pricing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Atlassian Service Collection Pricing</a>
+                  <sup className="text-primary">3</sup> Jira Service Management Standard: <a href="https://www.atlassian.com/software/jira/service-management/pricing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Atlassian Service Management Pricing</a> ($20/agent/mo)
                 </li>
                 <li>
-                  <sup className="text-primary">4</sup> Zoho Desk Professional: <a href="https://www.zoho.com/desk/pricing.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zoho Desk Pricing & Editions</a>
+                  <sup className="text-primary">4</sup> Zoho Desk Professional: <a href="https://www.zoho.com/desk/pricing.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zoho Desk Pricing & Editions</a> ($23/agent/mo)
                 </li>
                 <li>
                   <sup className="text-primary">5</sup> HelpDesk.com Team: <a href="https://www.helpdesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">HelpDesk Official Pricing</a> ($29/user/mo, billed annually)
                 </li>
               </ol>
               <p className="text-xs text-muted-foreground mt-4 italic">
+                * Forge ITSM uses flat-rate pricing (one price per team, not per agent). Per-agent prices shown for comparison purposes only.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2 italic">
                 All competitor pricing information is sourced from publicly available vendor websites. Forge ITSM is not affiliated with any competitors listed. Prices are subject to change by the respective vendors.
               </p>
             </div>
