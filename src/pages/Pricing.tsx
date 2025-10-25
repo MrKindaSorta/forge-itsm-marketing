@@ -5,22 +5,65 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Check, ArrowRight, Plus, Minus } from 'lucide-react';
 
 export default function Pricing() {
-  const [businessAgents, setBusinessAgents] = useState(10);
+  const [teamSize, setTeamSize] = useState(10);
 
-  // Calculate dynamic Business plan pricing
-  const calculateBusinessPricing = (agents: number) => {
-    const basePrice = 119.99;
-    const additionalAgents = Math.max(0, agents - 10);
-    const monthlyTotal = basePrice + (additionalAgents * 9.99);
-    const yearlyTotal = monthlyTotal * 12;
-    const perAgentMonth = monthlyTotal / agents;
-
+  // Get the optimal Forge ITSM plan based on team size
+  const getOptimalForgeITSMPlan = (agents: number) => {
+    if (agents <= 3) {
+      return {
+        name: "Starter",
+        monthly: 59.99,
+        yearly: 719.88,
+        perAgent: (59.99 / agents).toFixed(2),
+        agentLimit: "up to 3 agents"
+      };
+    }
+    if (agents <= 5) {
+      return {
+        name: "Professional",
+        monthly: 79.99,
+        yearly: 959.88,
+        perAgent: (79.99 / agents).toFixed(2),
+        agentLimit: "up to 5 agents"
+      };
+    }
+    // Business plan: $119.99 + ($9.99 × extra agents)
+    const extraAgents = agents - 10;
+    const monthly = 119.99 + (extraAgents * 9.99);
+    const yearly = monthly * 12;
     return {
-      monthly: monthlyTotal.toFixed(2),
-      yearly: yearlyTotal.toFixed(2),
-      perAgent: perAgentMonth.toFixed(2)
+      name: "Business",
+      monthly: monthly,
+      yearly: yearly,
+      perAgent: (monthly / agents).toFixed(2),
+      agentLimit: `${agents} agents`
     };
   };
+
+  // Calculate savings vs competitors
+  const calculateSavings = (competitorPricePerAgent: number) => {
+    const competitorYearly = competitorPricePerAgent * teamSize * 12;
+    const forgeYearly = getOptimalForgeITSMPlan(teamSize).yearly;
+    const savings = competitorYearly - forgeYearly;
+    const percentSavings = ((savings / competitorYearly) * 100).toFixed(0);
+
+    return {
+      competitorYearly,
+      savings: Math.round(savings),
+      percentSavings
+    };
+  };
+
+  const forgePlan = getOptimalForgeITSMPlan(teamSize);
+
+  // Competitor data
+  const competitors = [
+    { name: "Zendesk Suite – Professional", pricePerAgent: 115, ref: "1", url: "https://www.zendesk.com/pricing/" },
+    { name: "Freshdesk – Pro", pricePerAgent: 49, ref: "2", url: "https://www.freshworks.com/freshdesk/pricing/" },
+    { name: "Jira Service Management – Standard", pricePerAgent: 20, ref: "3", url: "https://www.atlassian.com/software/jira/service-management/pricing" },
+    { name: "Zoho Desk – Professional", pricePerAgent: 23, ref: "4", url: "https://www.zoho.com/desk/pricing.html" },
+    { name: "HelpDesk.com – Team", pricePerAgent: 29, ref: "5", url: "https://www.helpdesk.com/pricing/" }
+  ];
 
   return (
     <div className="flex flex-col">
@@ -204,119 +247,132 @@ export default function Pricing() {
               </p>
             </div>
 
-            {/* Pricing Model Explanation */}
-            <div className="mb-8 p-6 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-              <h3 className="font-semibold mb-3 text-blue-900 dark:text-blue-100">💡 How Forge ITSM Pricing Works</h3>
-              <div className="text-sm text-blue-800 dark:text-blue-200 space-y-2">
-                <p>
-                  <strong>Starter & Professional:</strong> Simple flat-rate pricing. Pay one price for your entire team—no surprises when adding agents within your plan limit.
-                </p>
-                <p>
-                  <strong>Business Plan:</strong> Pay $119.99/mo for up to 10 agents, then just $9.99/mo per additional agent (up to 50 agents).
-                  <span className="font-semibold"> Use the [+] [−] buttons below to see pricing for your team size.</span>
-                </p>
-                <p className="text-xs mt-3 opacity-80">
-                  Unlike competitors who charge per-agent from the start, our flat-rate model means you save more as your team grows.
+            {/* Team Size Selector */}
+            <div className="mb-8 p-6 rounded-xl glass-card">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-lg font-semibold mb-2">
+                    How many agents are on your team?
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Adjust to see pricing for your exact team size
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => setTeamSize(prev => Math.max(3, prev - 1))}
+                    disabled={teamSize === 3}
+                    className="p-3 rounded-lg border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    aria-label="Decrease team size"
+                  >
+                    <Minus className="h-5 w-5" />
+                  </button>
+
+                  <div className="text-center min-w-[100px]">
+                    <div className="text-3xl font-bold text-primary">{teamSize}</div>
+                    <div className="text-sm text-muted-foreground">agents</div>
+                  </div>
+
+                  <button
+                    onClick={() => setTeamSize(prev => Math.min(50, prev + 1))}
+                    disabled={teamSize === 50}
+                    className="p-3 rounded-lg border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    aria-label="Increase team size"
+                  >
+                    <Plus className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <input
+                  type="range"
+                  min="3"
+                  max="50"
+                  value={teamSize}
+                  onChange={(e) => setTeamSize(parseInt(e.target.value))}
+                  className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span>3 agents</span>
+                  <span>50 agents</span>
+                </div>
+              </div>
+
+              <div className="mt-4 text-center p-3 rounded-lg bg-primary/10 border border-primary/20">
+                <p className="text-sm">
+                  <strong className="text-primary">Your plan: Forge ITSM {forgePlan.name}</strong>
+                  <span className="text-muted-foreground"> — {forgePlan.agentLimit}</span>
                 </p>
               </div>
             </div>
 
-            {/* Comprehensive Pricing Comparison */}
+            {/* Simplified 3-Column Pricing Comparison */}
             <div className="overflow-x-auto rounded-xl glass-card">
-              <table className="w-full text-sm">
+              <table className="w-full">
                 <thead>
                   <tr className="border-b-2 border-border/40">
-                    <th className="p-3 text-left font-semibold">Vendor (Plan)</th>
-                    <th className="p-3 text-right font-semibold whitespace-nowrap">Per-Agent /mo</th>
-                    <th className="p-3 text-right font-semibold whitespace-nowrap">3 Agents/yr</th>
-                    <th className="p-3 text-right font-semibold whitespace-nowrap">5 Agents/yr</th>
-                    <th className="p-3 text-right font-semibold whitespace-nowrap">10 Agents/yr</th>
+                    <th className="p-4 text-left font-semibold">Vendor</th>
+                    <th className="p-4 text-center font-semibold">Annual Cost</th>
+                    <th className="p-4 text-center font-semibold">vs Forge ITSM</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-border/30 bg-primary/10">
-                    <td className="p-3 font-semibold">Forge ITSM – Starter</td>
-                    <td className="p-3 text-right font-bold text-primary">$20.00*</td>
-                    <td className="p-3 text-right font-bold text-primary">$719.88</td>
-                    <td className="p-3 text-right text-muted-foreground">—</td>
-                    <td className="p-3 text-right text-muted-foreground">—</td>
-                  </tr>
-                  <tr className="border-b border-border/30 bg-primary/10">
-                    <td className="p-3 font-semibold">Forge ITSM – Professional</td>
-                    <td className="p-3 text-right font-bold text-primary">$16.00*</td>
-                    <td className="p-3 text-right text-muted-foreground">—</td>
-                    <td className="p-3 text-right font-bold text-primary">$959.88</td>
-                    <td className="p-3 text-right text-muted-foreground">—</td>
-                  </tr>
-                  <tr className="border-b border-border/30 bg-primary/10">
-                    <td className="p-3">
-                      <div className="font-semibold">Forge ITSM – Business</div>
-                      <div className="flex items-center gap-2 mt-2">
-                        <button
-                          onClick={() => setBusinessAgents(prev => Math.max(10, prev - 1))}
-                          disabled={businessAgents === 10}
-                          className="px-2 py-1 rounded border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                          aria-label="Decrease agent count"
-                        >
-                          <Minus className="h-3 w-3" />
-                        </button>
-                        <span className="text-sm font-medium min-w-[80px] text-center">
-                          {businessAgents} agents
-                        </span>
-                        <button
-                          onClick={() => setBusinessAgents(prev => Math.min(50, prev + 1))}
-                          disabled={businessAgents === 50}
-                          className="px-2 py-1 rounded border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                          aria-label="Increase agent count"
-                        >
-                          <Plus className="h-3 w-3" />
-                        </button>
+                  {/* Forge ITSM Row */}
+                  <tr className="border-b-2 border-primary/30 bg-primary/10">
+                    <td className="p-4">
+                      <div className="font-bold text-lg">
+                        🎯 Forge ITSM – {forgePlan.name}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        ${forgePlan.perAgent}/agent/mo · {forgePlan.agentLimit}
                       </div>
                     </td>
-                    <td className="p-3 text-right font-bold text-primary">
-                      ${calculateBusinessPricing(businessAgents).perAgent}*
+                    <td className="p-4 text-center">
+                      <div className="text-2xl font-bold text-primary">
+                        ${forgePlan.yearly.toLocaleString()}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">per year</div>
                     </td>
-                    <td className="p-3 text-right text-muted-foreground">—</td>
-                    <td className="p-3 text-right text-muted-foreground">—</td>
-                    <td className="p-3 text-right font-bold text-primary">
-                      ${calculateBusinessPricing(businessAgents).yearly}
+                    <td className="p-4 text-center text-muted-foreground">
+                      —
                     </td>
                   </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-3">Zendesk Suite – Professional<sup className="text-primary">1</sup></td>
-                    <td className="p-3 text-right text-muted-foreground">$115</td>
-                    <td className="p-3 text-right text-muted-foreground">$4,140</td>
-                    <td className="p-3 text-right text-muted-foreground">$6,900</td>
-                    <td className="p-3 text-right text-muted-foreground">$13,800</td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-3">Freshdesk – Pro<sup className="text-primary">2</sup></td>
-                    <td className="p-3 text-right text-muted-foreground">$49</td>
-                    <td className="p-3 text-right text-muted-foreground">$1,764</td>
-                    <td className="p-3 text-right text-muted-foreground">$2,940</td>
-                    <td className="p-3 text-right text-muted-foreground">$5,880</td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-3">Jira Service Management – Standard<sup className="text-primary">3</sup></td>
-                    <td className="p-3 text-right text-muted-foreground">$20</td>
-                    <td className="p-3 text-right text-muted-foreground">$720</td>
-                    <td className="p-3 text-right text-muted-foreground">$1,200</td>
-                    <td className="p-3 text-right text-muted-foreground">$2,400</td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-3">Zoho Desk – Professional<sup className="text-primary">4</sup></td>
-                    <td className="p-3 text-right text-muted-foreground">$23</td>
-                    <td className="p-3 text-right text-muted-foreground">$828</td>
-                    <td className="p-3 text-right text-muted-foreground">$1,380</td>
-                    <td className="p-3 text-right text-muted-foreground">$2,760</td>
-                  </tr>
-                  <tr className="hover:bg-muted/20 transition-colors">
-                    <td className="p-3">HelpDesk.com – Team<sup className="text-primary">5</sup></td>
-                    <td className="p-3 text-right text-muted-foreground">$29</td>
-                    <td className="p-3 text-right text-muted-foreground">$1,044</td>
-                    <td className="p-3 text-right text-muted-foreground">$1,740</td>
-                    <td className="p-3 text-right text-muted-foreground">$3,480</td>
-                  </tr>
+
+                  {/* Competitor Rows */}
+                  {competitors.map((competitor) => {
+                    const savings = calculateSavings(competitor.pricePerAgent);
+                    return (
+                      <tr key={competitor.name} className="border-b border-border/30 hover:bg-muted/20 transition-colors">
+                        <td className="p-4">
+                          <div className="font-semibold">
+                            {competitor.name}<sup className="text-primary">{competitor.ref}</sup>
+                          </div>
+                          <div className="text-sm text-muted-foreground mt-1">
+                            ${competitor.pricePerAgent}/agent/mo
+                          </div>
+                        </td>
+                        <td className="p-4 text-center text-muted-foreground">
+                          <div className="text-lg">
+                            ${savings.competitorYearly.toLocaleString()}
+                          </div>
+                        </td>
+                        <td className="p-4 text-center">
+                          <div className="inline-flex flex-col items-center gap-1">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                              <span className="text-green-700 dark:text-green-300 font-semibold text-sm">
+                                💸 Save ${savings.savings.toLocaleString()}
+                              </span>
+                            </div>
+                            <div className="text-xs text-green-600 dark:text-green-400 font-medium">
+                              {savings.percentSavings}% less
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
