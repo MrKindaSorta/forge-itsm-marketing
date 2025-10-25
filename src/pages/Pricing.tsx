@@ -64,15 +64,7 @@ export default function Pricing() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
-                  <span>Automation Rules</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
                   <span>Reports & Analytics</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Email Support</span>
                 </div>
               </div>
               <Link to="/signup" className="block">
@@ -82,10 +74,7 @@ export default function Pricing() {
           </Card>
 
           {/* Professional Plan */}
-          <Card className="relative glass-card border-2 border-primary/40 shadow-xl hover:scale-105 transition-transform duration-300">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full shadow-lg glow-primary">
-              Most Popular
-            </div>
+          <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
               <CardTitle className="text-2xl">Professional</CardTitle>
               <CardDescription>For growing IT departments</CardDescription>
@@ -122,19 +111,11 @@ export default function Pricing() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
-                  <span>Automation Rules</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
                   <span>Reports & Analytics</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Priority Email Support</span>
                 </div>
               </div>
               <Link to="/signup" className="block">
-                <Button className="w-full mt-6 shadow-lg hover:shadow-xl transition-shadow">Get Started</Button>
+                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
           </Card>
@@ -146,7 +127,7 @@ export default function Pricing() {
               <CardDescription>For established IT teams</CardDescription>
               <div className="pt-4">
                 <div className="text-4xl font-bold">$119.99</div>
-                <div className="text-sm text-muted-foreground">/month</div>
+                <div className="text-sm text-muted-foreground">/month + $9.99/additional agent</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -177,19 +158,7 @@ export default function Pricing() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-green-500" />
-                  <span>Automation Rules</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
                   <span>Reports & Analytics</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Priority Email Support</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span className="font-semibold">$9.99/additional agent</span>
                 </div>
               </div>
               <Link to="/signup" className="block">
@@ -209,7 +178,7 @@ export default function Pricing() {
       {/* Competitor Comparison */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Compare</h2>
               <p className="text-lg text-muted-foreground">
@@ -217,84 +186,44 @@ export default function Pricing() {
               </p>
             </div>
 
-            {/* Pricing Comparison Table */}
+            {/* Simplified Pricing Comparison */}
             <div className="overflow-x-auto rounded-xl glass-card">
-              <table className="w-full text-sm">
+              <table className="w-full">
                 <thead>
                   <tr className="border-b-2 border-border/40">
                     <th className="p-4 text-left font-semibold">Provider</th>
-                    <th className="p-4 text-center font-semibold">3 Agents</th>
                     <th className="p-4 text-center font-semibold">5 Agents</th>
-                    <th className="p-4 text-center font-semibold">10 Agents</th>
+                    <th className="p-4 text-center font-semibold">Annual Savings</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-border/30 bg-primary/10">
                     <td className="p-4 font-semibold">Forge ITSM</td>
-                    <td className="p-4 text-center font-bold text-primary">$59.99/mo</td>
-                    <td className="p-4 text-center font-bold text-primary">$79.99/mo</td>
-                    <td className="p-4 text-center font-bold text-primary">$119.99/mo</td>
+                    <td className="p-4 text-center font-bold text-primary text-lg">$79.99/mo</td>
+                    <td className="p-4 text-center font-bold text-foreground">—</td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Zendesk Suite</td>
-                    <td className="p-4 text-center text-muted-foreground">$165/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$275/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$550/mo</td>
+                    <td className="p-4">Zendesk Suite Professional</td>
+                    <td className="p-4 text-center text-muted-foreground">$575/mo</td>
+                    <td className="p-4 text-center font-semibold text-green-500">Save $5,940/year</td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Freshdesk</td>
-                    <td className="p-4 text-center text-muted-foreground">$135/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$225/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$450/mo</td>
-                  </tr>
-                  <tr className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                    <td className="p-4">Jira Service Mgmt</td>
-                    <td className="p-4 text-center text-muted-foreground">$105/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$175/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$350/mo</td>
+                    <td className="p-4">Freshdesk Pro</td>
+                    <td className="p-4 text-center text-muted-foreground">$245/mo</td>
+                    <td className="p-4 text-center font-semibold text-green-500">Save $1,980/year</td>
                   </tr>
                   <tr className="hover:bg-muted/20 transition-colors">
-                    <td className="p-4">ServiceNow</td>
-                    <td className="p-4 text-center text-muted-foreground">$300+/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$500+/mo</td>
-                    <td className="p-4 text-center text-muted-foreground">$1,000+/mo</td>
+                    <td className="p-4">Jira Service Management Standard</td>
+                    <td className="p-4 text-center text-muted-foreground">$100/mo</td>
+                    <td className="p-4 text-center font-semibold text-green-500">Save $240/year</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            {/* Annual Savings */}
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <Card className="glass-card border-green-500/20">
-                <CardHeader>
-                  <CardTitle className="text-lg">3 Agents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-green-500 mb-2">Save $660-$3,000</div>
-                  <p className="text-sm text-muted-foreground">per year vs competitors</p>
-                </CardContent>
-              </Card>
-
-              <Card className="glass-card border-green-500/20">
-                <CardHeader>
-                  <CardTitle className="text-lg">5 Agents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-green-500 mb-2">Save $1,260-$5,160</div>
-                  <p className="text-sm text-muted-foreground">per year vs competitors</p>
-                </CardContent>
-              </Card>
-
-              <Card className="glass-card border-green-500/20">
-                <CardHeader>
-                  <CardTitle className="text-lg">10 Agents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-green-500 mb-2">Save $2,760-$10,560</div>
-                  <p className="text-sm text-muted-foreground">per year vs competitors</p>
-                </CardContent>
-              </Card>
-            </div>
+            <p className="text-sm text-muted-foreground text-center mt-6">
+              Competitor prices based on 5 agents with comparable features (2025 pricing)
+            </p>
           </div>
         </div>
       </section>
