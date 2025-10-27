@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Linkedin, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -72,8 +73,35 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Forge ITSM. Built with care by a solo developer.</p>
+        <div className="border-t border-border/40 mt-8 pt-8">
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-semibold text-muted-foreground">Follow Us</span>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/company/forge-underground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 w-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-blue-600 hover:border-blue-600 hover:scale-110 transition-all duration-200"
+                  aria-label="Visit our LinkedIn page"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.facebook.com/people/Forge-Underground/61583029971747/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 w-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-blue-500 hover:border-blue-500 hover:scale-110 transition-all duration-200"
+                  aria-label="Visit our Facebook page"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Forge ITSM. Built with care by a solo developer.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
