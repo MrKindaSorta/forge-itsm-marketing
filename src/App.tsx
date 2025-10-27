@@ -12,6 +12,7 @@ import Success from './pages/Success';
 import VsZendesk from './pages/VsZendesk';
 import VsFreshdesk from './pages/VsFreshdesk';
 import VsServiceNow from './pages/VsServiceNow';
+import CookieConsent from './components/CookieConsent';
 import './index.css';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="vs-servicenow" element={<VsServiceNow />} />
         </Route>
       </Routes>
+      <CookieConsent />
     </BrowserRouter>
   );
 }

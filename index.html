@@ -10,6 +10,35 @@
     <meta name="description" content="Modern ITSM and IT ticketing software for small teams. No per-user fees, all features included. Better than Zendesk or Freshdesk. Starting at $59.99/mo. 30-day free trial." />
     <meta name="keywords" content="ITSM software, IT ticketing system, help desk software, service desk, Zendesk alternative, Freshdesk alternative" />
     <title>Forge ITSM - IT Ticketing That Just Works</title>
+
+    <!-- Google Analytics with Consent Mode (GDPR compliant) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to denied (GDPR compliant)
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'wait_for_update': 500
+      });
+
+      // Check if user has previously consented
+      const consentGiven = localStorage.getItem('ga-consent') === 'true';
+      if (consentGiven) {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQXWMX9074"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-XQXWMX9074', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
