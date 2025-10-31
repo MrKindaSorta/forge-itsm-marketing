@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft, X } from 'lucide-react';
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -68,6 +68,33 @@ export default function Signup() {
     }
     return null;
   };
+
+  // Real-time password strength checker
+  const passwordRequirements = useMemo(() => {
+    const password = formData.password;
+    return [
+      {
+        label: 'At least 12 characters',
+        met: password.length >= 12,
+      },
+      {
+        label: 'Contains uppercase letter (A-Z)',
+        met: /[A-Z]/.test(password),
+      },
+      {
+        label: 'Contains lowercase letter (a-z)',
+        met: /[a-z]/.test(password),
+      },
+      {
+        label: 'Contains number (0-9)',
+        met: /[0-9]/.test(password),
+      },
+      {
+        label: 'Contains special character (!@#$%^&*)',
+        met: /[^a-zA-Z0-9]/.test(password),
+      },
+    ];
+  }, [formData.password]);
 
   // Hash password using Web Crypto API
   const hashPasswordForTransport = async (password: string): Promise<{ hash: string; salt: string }> => {
@@ -322,7 +349,29 @@ export default function Signup() {
                       onChange={(e) => setFormData({...formData, password: e.target.value})}
                       required
                     />
-                    <p className="text-xs text-muted-foreground">At least 12 characters with uppercase, lowercase, numbers, and special characters</p>
+                    {/* Password strength indicator */}
+                    {formData.password && (
+                      <div className="space-y-2 pt-2 pb-1">
+                        {passwordRequirements.map((req, index) => (
+                          <div
+                            key={index}
+                            className={`flex items-center gap-2 text-xs transition-colors ${
+                              req.met ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'
+                            }`}
+                          >
+                            {req.met ? (
+                              <Check className="h-3.5 w-3.5 flex-shrink-0" />
+                            ) : (
+                              <X className="h-3.5 w-3.5 flex-shrink-0 opacity-50" />
+                            )}
+                            <span className={req.met ? 'font-medium' : ''}>{req.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {!formData.password && (
+                      <p className="text-xs text-muted-foreground">At least 12 characters with uppercase, lowercase, numbers, and special characters</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
