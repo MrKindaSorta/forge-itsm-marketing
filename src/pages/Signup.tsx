@@ -49,6 +49,58 @@ export default function Signup() {
     }
   ];
 
+  // Password validation function
+  const validatePassword = (password: string): string | null => {
+    if (password.length < 12) {
+      return 'Password must be at least 12 characters';
+    }
+    if (!/[a-z]/.test(password)) {
+      return 'Password must contain at least one lowercase letter';
+    }
+    if (!/[A-Z]/.test(password)) {
+      return 'Password must contain at least one uppercase letter';
+    }
+    if (!/[0-9]/.test(password)) {
+      return 'Password must contain at least one number';
+    }
+    if (!/[^a-zA-Z0-9]/.test(password)) {
+      return 'Password must contain at least one special character (!@#$%^&*)';
+    }
+    return null;
+  };
+
+  // Hash password using Web Crypto API
+  const hashPasswordForTransport = async (password: string): Promise<{ hash: string; salt: string }> => {
+    // Generate salt
+    const saltBuffer = crypto.getRandomValues(new Uint8Array(16));
+    const salt = btoa(String.fromCharCode(...saltBuffer));
+
+    // Hash password using PBKDF2
+    const encoder = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(password),
+      'PBKDF2',
+      false,
+      ['deriveBits']
+    );
+
+    const derivedKey = await crypto.subtle.deriveBits(
+      {
+        name: 'PBKDF2',
+        salt: Uint8Array.from(atob(salt), c => c.charCodeAt(0)),
+        iterations: 100000,
+        hash: 'SHA-256'
+      },
+      keyMaterial,
+      512
+    );
+
+    const hash = btoa(String.fromCharCode(...new Uint8Array(derivedKey)));
+
+    return { hash, salt };
+  };
+
   // Handle final form submission and Stripe checkout
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +108,21 @@ export default function Signup() {
     setError('');
 
     try {
+      // Validate passwords match
+      if (formData.password !== formData.confirmPassword) {
+        setError('Passwords do not match');
+        setLoading(false);
+        return;
+      }
+
+      // Validate password strength
+      const passwordError = validatePassword(formData.password);
+      if (passwordError) {
+        setError(passwordError);
+        setLoading(false);
+        return;
+      }
+
       // Validate subdomain availability
       const checkResponse = await fetch('https://itsm-backend.joshua-r-klimek.workers.dev/api/provision/check-subdomain', {
         method: 'POST',
@@ -71,6 +138,9 @@ export default function Signup() {
         return;
       }
 
+      // Hash password before sending
+      const { hash, salt } = await hashPasswordForTransport(formData.password);
+
       // Create Stripe checkout session
       const sessionResponse = await fetch('https://itsm-backend.joshua-r-klimek.workers.dev/api/create-checkout-session', {
         method: 'POST',
@@ -79,7 +149,8 @@ export default function Signup() {
           plan: selectedPlan,
           subdomain: formData.subdomain,
           email: formData.email,
-          password: formData.password,
+          passwordHash: hash,
+          passwordSalt: salt,
           firstName: formData.firstName,
           lastName: formData.lastName,
           companyName: formData.companyName,
@@ -251,7 +322,7 @@ export default function Signup() {
                       onChange={(e) => setFormData({...formData, password: e.target.value})}
                       required
                     />
-                    <p className="text-xs text-muted-foreground">At least 8 characters with letters and numbers</p>
+                    <p className="text-xs text-muted-foreground">At least 12 characters with uppercase, lowercase, numbers, and special characters</p>
                   </div>
 
                   <div className="space-y-2">
