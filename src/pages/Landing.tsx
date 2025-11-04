@@ -76,12 +76,12 @@ export default function Landing() {
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-red-500/20 to-destructive/20 flex items-center justify-center border border-destructive/20">
                   <X className="h-6 w-6 text-destructive" />
                 </div>
-                <h3 className="text-xl font-bold">We Don't Nickel-and-Dime You</h3>
+                <h3 className="text-xl font-bold">Transparent Pricing That Scales</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Zendesk charges per end-user. Freshdesk charges per agent. We don't. Because charging for people using your software is <strong className="text-foreground">insane</strong>.
+                  Simple flat-rate plans based on team size. No hidden fees, no surprise charges. All features included in <strong className="text-foreground">every plan</strong>.
                 </p>
                 <div className="text-sm text-primary font-semibold">
-                  Save $2,100-$7,860/year
+                  All features, all plans
                 </div>
               </div>
             </div>
