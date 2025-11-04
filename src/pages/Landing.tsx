@@ -167,10 +167,10 @@ export default function Landing() {
                     <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/30 transition-colors">
-                    <td className="p-4">Automation</td>
+                    <td className="p-4">Advanced Reporting</td>
                     <td className="p-4 text-center bg-primary/5"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                     <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
-                    <td className="p-4 text-center"><X className="h-5 w-5 text-destructive mx-auto" /></td>
+                    <td className="p-4 text-center"><Check className="h-5 w-5 text-green-500 mx-auto" /></td>
                   </tr>
                   <tr className="border-b border-border/30 hover:bg-muted/30 transition-colors">
                     <td className="p-4">Knowledge Base</td>

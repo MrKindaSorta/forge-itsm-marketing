@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Ticket, Users, Clock, Database, FileText, Settings,
-  BarChart3, Bell, Shield, Zap, CheckCircle2,
-  ArrowRight, MessageSquare, Tags
+  Ticket, Users, Clock, FileText, Settings,
+  BarChart3, Bell, Shield, CheckCircle2,
+  ArrowRight, MessageSquare, Tags, Paperclip, Palette
 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 
@@ -116,13 +116,13 @@ export default function Features() {
             <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
-                  <Zap className="h-6 w-6 text-primary" />
+                  <Paperclip className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Automation Rules</CardTitle>
+                <CardTitle>File Attachments & Storage</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Keyword-based auto-assign; auto-close stales after 7 days. Automate repetitive tasks with custom rules to reduce manual work.
+                  Upload screenshots, logs, and documents to tickets. Secure cloud storage via Cloudflare R2 with automatic organization.
                 </p>
               </CardContent>
             </Card>
@@ -158,13 +158,13 @@ export default function Features() {
             <Card className="glass-card hover:-translate-y-1 transition-transform duration-300">
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
-                  <Database className="h-6 w-6 text-primary" />
+                  <Shield className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Asset Management</CardTitle>
+                <CardTitle>Role-Based Permissions</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Track IT assets, link them to tickets, and maintain hardware/software inventory all in one place.
+                  Granular permission controls for users, agents, managers, and admins. Configure access to tickets, settings, reports, and more.
                 </p>
               </CardContent>
             </Card>
@@ -437,13 +437,13 @@ export default function Features() {
               <Card className="glass-card">
                 <CardHeader>
                   <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 border border-primary/20">
-                    <Zap className="h-6 w-6 text-primary" />
+                    <Palette className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Automation Engine</CardTitle>
+                  <CardTitle>Branding & White-Label</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Keyword-based auto-assign; auto-close stales after 7 days. Create automation rules with if-this-then-that logic to reduce manual work.
+                    Customize your help desk with your logo, colors, and company name. Make the platform match your brand identity.
                   </p>
                 </CardContent>
               </Card>
