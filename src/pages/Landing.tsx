@@ -69,99 +69,51 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-            {/* Card 1 */}
-            <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-red-500/20 to-destructive/20 flex items-center justify-center border border-destructive/20">
-                  <X className="h-6 w-6 text-destructive" />
-                </div>
-                <h3 className="text-xl font-bold">Transparent Pricing That Scales</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Simple flat-rate plans based on team size. No hidden fees, no surprise charges. All features included in <strong className="text-foreground">every plan</strong>.
-                </p>
-                <div className="text-sm text-primary font-semibold">
-                  All features, all plans
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2 */}
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            {/* Card 1 - Complete ITSM Platform */}
             <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
               <div className="space-y-4">
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">No Feature Gatekeeping</h3>
+                <h3 className="text-xl font-bold">Complete ITSM Platform - No Add-Ons</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Every plan gets everything. SLA tracking, automation, custom fields, reports, knowledge base. No "upgrade to unlock" <strong className="text-foreground">BS</strong>.
+                  Affordable help desk software with transparent, flat-rate pricing. Every plan includes SLA management, ticket automation, custom fields, reporting dashboards, and knowledge base. No hidden fees, no feature gatekeeping, no "upgrade to unlock" <strong className="text-foreground">nonsense</strong>.
                 </p>
                 <div className="text-sm text-primary font-semibold">
-                  All features, all plans
+                  All features included • Predictable costs
                 </div>
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold">No Enterprise Bloat</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  You need a ticketing system, not a PhD in ITIL. Simple interface, powerful features. No consultants required.
-                </p>
-                <div className="text-sm text-primary font-semibold">
-                  Clean & intuitive
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4 */}
+            {/* Card 2 - Simple Yet Powerful */}
             <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
               <div className="space-y-4">
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Actually Fast Setup</h3>
+                <h3 className="text-xl font-bold">Easy Setup, Intuitive Interface</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  5 minutes to go live. Not weeks of implementation. Not months of training. Five. Minutes.
+                  User-friendly IT service management software that takes 5 minutes to deploy—not weeks. Clean, intuitive ticketing interface built by IT professionals for IT teams. No enterprise bloat, no complex training, no consultants <strong className="text-foreground">required</strong>.
                 </p>
                 <div className="text-sm text-primary font-semibold">
-                  Start in minutes
+                  Quick deployment • Zero learning curve
                 </div>
               </div>
             </div>
 
-            {/* Card 5 */}
+            {/* Card 3 - Cloudflare Infrastructure */}
             <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
               <div className="space-y-4">
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Built on Cloudflare</h3>
+                <h3 className="text-xl font-bold">Enterprise-Grade Cloud Infrastructure</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Runs on Cloudflare's global edge network. Fast everywhere. Secure by design. 99.9% uptime guaranteed.
+                  Secure, cloud-based ITSM powered by Cloudflare's global CDN and edge network. Lightning-fast performance worldwide, 99.9% uptime SLA, enterprise-grade security, and automatic scaling. Enterprise reliability at <strong className="text-foreground">SMB pricing</strong>.
                 </p>
                 <div className="text-sm text-primary font-semibold">
-                  Enterprise-grade infrastructure
-                </div>
-              </div>
-            </div>
-
-            {/* Card 6 */}
-            <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
-                  <Sparkles className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold">Built by Someone Who Gets It</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Created by an IT pro with 10+ years in the trenches. We know what sucks about ticketing systems because we've <strong className="text-foreground">lived it</strong>.
-                </p>
-                <div className="text-sm text-primary font-semibold">
-                  For IT teams, by IT teams
+                  Cloudflare-powered • 99.9% uptime
                 </div>
               </div>
             </div>
