@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, X, Zap, Shield, Users, Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, X, Zap, Shield, Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { OrganizationSchema, SoftwareApplicationSchema } from '@/components/SchemaMarkup';
 
