@@ -78,7 +78,7 @@ export default function About() {
                   My goal is simple: give small and medium IT teams the professional tools they need without the enterprise price tag.
                 </p>
                 <p>
-                  This is a solo developer project, built with care and purpose. No venture capital. No shareholders demanding exponential growth. Just honest software at honest prices, improving based on real feedback from real IT professionals.
+                  This is an independent project, built with care and purpose. No venture capital. No shareholders demanding exponential growth. Just honest software at honest prices, improving based on real feedback from real IT professionals.
                 </p>
                 <p className="font-semibold text-foreground">
                   I'm building the tool I wish I'd had throughout my IT career - and I hope it helps your team thrive.

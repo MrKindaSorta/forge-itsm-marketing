@@ -10,7 +10,7 @@ export default function Privacy() {
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">1. Introduction</h2>
           <p>
-            Forge ITSM ("we," "our," or "us"), operated by Forge Underground and Joshua Klimek, a solo developer, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web-based ITSM ticketing Service hosted on Cloudflare.
+            Forge ITSM ("we," "our," or "us"), operated by Forge Underground and Joshua Klimek, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web-based ITSM ticketing Service hosted on Cloudflare.
           </p>
         </section>
 

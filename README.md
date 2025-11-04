@@ -192,4 +192,4 @@ For questions or issues:
 
 ---
 
-**Built with ❤️ by a solo developer**
+**Built with ❤️ for IT professionals**

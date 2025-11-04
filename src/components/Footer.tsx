@@ -99,7 +99,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Forge ITSM. Built with care by a solo developer.
+              © {new Date().getFullYear()} Forge ITSM. Built with care for IT professionals.
             </p>
           </div>
         </div>
