@@ -15,7 +15,8 @@ export default function Contact() {
     company: '',
     subject: '',
     message: '',
-    inquiry: 'general'
+    inquiry: 'general',
+    honeypot: '' // Honeypot field for bot detection
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -43,7 +44,9 @@ export default function Contact() {
           name: fullName,
           email: formData.email,
           company: formData.company || null,
-          message: formattedMessage
+          message: formattedMessage,
+          honeypot: formData.honeypot, // Send honeypot for backend validation
+          turnstileToken: '' // TODO: Add Turnstile widget and pass token here
         }),
       });
 
@@ -61,7 +64,8 @@ export default function Contact() {
           company: '',
           subject: '',
           message: '',
-          inquiry: 'general'
+          inquiry: 'general',
+          honeypot: ''
         });
         // Scroll to success message
         setTimeout(() => {
@@ -203,6 +207,19 @@ export default function Contact() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot field - hidden from users, bots will fill it */}
+                  <input
+                    type="text"
+                    id="honeypot"
+                    name="website"
+                    value={formData.honeypot}
+                    onChange={handleInputChange}
+                    style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name *</Label>
@@ -212,6 +229,7 @@ export default function Contact() {
                         value={formData.firstName}
                         onChange={handleInputChange}
                         disabled={loading}
+                        maxLength={50}
                         required
                       />
                     </div>
@@ -223,6 +241,7 @@ export default function Contact() {
                         value={formData.lastName}
                         onChange={handleInputChange}
                         disabled={loading}
+                        maxLength={50}
                         required
                       />
                     </div>
@@ -237,6 +256,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       disabled={loading}
+                      maxLength={255}
                       required
                     />
                   </div>
@@ -249,6 +269,7 @@ export default function Contact() {
                       value={formData.company}
                       onChange={handleInputChange}
                       disabled={loading}
+                      maxLength={100}
                     />
                   </div>
 
@@ -260,6 +281,7 @@ export default function Contact() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       disabled={loading}
+                      maxLength={200}
                       required
                     />
                   </div>
@@ -273,6 +295,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleInputChange}
                       disabled={loading}
+                      maxLength={5000}
                       required
                     />
                   </div>
