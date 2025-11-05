@@ -1,12 +1,90 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Mail, HelpCircle } from 'lucide-react';
+import { Mail, HelpCircle, Check, AlertCircle, Loader2 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { FAQSchema } from '@/components/SchemaMarkup';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    subject: '',
+    message: '',
+    inquiry: 'general'
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+
+    // Combine first and last name
+    const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
+
+    // Format message with subject and inquiry type
+    const formattedMessage = `Subject: ${formData.subject}\n\nInquiry Type: ${formData.inquiry}\n\n${formData.message}`;
+
+    try {
+      const response = await fetch('https://forge-itsm.com/api/contact/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: fullName,
+          email: formData.email,
+          company: formData.company || null,
+          message: formattedMessage
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        setError(data.error);
+      } else if (data.success) {
+        setSuccess(true);
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          subject: '',
+          message: '',
+          inquiry: 'general'
+        });
+        // Scroll to success message
+        setTimeout(() => {
+          document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
+    } catch (err) {
+      console.error('Contact form error:', err);
+      setError('Unable to send message. Please try again or email us directly.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
   const faqs = [
     {
       question: "Do you charge per user like Zendesk?",
@@ -89,7 +167,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section className="bg-muted/50 py-20">
+      <section className="bg-muted/50 py-20" id="contact-form">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Card>
@@ -100,31 +178,90 @@ export default function Contact() {
                 </p>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                {/* Success Message */}
+                {success && (
+                  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
+                    <Check className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-green-900">Message sent successfully!</p>
+                      <p className="text-sm text-green-700 mt-1">
+                        Thank you for contacting us. We'll get back to you as soon as possible.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {error && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                    <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-red-900">Unable to send message</p>
+                      <p className="text-sm text-red-700 mt-1">{error}</p>
+                    </div>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="John" required />
+                      <Input
+                        id="firstName"
+                        placeholder="John"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        disabled={loading}
+                        required
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Doe" required />
+                      <Input
+                        id="lastName"
+                        placeholder="Doe"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        disabled={loading}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address *</Label>
-                    <Input id="email" type="email" placeholder="john.doe@company.com" required />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="john.doe@company.com"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      disabled={loading}
+                      required
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="company">Company Name</Label>
-                    <Input id="company" placeholder="Acme Inc." />
+                    <Input
+                      id="company"
+                      placeholder="Acme Inc."
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      disabled={loading}
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject *</Label>
-                    <Input id="subject" placeholder="What is this regarding?" required />
+                    <Input
+                      id="subject"
+                      placeholder="What is this regarding?"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      disabled={loading}
+                      required
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -133,6 +270,9 @@ export default function Contact() {
                       id="message"
                       className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Tell us more about what you need..."
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      disabled={loading}
                       required
                     />
                   </div>
@@ -141,7 +281,10 @@ export default function Contact() {
                     <Label htmlFor="inquiry">Inquiry Type</Label>
                     <select
                       id="inquiry"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                      value={formData.inquiry}
+                      onChange={handleInputChange}
+                      disabled={loading}
                     >
                       <option value="general">General Question</option>
                       <option value="pricing">Pricing Question</option>
@@ -150,8 +293,15 @@ export default function Contact() {
                     </select>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
-                    Send Message
+                  <Button type="submit" size="lg" className="w-full" disabled={loading}>
+                    {loading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
                   </Button>
 
                   <p className="text-xs text-muted-foreground text-center">
