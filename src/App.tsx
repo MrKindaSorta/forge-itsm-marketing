@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Landing from './pages/Landing';
 import Pricing from './pages/Pricing';
 import Features from './pages/Features';
+import ProductTour from './pages/ProductTour';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms';
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="features" element={<Features />} />
+          <Route path="product-tour" element={<ProductTour />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="terms" element={<Terms />} />

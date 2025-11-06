@@ -17,6 +17,9 @@ export default function Navigation() {
             <Link to="/features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Features
             </Link>
+            <Link to="/product-tour" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Product Tour
+            </Link>
             <Link to="/pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </Link>
