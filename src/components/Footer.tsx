@@ -31,14 +31,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://forge-itsm.pages.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  Demo
-                </a>
+                <Link to="/product-tour" className="hover:text-primary transition-colors">
+                  Product Tour
+                </Link>
               </li>
             </ul>
           </div>
