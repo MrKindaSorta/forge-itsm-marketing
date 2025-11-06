@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,28 +15,55 @@ export default function MobileNav() {
     setIsOpen(false);
   };
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
+
   return (
     <>
       {/* Hamburger Button - Only visible on mobile */}
       <button
         onClick={toggleMenu}
         className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
-        aria-label="Toggle mobile menu"
+        aria-label={isOpen ? 'Close mobile menu' : 'Open mobile menu'}
+        aria-expanded={isOpen}
       >
-        <Menu className="h-6 w-6" />
+        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[60] md:hidden">
+          {/* Backdrop with fade-in animation */}
           <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
             onClick={closeMenu}
           />
 
-          {/* Menu Panel */}
-          <div className="absolute top-0 right-0 h-full w-[280px] bg-background border-l border-border shadow-2xl">
+          {/* Menu Panel with slide-in animation */}
+          <div className="absolute top-0 right-0 h-full w-[280px] bg-background border-l border-border shadow-2xl animate-in slide-in-from-right duration-300">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border">
               <span className="font-bold text-lg">Menu</span>
@@ -91,11 +118,7 @@ export default function MobileNav() {
             {/* Action Buttons */}
             <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-background space-y-3">
               <SubdomainLoginModal>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={closeMenu}
-                >
+                <Button variant="outline" className="w-full">
                   Sign In
                 </Button>
               </SubdomainLoginModal>
