@@ -115,7 +115,7 @@ export default function MobileNav() {
           </div>
 
           {/* Navigation Links - Scrollable middle section */}
-          <nav className="flex-1 overflow-y-auto flex flex-col p-4 space-y-1">
+          <nav className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4 space-y-1">
             <Link
               to="/features"
               className="px-4 py-3 text-base font-medium text-foreground hover:bg-muted rounded-lg transition-colors"
