@@ -55,15 +55,15 @@ export default function MobileNav() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-[60] md:hidden">
+        <div className="fixed inset-x-0 top-[64px] bottom-0 z-[60] md:hidden">
           {/* Backdrop with fade-in animation */}
           <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in-0 duration-200"
             onClick={closeMenu}
           />
 
           {/* Menu Panel with slide-in animation */}
-          <div className="absolute top-0 right-0 h-full w-[280px] bg-background border-l border-border shadow-2xl animate-in slide-in-from-right duration-300">
+          <div className="absolute top-0 right-0 bottom-0 w-[280px] bg-background border-l border-border shadow-2xl animate-in slide-in-from-right-full duration-300 z-10">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border">
               <span className="font-bold text-lg">Menu</span>
