@@ -92,10 +92,9 @@ export default function MobileNav() {
 
         {/* Menu Panel with slide-in transition */}
         <div
-          className={`absolute top-0 right-0 bottom-0 w-[280px] bg-background border-l border-border shadow-2xl transition-transform duration-300 ease-out ${
+          className={`fixed top-0 right-0 h-full w-[280px] pt-[env(safe-area-inset-top)] bg-background border-l border-border shadow-2xl transition-transform duration-300 ease-out ${
             isMounted ? 'translate-x-0' : 'translate-x-full'
           }`}
-          style={{ backgroundColor: 'hsl(222 47% 11%)', backdropFilter: 'none' }}
         >
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
