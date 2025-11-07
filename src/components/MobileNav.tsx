@@ -81,10 +81,10 @@ export default function MobileNav() {
       </button>
 
       {/* Mobile Menu Overlay */}
-      <div className="fixed inset-0 z-50 md:hidden">
+      <div className="fixed inset-0 z-[100] md:hidden">
         {/* Backdrop with transition */}
         <div
-          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300 ${
             isMounted ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={closeMenu}
@@ -95,6 +95,7 @@ export default function MobileNav() {
           className={`absolute top-0 right-0 bottom-0 w-[280px] bg-background border-l border-border shadow-2xl transition-transform duration-300 ease-out ${
             isMounted ? 'translate-x-0' : 'translate-x-full'
           }`}
+          style={{ backgroundColor: 'hsl(222 47% 11%)', backdropFilter: 'none' }}
         >
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
