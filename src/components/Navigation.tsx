@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import SubdomainLoginModal from '@/components/SubdomainLoginModal';
-import MobileNav from '@/components/MobileNav';
 
 export default function Navigation() {
   return (
@@ -32,19 +31,14 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="flex items-center gap-3">
-            {/* Desktop Action Buttons */}
-            <div className="hidden md:flex items-center gap-3">
-              <SubdomainLoginModal>
-                <Button variant="ghost" size="sm" className="hover:bg-muted">
-                  Sign In
-                </Button>
-              </SubdomainLoginModal>
-              <Link to="/signup">
-                <Button size="sm" className="shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
-              </Link>
-            </div>
-            {/* Mobile Menu */}
-            <MobileNav />
+            <SubdomainLoginModal>
+              <Button variant="ghost" size="sm" className="hover:bg-muted">
+                Sign In
+              </Button>
+            </SubdomainLoginModal>
+            <Link to="/signup">
+              <Button size="sm" className="shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
+            </Link>
           </div>
         </div>
       </div>
