@@ -92,12 +92,18 @@ export default function MobileNav() {
 
         {/* Menu Panel with slide-in transition */}
         <div
-          className={`fixed top-0 right-0 h-full w-[280px] pt-[env(safe-area-inset-top)] bg-background border-l border-border shadow-2xl transition-transform duration-300 ease-out ${
+          className={`fixed top-0 right-0 h-full w-[280px]
+            pt-[env(safe-area-inset-top)]
+            pb-[env(safe-area-inset-bottom)]
+            pr-[env(safe-area-inset-right)]
+            flex flex-col
+            bg-background border-l border-border shadow-2xl
+            transition-transform duration-300 ease-out ${
             isMounted ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border">
+          {/* Header - Fixed at top */}
+          <div className="flex-shrink-0 flex items-center justify-between p-4 border-b border-border">
             <span className="font-bold text-lg">Menu</span>
             <button
               onClick={closeMenu}
@@ -108,8 +114,8 @@ export default function MobileNav() {
             </button>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="flex flex-col p-4 space-y-1">
+          {/* Navigation Links - Scrollable middle section */}
+          <nav className="flex-1 overflow-y-auto flex flex-col p-4 space-y-1">
             <Link
               to="/features"
               className="px-4 py-3 text-base font-medium text-foreground hover:bg-muted rounded-lg transition-colors"
@@ -147,8 +153,8 @@ export default function MobileNav() {
             </Link>
           </nav>
 
-          {/* Action Buttons */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-background space-y-3">
+          {/* Action Buttons - Fixed at bottom with safe area */}
+          <div className="flex-shrink-0 p-4 border-t border-border bg-background space-y-3">
             <SubdomainLoginModal>
               <Button variant="outline" className="w-full">
                 Sign In
