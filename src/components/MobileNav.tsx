@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SubdomainLoginModal from '@/components/SubdomainLoginModal';
 
+// Force Cloudflare rebuild - Nov 7 2025
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
