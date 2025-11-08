@@ -13,6 +13,7 @@ import SubdomainLoginModal from '@/components/SubdomainLoginModal';
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const navLinks = [
     { to: '/features', label: 'Features' },
@@ -88,12 +89,20 @@ export default function Navigation() {
 
                   {/* Mobile Action Buttons */}
                   <div className="flex flex-col gap-3 pt-6 border-t border-border">
-                    <SubdomainLoginModal>
+                    <SubdomainLoginModal
+                      open={modalOpen}
+                      onOpenChange={(isOpen) => {
+                        setModalOpen(isOpen);
+                        if (isOpen) {
+                          // Close Sheet when Modal opens
+                          setOpen(false);
+                        }
+                      }}
+                    >
                       <Button
                         variant="outline"
                         size="default"
                         className="w-full"
-                        onClick={() => setOpen(false)}
                       >
                         Sign In
                       </Button>

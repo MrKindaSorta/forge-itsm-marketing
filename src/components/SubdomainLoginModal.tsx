@@ -7,12 +7,18 @@ import { ArrowRight, HelpCircle, AlertCircle } from 'lucide-react';
 
 interface SubdomainLoginModalProps {
   children: React.ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const LAST_SUBDOMAIN_KEY = 'forge_last_subdomain';
 
-export default function SubdomainLoginModal({ children }: SubdomainLoginModalProps) {
-  const [open, setOpen] = useState(false);
+export default function SubdomainLoginModal({ children, open: controlledOpen, onOpenChange: controlledOnOpenChange }: SubdomainLoginModalProps) {
+  const [internalOpen, setInternalOpen] = useState(false);
+
+  // Use controlled props if provided, otherwise use internal state
+  const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
+  const setOpen = controlledOnOpenChange || setInternalOpen;
   const [subdomain, setSubdomain] = useState('');
   const [error, setError] = useState('');
   const [isValidating, setIsValidating] = useState(false);
