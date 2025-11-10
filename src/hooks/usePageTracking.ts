@@ -74,8 +74,6 @@ async function trackPageView(pageName: string): Promise<void> {
         sessionId
       })
     });
-
-    console.log(`✅ Page visit tracked: ${pageName}`);
   } catch (error) {
     console.error('Error tracking page visit:', error);
     // Silently fail - don't interrupt user experience
