@@ -18,7 +18,6 @@ export interface TrackEventParams {
 class SignupTracker {
   private sessionId: string | null = null;
   private eventQueue: TrackEventParams[] = [];
-  private isProcessing = false;
 
   constructor() {
     // Load existing session ID from localStorage
