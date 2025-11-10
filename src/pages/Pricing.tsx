@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, ArrowRight, Plus, Minus } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function Pricing() {
   const [teamSize, setTeamSize] = useState(10);
@@ -136,7 +137,7 @@ export default function Pricing() {
                   <span>Reports & Analytics</span>
                 </div>
               </div>
-              <Link to="/signup" className="block">
+              <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Starter Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
@@ -184,7 +185,7 @@ export default function Pricing() {
                   <span>Reports & Analytics</span>
                 </div>
               </div>
-              <Link to="/signup" className="block">
+              <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Professional Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
@@ -232,7 +233,7 @@ export default function Pricing() {
                   <span>Reports & Analytics</span>
                 </div>
               </div>
-              <Link to="/signup" className="block">
+              <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Business Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
               </Link>
             </CardContent>
@@ -541,7 +542,7 @@ export default function Pricing() {
             Start your 30-day free trial. Cancel anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Pricing - Bottom CTA')}>
               <Button size="xl" className="gap-2">
                 Start Free Trial
                 <ArrowRight className="h-5 w-5" />

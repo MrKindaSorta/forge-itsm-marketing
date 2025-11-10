@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, X, ArrowRight, Shield, Sparkles, Clock } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
+import { signupTracker } from '@/lib/signupTracker';
 import { BreadcrumbSchema } from '@/components/SchemaMarkup';
 
 export default function VsFreshdesk() {
@@ -389,7 +390,7 @@ export default function VsFreshdesk() {
             Try Forge ITSM free for 30 days. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('VS Freshdesk - CTA')}>
               <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-xl">
                 Start Free Trial
                 <ArrowRight className="h-5 w-5" />

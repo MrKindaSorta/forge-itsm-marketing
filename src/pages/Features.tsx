@@ -7,6 +7,7 @@ import {
   ArrowRight, MessageSquare, Tags, Paperclip, Palette
 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function Features() {
   return (
@@ -26,7 +27,7 @@ export default function Features() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A complete ITSM solution built for small and medium-sized IT teams.
           </p>
-          <Link to="/signup">
+          <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Features - Hero CTA')}>
             <Button size="xl" className="gap-2">
               Start 30-Day Free Trial
               <ArrowRight className="h-5 w-5" />
@@ -488,7 +489,7 @@ export default function Features() {
             Try all features free for 30 days. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Features - Bottom CTA')}>
               <Button size="xl" variant="secondary" className="gap-2">
                 Start 30-Day Free Trial
                 <ArrowRight className="h-5 w-5" />

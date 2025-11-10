@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import SubdomainLoginModal from '@/components/SubdomainLoginModal';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -54,7 +55,7 @@ export default function Navigation() {
                 Sign In
               </Button>
             </SubdomainLoginModal>
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Navigation - Desktop')}>
               <Button size="sm" className="shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
             </Link>
           </div>
@@ -100,7 +101,7 @@ export default function Navigation() {
                     >
                       Sign In
                     </Button>
-                    <Link to="/signup" onClick={() => setOpen(false)}>
+                    <Link to="/signup" onClick={() => { setOpen(false); signupTracker.trackButtonClick('Navigation - Mobile'); }}>
                       <Button size="default" className="w-full shadow-md hover:shadow-lg transition-shadow">
                         Get Started
                       </Button>

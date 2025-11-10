@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { X, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
+import { signupTracker } from '@/lib/signupTracker';
 
 // Import product screenshots
 import DashboardImg from '@/assets/Images/Dashboard.png';
@@ -82,7 +83,7 @@ export default function ProductTour() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Take a visual tour through our intuitive interface designed for both IT professionals and end users.
           </p>
-          <Link to="/signup">
+          <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Product Tour - Hero CTA')}>
             <Button size="xl" className="gap-2">
               Start 30-Day Free Trial
               <ArrowRight className="h-5 w-5" />
@@ -202,7 +203,7 @@ export default function ProductTour() {
             Start your 30-day free trial today. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Product Tour - Bottom CTA')}>
               <Button size="xl" variant="secondary" className="gap-2">
                 Start Free Trial
                 <ArrowRight className="h-5 w-5" />

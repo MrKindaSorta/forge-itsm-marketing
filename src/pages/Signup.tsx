@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ArrowLeft, X } from 'lucide-react';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -48,6 +49,19 @@ export default function Signup() {
       features: ['Up to 10 Agents', 'Unlimited Users', 'All Features', 'Priority Support', '$9.99/additional agent']
     }
   ];
+
+  // Track step changes
+  useEffect(() => {
+    if (step === 1) {
+      signupTracker.trackStepStarted(1);
+    } else if (step === 2) {
+      signupTracker.trackStepCompleted(1, { plan: selectedPlan });
+      signupTracker.trackStepStarted(2);
+    } else if (step === 3) {
+      signupTracker.trackStepCompleted(2, { email: formData.email });
+      signupTracker.trackStepStarted(3);
+    }
+  }, [step, selectedPlan, formData.email]);
 
   // Password validation function
   const validatePassword = (password: string): string | null => {
@@ -192,16 +206,30 @@ export default function Signup() {
         return;
       }
 
+      // Track step 3 completion and Stripe redirect
+      await signupTracker.trackStepCompleted(3, {
+        subdomain: formData.subdomain,
+        companyName: formData.companyName,
+        plan: selectedPlan
+      });
+
       // Redirect to Stripe Checkout URL
       if (url) {
+        await signupTracker.trackStripeRedirect({
+          subdomain: formData.subdomain,
+          plan: selectedPlan
+        });
         window.location.href = url;
       } else {
         setError('Failed to get checkout URL');
+        await signupTracker.trackFormError('stripe_checkout', 'Failed to get checkout URL');
         setLoading(false);
       }
     } catch (err) {
       console.error('Checkout error:', err);
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
       setError('An unexpected error occurred. Please try again.');
+      await signupTracker.trackFormError('checkout_exception', errorMessage);
       setLoading(false);
     }
   };

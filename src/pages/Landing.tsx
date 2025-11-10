@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Check, X, Zap, Shield, Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { OrganizationSchema, SoftwareApplicationSchema } from '@/components/SchemaMarkup';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function Landing() {
   return (
@@ -41,7 +42,7 @@ export default function Landing() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link to="/signup">
+              <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Landing - Hero CTA')}>
                 <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all">
                   Start 30-Day Free Trial
                   <ArrowRight className="h-5 w-5" />
@@ -225,7 +226,7 @@ export default function Landing() {
             Join IT teams who chose simplicity over complexity
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Landing - Bottom CTA')}>
               <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-xl hover:shadow-2xl hover:shadow-primary/30 transition-all">
                 Start 30-Day Free Trial
                 <ArrowRight className="h-5 w-5" />

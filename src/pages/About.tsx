@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Heart, Code, Users } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function About() {
   return (
@@ -155,7 +156,7 @@ export default function About() {
             Start your 30-day free trial today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('About - CTA')}>
               <Button size="xl" className="gap-2">
                 Start Free Trial
                 <ArrowRight className="h-5 w-5" />

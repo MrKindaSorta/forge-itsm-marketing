@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Check, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { signupTracker } from '@/lib/signupTracker';
 
 type ProvisioningStatus = 'pending' | 'in_progress' | 'completed' | 'failed';
 
@@ -69,6 +70,9 @@ export default function Success() {
 
           // Mark all steps as completed
           setProgressSteps(steps.map(step => ({ ...step, completed: true })));
+
+          // Track provisioning completion
+          await signupTracker.trackProvisioningCompleted(subdomain);
 
           // Wait 2 seconds then redirect
           setTimeout(() => {

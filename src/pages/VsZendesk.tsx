@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check, X, ArrowRight, DollarSign, Zap, Users } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
+import { signupTracker } from '@/lib/signupTracker';
 import { BreadcrumbSchema } from '@/components/SchemaMarkup';
 
 export default function VsZendesk() {
@@ -298,7 +299,7 @@ export default function VsZendesk() {
             Join IT teams who switched from Zendesk to Forge ITSM
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup">
+            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('VS Zendesk - CTA')}>
               <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-xl">
                 Start 30-Day Free Trial
                 <ArrowRight className="h-5 w-5" />
