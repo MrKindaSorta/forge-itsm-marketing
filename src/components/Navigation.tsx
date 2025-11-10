@@ -13,7 +13,7 @@ import SubdomainLoginModal from '@/components/SubdomainLoginModal';
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [mobileLoginModalOpen, setMobileLoginModalOpen] = useState(false);
 
   const navLinks = [
     { to: '/features', label: 'Features' },
@@ -89,24 +89,17 @@ export default function Navigation() {
 
                   {/* Mobile Action Buttons */}
                   <div className="flex flex-col gap-3 pt-6 border-t border-border">
-                    <SubdomainLoginModal
-                      open={modalOpen}
-                      onOpenChange={(isOpen) => {
-                        setModalOpen(isOpen);
-                        if (isOpen) {
-                          // Close Sheet when Modal opens
-                          setOpen(false);
-                        }
+                    <Button
+                      variant="outline"
+                      size="default"
+                      className="w-full"
+                      onClick={() => {
+                        setOpen(false);
+                        setMobileLoginModalOpen(true);
                       }}
                     >
-                      <Button
-                        variant="outline"
-                        size="default"
-                        className="w-full"
-                      >
-                        Sign In
-                      </Button>
-                    </SubdomainLoginModal>
+                      Sign In
+                    </Button>
                     <Link to="/signup" onClick={() => setOpen(false)}>
                       <Button size="default" className="w-full shadow-md hover:shadow-lg transition-shadow">
                         Get Started
@@ -119,6 +112,14 @@ export default function Navigation() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Login Modal - Rendered outside Sheet to avoid unmounting issues */}
+      <SubdomainLoginModal
+        open={mobileLoginModalOpen}
+        onOpenChange={setMobileLoginModalOpen}
+      >
+        <span style={{ display: 'none' }} />
+      </SubdomainLoginModal>
     </nav>
   );
 }
