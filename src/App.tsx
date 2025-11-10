@@ -14,11 +14,15 @@ import VsZendesk from './pages/VsZendesk';
 import VsFreshdesk from './pages/VsFreshdesk';
 import VsServiceNow from './pages/VsServiceNow';
 import CookieConsent from './components/CookieConsent';
+import { usePageTracking } from './hooks/usePageTracking';
 import './index.css';
 
-function App() {
+function AppContent() {
+  // Track page visits automatically on route changes
+  usePageTracking();
+
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Landing />} />
@@ -37,6 +41,14 @@ function App() {
         </Route>
       </Routes>
       <CookieConsent />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
