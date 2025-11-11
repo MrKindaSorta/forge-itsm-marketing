@@ -49,7 +49,10 @@ function getPageName(pathname: string): string {
   if (pathname.startsWith('/vs-servicenow')) return 'VS ServiceNow';
   if (pathname.startsWith('/about')) return 'About';
   if (pathname.startsWith('/contact')) return 'Contact';
+  if (pathname === '/signup/success') return 'Signup Success'; // Check exact match first
   if (pathname.startsWith('/signup')) return 'Signup';
+  if (pathname.startsWith('/terms')) return 'Terms';
+  if (pathname.startsWith('/privacy')) return 'Privacy';
   return 'Other';
 }
 

@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Facebook } from 'lucide-react';
+import { signupTracker } from '../lib/signupTracker';
 
 export default function Footer() {
+  const trackFooterClick = (linkName: string) => {
+    signupTracker.trackEvent({
+      eventType: 'footer_link_click',
+      pageSource: window.location.pathname,
+      eventData: { link: linkName }
+    });
+  };
+
+  const trackSocialClick = (platform: string) => {
+    signupTracker.trackEvent({
+      eventType: 'social_link_click',
+      pageSource: window.location.pathname,
+      eventData: { platform }
+    });
+  };
   return (
     <footer className="border-t border-border/40 py-12 bg-muted/20">
       <div className="container mx-auto px-4">
@@ -21,17 +37,17 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Product</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/features" className="hover:text-primary transition-colors">
+                <Link to="/features" onClick={() => trackFooterClick('Features')} className="hover:text-primary transition-colors">
                   Features
                 </Link>
               </li>
               <li>
-                <Link to="/pricing" className="hover:text-primary transition-colors">
+                <Link to="/pricing" onClick={() => trackFooterClick('Pricing')} className="hover:text-primary transition-colors">
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link to="/product-tour" className="hover:text-primary transition-colors">
+                <Link to="/product-tour" onClick={() => trackFooterClick('Product Tour')} className="hover:text-primary transition-colors">
                   Product Tour
                 </Link>
               </li>
@@ -41,12 +57,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/about" className="hover:text-primary transition-colors">
+                <Link to="/about" onClick={() => trackFooterClick('About')} className="hover:text-primary transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-primary transition-colors">
+                <Link to="/contact" onClick={() => trackFooterClick('Contact')} className="hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -56,12 +72,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Legal</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/terms" className="hover:text-primary transition-colors">
+                <Link to="/terms" onClick={() => trackFooterClick('Terms of Service')} className="hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-primary transition-colors">
+                <Link to="/privacy" onClick={() => trackFooterClick('Privacy Policy')} className="hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
@@ -77,6 +93,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/forge-underground"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('LinkedIn')}
                   className="h-10 w-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-blue-600 hover:border-blue-600 hover:scale-110 transition-all duration-200"
                   aria-label="Visit our LinkedIn page"
                 >
@@ -86,6 +103,7 @@ export default function Footer() {
                   href="https://www.facebook.com/people/Forge-Underground/61583029971747/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('Facebook')}
                   className="h-10 w-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-blue-500 hover:border-blue-500 hover:scale-110 transition-all duration-200"
                   aria-label="Visit our Facebook page"
                 >

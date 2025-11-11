@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Mail, HelpCircle, Check, AlertCircle, Loader2 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { FAQSchema } from '@/components/SchemaMarkup';
+import { signupTracker } from '@/lib/signupTracker';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,16 @@ export default function Contact() {
     setLoading(true);
     setError('');
     setSuccess(false);
+
+    // Track contact form submission attempt
+    signupTracker.trackEvent({
+      eventType: 'contact_form_submit',
+      pageSource: '/contact',
+      eventData: {
+        inquiry: formData.inquiry,
+        company: formData.company ? 'provided' : 'not_provided'
+      }
+    });
 
     // Combine first and last name
     const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
