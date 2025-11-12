@@ -370,6 +370,14 @@ INSERT INTO system_settings (
   '{"ticket:create":["user","agent","manager","admin"],"ticket:view:own":["user","agent","manager","admin"],"ticket:view:all":["agent","manager","admin"],"ticket:edit":["agent","manager","admin"],"ticket:delete":["manager","admin"],"ticket:assign":["manager","admin"],"ticket:close":["manager","admin"],"ticket:resolve":["agent","manager","admin"],"user:view":["agent","manager","admin"],"user:create":["admin","manager"],"user:edit":["manager","admin"],"user:delete":["admin","manager"],"settings:view":["manager","admin"],"settings:edit":["admin"],"customize:view":["manager","admin"],"customize:edit":["admin","manager"],"reports:view":["agent","manager","admin"],"reports:export":["manager","admin"],"kb:view":["user","agent","manager","admin"],"kb:create":["agent","manager","admin"],"kb:edit":["agent","manager","admin"],"kb:delete":["manager","admin"],"dashboard:view":["agent","manager","admin"]}'
 );
 
+-- Insert default ticket form configuration
+INSERT INTO form_configurations (id, config_json, created_at, updated_at) VALUES (
+  'default',
+  '{"name":"Ticket Creation Form","fields":[{"id":"system-title","type":"text","label":"Title","placeholder":"Brief description of your issue","required":true,"order":0,"isSystemField":true,"deletable":false,"helpText":"Provide a short, descriptive title for your ticket","validation":{"maxLength":200}},{"id":"system-description","type":"textarea","label":"Description","placeholder":"Provide detailed information about your issue...","required":true,"order":1,"isSystemField":true,"deletable":false,"helpText":"Describe your issue in detail so we can help you better"},{"id":"system-priority","type":"priority","label":"Priority","placeholder":"Select priority...","required":false,"order":2,"isSystemField":true,"deletable":true,"hidden":false,"helpText":"How urgent is this issue?","options":["Low","Medium","High","Urgent"],"defaultValue":"Medium"},{"id":"system-category","type":"category","label":"Category","placeholder":"Select category...","required":false,"order":3,"isSystemField":true,"deletable":true,"hidden":false,"helpText":"What type of issue is this?","options":["General","Hardware","Software","Network","Email","Access","Onboarding","Infrastructure"],"defaultValue":"General"}]}',
+  datetime('now'),
+  datetime('now')
+);
+
 -- Insert default knowledge base categories
 INSERT INTO categories (name, icon, color, display_order, created_at) VALUES
   ('Getting Started', 'Rocket', 'text-blue-500', 0, datetime('now')),
