@@ -22,10 +22,10 @@ export default function Features() {
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Everything You Need to Manage IT Tickets
+            Simple Help Desk Software with Everything You Need
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A complete ITSM solution built for small and medium-sized IT teams.
+            Easy ticketing system built for small and medium-sized IT teams. All features included, no add-ons required.
           </p>
           <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Features - Hero CTA')}>
             <Button size="xl" className="gap-2">
@@ -40,7 +40,10 @@ export default function Features() {
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Features</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Easy Ticketing System – Simple Yet Powerful</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Affordable help desk with all the features you need, without the complexity you don't.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">

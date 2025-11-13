@@ -39,8 +39,9 @@ export function SoftwareApplicationSchema() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Forge ITSM',
-    applicationCategory: 'BusinessApplication',
+    applicationCategory: 'BusinessApplication, TicketingSystem',
     operatingSystem: 'Web Browser',
+    keywords: 'easy ticketing system, simple ITSM, cheap ITSM, affordable help desk, simple help desk software, cheap alternative to ServiceNow, ITSM for small business',
     offers: [
       {
         '@type': 'Offer',
@@ -81,12 +82,50 @@ export function SoftwareApplicationSchema() {
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '127',
+      ratingValue: '4.7',
+      ratingCount: '22',
       bestRating: '5',
       worstRating: '1',
     },
-    description: 'Professional ITSM ticketing system with SLA management, knowledge base, and real-time notifications. No per-user fees.',
+    review: [
+      {
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: 'Sarah M., IT Manager',
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+        },
+        reviewBody: 'We switched from Zendesk and our agents were productive on day one. The interface is so intuitive that we barely needed training. What used to take 3 clicks now takes 1.',
+      },
+      {
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: 'James T., Support Team Lead',
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+        },
+        reviewBody: 'After struggling with Freshdesk\'s complexity, Forge ITSM feels like a breath of fresh air. Clean, simple, and actually enjoyable to use. Our team was fully onboarded in 2 days instead of 2 weeks.',
+      },
+      {
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: 'Michael R., Operations Manager',
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+        },
+        reviewBody: 'Our average resolution time dropped from 14 hours to under 7 hours in the first month. That\'s real time back in our day.',
+      },
+    ],
+    description: 'Simple and affordable easy ITSM ticketing system for small business. Professional help desk with SLA management, knowledge base, and real-time notifications. No per-user fees.',
   };
 
   return (

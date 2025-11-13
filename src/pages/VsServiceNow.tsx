@@ -16,9 +16,9 @@ export default function VsServiceNow() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="Affordable ServiceNow Alternative for Small IT Teams | Forge ITSM"
-        description="ServiceNow costs $100+/user/month and requires consultants to set up. Forge ITSM gives you the same core ITSM features for $59.99/mo flat fee. Perfect for teams under 50 people."
-        keywords="ServiceNow alternative, affordable ITSM, ServiceNow for small business, cheap ServiceNow alternative, ITSM for small teams, ServiceNow pricing alternative"
+        title="Cheap Alternative to ServiceNow for Small IT Teams | Forge ITSM"
+        description="ServiceNow costs $100+/user/month and requires consultants. Forge ITSM gives you the same core ITSM features for $59.99/mo flat fee. Affordable, simple ITSM alternative perfect for small teams."
+        keywords="cheap alternative to ServiceNow, affordable ITSM, ServiceNow for small business, cheap ServiceNow alternative, simple ITSM, easy ticketing system, ITSM for small teams"
         canonical="https://forge-itsm.com/vs-servicenow"
       />
       <BreadcrumbSchema items={breadcrumbs} />

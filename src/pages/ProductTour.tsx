@@ -22,22 +22,22 @@ interface Screenshot {
 const screenshots: Screenshot[] = [
   {
     src: DashboardImg,
-    title: 'Agent Dashboard',
+    title: 'easy ITSM ticketing dashboard showing simple interface',
     description: 'Monitor all tickets, SLAs, and team performance at a glance with real-time metrics and status indicators.'
   },
   {
     src: TicketDashboardImg,
-    title: 'Ticket Management',
+    title: 'simple help desk ticket view with clean layout',
     description: 'Powerful filtering, bulk actions, and real-time updates. Manage your entire ticket queue efficiently.'
   },
   {
     src: PortalImg,
-    title: 'User Portal',
+    title: 'affordable ITSM user portal for end users',
     description: 'Clean self-service interface for end users to submit and track tickets without complexity.'
   },
   {
     src: ReportsImg,
-    title: 'Analytics & Reports',
+    title: 'cheap ITSM analytics dashboard for small teams',
     description: 'Comprehensive insights into your IT support performance with detailed charts and metrics.'
   }
 ];
@@ -68,9 +68,9 @@ export default function ProductTour() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="Product Tour | Forge ITSM"
-        description="Take a visual tour of Forge ITSM. See our intuitive dashboard, powerful ticketing system, self-service portal, and comprehensive reporting tools in action."
-        keywords="ITSM screenshots, help desk demo, IT ticketing screenshots, service desk interface, ITSM product tour, IT support software demo"
+        title="Product Tour - See Our Simple ITSM Interface in Action | Forge ITSM"
+        description="See why Forge ITSM is the easiest ticketing system for small business. View screenshots of our simple help desk, affordable pricing, and clean interface that agents actually enjoy using."
+        keywords="easy ticketing system demo, simple ITSM screenshots, cheap ITSM interface, affordable help desk tour, simple help desk software demo"
         canonical="https://forge-itsm.com/product-tour"
       />
 

@@ -15,7 +15,7 @@ export function SEOHead({
   keywords = 'ITSM software, IT ticketing system, help desk software, service desk, SLA management, knowledge base, ticket tracking',
   canonical,
   ogType = 'website',
-  ogImage = 'https://forge-itsm.com/og-image.jpg',
+  ogImage = 'https://forge-itsm.com/logo512.png',
 }: SEOHeadProps) {
   const fullTitle = `${title} | Forge ITSM`;
   const url = canonical || 'https://forge-itsm.com';

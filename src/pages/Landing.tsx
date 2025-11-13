@@ -10,9 +10,9 @@ export default function Landing() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="ITSM Software for Small Teams - No Per-User Fees"
-        description="Modern IT ticketing system starting at $59.99/mo. No per-user fees, all features included. Better than Zendesk or Freshdesk. Save up to $12k/year. 30-day free trial."
-        keywords="ITSM software, IT ticketing system, help desk software, Zendesk alternative, Freshdesk alternative, affordable ITSM, service desk software, IT ticket tracking, SLA management"
+        title="Simple ITSM & Easy Ticketing System for Small Business | Forge ITSM"
+        description="Affordable, easy ITSM ticketing system for SMBs. Clean help desk with unlimited users, knowledge base, and reports from $59/mo. No bloat like ServiceNow."
+        keywords="easy ticketing system, simple ITSM, cheap ITSM, affordable help desk, simple help desk software, cheap alternative to ServiceNow, ITSM for small business, easy ITSM ticketing, just tickets"
         canonical="https://forge-itsm.com"
       />
       <OrganizationSchema />
@@ -28,9 +28,9 @@ export default function Landing() {
             </Badge>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-              IT Ticketing That
+              Simple, Fast, Easy ITSM Ticketing
               <br />
-              <span className="text-primary bg-clip-text">Just Works</span>
+              <span className="text-primary bg-clip-text">for Small & Medium Business</span>
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -50,7 +50,7 @@ export default function Landing() {
               </Link>
               <Link to="/features">
                 <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-border/60 hover:bg-muted/50 transition-all">
-                  See How It Works
+                  See All Features
                 </Button>
               </Link>
             </div>
@@ -63,10 +63,10 @@ export default function Landing() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Why We're <span className="text-primary">Different</span>
+              Easy Ticketing System – <span className="text-primary">Just Tickets, No Fluff</span>
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
-              We built this because we were tired of the BS in the industry.
+              Simple help desk software that focuses on what matters: resolving tickets quickly without complexity.
             </p>
           </div>
 
@@ -77,9 +77,9 @@ export default function Landing() {
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Complete ITSM Platform - No Add-Ons</h3>
+                <h3 className="text-xl font-bold">Affordable Help Desk with Unlimited End Users</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Affordable help desk software with transparent, flat-rate pricing. Every plan includes SLA management, ticket automation, custom fields, reporting dashboards, and knowledge base. No hidden fees, no feature gatekeeping, no "upgrade to unlock" <strong className="text-foreground">nonsense</strong>.
+                  <Link to="/pricing" className="text-primary hover:underline">Cheap ITSM alternative</Link> with transparent, flat-rate pricing. Every plan includes SLA management, ticket automation, custom fields, reporting dashboards, and knowledge base. No per-user fees, no hidden costs, no "upgrade to unlock" <strong className="text-foreground">nonsense</strong>.
                 </p>
                 <div className="text-sm text-primary font-semibold">
                   All features included • Predictable costs
@@ -93,9 +93,9 @@ export default function Landing() {
                 <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Easy Setup, Intuitive Interface</h3>
+                <h3 className="text-xl font-bold">Simple Help Desk Software That Actually Gets Used</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  User-friendly IT service management software that takes 5 minutes to deploy—not weeks. Clean, intuitive ticketing interface built by IT professionals for IT teams. No enterprise bloat, no complex training, no consultants <strong className="text-foreground">required</strong>.
+                  <Link to="/features" className="text-primary hover:underline">Easy ticketing system</Link> that takes 5 minutes to deploy—not weeks. Clean, intuitive interface built by IT professionals for IT teams. Agents actually enjoy using it because it's <Link to="/product-tour" className="text-primary hover:underline">simple</Link>, fast, and gets out of their way. No enterprise bloat, no complex training, no consultants <strong className="text-foreground">required</strong>.
                 </p>
                 <div className="text-sm text-primary font-semibold">
                   Quick deployment • Zero learning curve
@@ -128,10 +128,10 @@ export default function Landing() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                <span className="text-primary">Feature Comparison</span>
+                Cheap ITSM Alternative to <span className="text-primary">ServiceNow & Freshservice</span>
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground">
-                Same features. Way better price. Zero BS.
+                Same features as enterprise tools. Way better price. Simple setup. No bloat.
               </p>
             </div>
 
@@ -207,7 +207,7 @@ export default function Landing() {
             <div className="mt-8 text-center">
               <Link to="/pricing">
                 <Button size="lg" variant="outline">
-                  View Full Pricing Details
+                  See Our Affordable Help Desk Pricing
                 </Button>
               </Link>
             </div>

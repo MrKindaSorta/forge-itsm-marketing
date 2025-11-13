@@ -70,9 +70,9 @@ export default function Pricing() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="ITSM Pricing Comparison: Forge vs Zendesk vs Freshdesk"
-        description="Compare ITSM software pricing. Forge ITSM starts at $59.99/mo vs Zendesk $115/agent or Freshdesk $49/agent. Save up to $12,360/year with no per-user fees. See the honest pricing breakdown."
-        keywords="ITSM pricing, IT ticketing software cost, Zendesk pricing comparison, Freshdesk pricing, affordable help desk software, ITSM cost calculator, service desk pricing"
+        title="Cheap ITSM Pricing - Affordable Help Desk from $59/mo | Forge ITSM"
+        description="Affordable, simple ITSM pricing starting at $59.99/mo. Cheap alternative to Zendesk ($115/agent) and Freshdesk ($49/agent). Save up to $12,360/year with transparent, flat-rate pricing."
+        keywords="cheap ITSM, affordable help desk, cheap alternative to ServiceNow, ITSM pricing, affordable ticketing system, cheap help desk software, simple ITSM pricing"
         canonical="https://forge-itsm.com/pricing"
       />
       {/* Hero Section */}
