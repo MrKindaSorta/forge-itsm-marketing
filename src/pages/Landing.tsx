@@ -5,13 +5,14 @@ import { Check, X, Zap, Shield, Clock, ArrowRight, Sparkles } from 'lucide-react
 import { SEOHead } from '@/components/SEOHead';
 import { OrganizationSchema, SoftwareApplicationSchema } from '@/components/SchemaMarkup';
 import { signupTracker } from '@/lib/signupTracker';
+import { PLANS, COMPETITORS, formatPrice } from '@/config/pricing';
 
 export default function Landing() {
   return (
     <div className="flex flex-col">
       <SEOHead
         title="Simple ITSM & Easy Ticketing System for Small Business | Forge ITSM"
-        description="Affordable, easy ITSM ticketing system for SMBs. Clean help desk with unlimited users, knowledge base, and reports from $59/mo. No bloat like ServiceNow."
+        description={`Affordable, easy ITSM ticketing system for SMBs. Clean help desk with unlimited users, knowledge base, and reports from ${formatPrice(PLANS.starter.monthlyPrice, false)}/mo. No bloat like ServiceNow.`}
         keywords="easy ticketing system, simple ITSM, cheap ITSM, affordable help desk, simple help desk software, cheap alternative to ServiceNow, ITSM for small business, easy ITSM ticketing, just tickets"
         canonical="https://forge-itsm.com"
       />
@@ -140,15 +141,15 @@ export default function Landing() {
                     <th className="text-left p-4 font-bold">Feature</th>
                     <th className="p-4">
                       <div className="font-bold text-primary">Forge ITSM</div>
-                      <div className="text-sm font-normal text-muted-foreground">$59.99/mo</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(PLANS.starter.monthlyPrice)}/mo</div>
                     </th>
                     <th className="p-4">
-                      <div className="font-bold">Zendesk</div>
-                      <div className="text-sm font-normal text-muted-foreground">$115/mo</div>
+                      <div className="font-bold">{COMPETITORS.zendesk.name}</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/mo</div>
                     </th>
                     <th className="p-4">
-                      <div className="font-bold">Freshdesk</div>
-                      <div className="text-sm font-normal text-muted-foreground">$79/mo</div>
+                      <div className="font-bold">{COMPETITORS.freshdesk.name}</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/mo</div>
                     </th>
                   </tr>
                 </thead>

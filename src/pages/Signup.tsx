@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ArrowLeft, X } from 'lucide-react';
 import { signupTracker } from '@/lib/signupTracker';
+import { PLANS, BUSINESS_OVERAGE_FEE, FREE_TRIAL_DAYS, formatPrice } from '@/config/pricing';
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -27,26 +28,26 @@ export default function Signup() {
 
   const plans = [
     {
-      id: 'starter',
-      name: 'Starter',
-      price: 59.99,
-      agents: 3,
-      features: ['Up to 3 Agents', 'Unlimited Users', 'All Features', 'Email Support']
+      id: PLANS.starter.id,
+      name: PLANS.starter.name,
+      price: PLANS.starter.monthlyPrice,
+      agents: PLANS.starter.includedAgents,
+      features: [`Up to ${PLANS.starter.includedAgents} Agents`, 'Unlimited Users', 'All Features', 'Email Support']
     },
     {
-      id: 'professional',
-      name: 'Professional',
-      price: 79.99,
-      agents: 5,
+      id: PLANS.professional.id,
+      name: PLANS.professional.name,
+      price: PLANS.professional.monthlyPrice,
+      agents: PLANS.professional.includedAgents,
       popular: true,
-      features: ['Up to 5 Agents', 'Unlimited Users', 'All Features', 'Priority Support']
+      features: [`Up to ${PLANS.professional.includedAgents} Agents`, 'Unlimited Users', 'All Features', 'Priority Support']
     },
     {
-      id: 'business',
-      name: 'Business',
-      price: 119.99,
-      agents: 10,
-      features: ['Up to 10 Agents', 'Unlimited Users', 'All Features', 'Priority Support', '$9.99/additional agent']
+      id: PLANS.business.id,
+      name: PLANS.business.name,
+      price: PLANS.business.monthlyPrice,
+      agents: PLANS.business.includedAgents,
+      features: [`Up to ${PLANS.business.includedAgents} Agents`, 'Unlimited Users', 'All Features', 'Priority Support', `${formatPrice(BUSINESS_OVERAGE_FEE)}/additional agent`]
     }
   ];
 
@@ -269,7 +270,7 @@ export default function Signup() {
             <div className="space-y-6">
               <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold">Choose Your Plan</h1>
-                <p className="text-muted-foreground">Start with a 30-day free trial. No credit card required.</p>
+                <p className="text-muted-foreground">Start with a {FREE_TRIAL_DAYS}-day free trial. No credit card required.</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
@@ -291,7 +292,7 @@ export default function Signup() {
                     <CardHeader>
                       <CardTitle className="text-xl">{plan.name}</CardTitle>
                       <CardDescription>
-                        <div className="text-3xl font-bold text-foreground mt-2">${plan.price}</div>
+                        <div className="text-3xl font-bold text-foreground mt-2">{formatPrice(plan.price)}</div>
                         <div className="text-sm">/month</div>
                       </CardDescription>
                     </CardHeader>
@@ -518,9 +519,9 @@ export default function Signup() {
                       </Badge>
                     </div>
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <span>30-day free trial, then</span>
+                      <span>{FREE_TRIAL_DAYS}-day free trial, then</span>
                       <span className="font-semibold text-foreground">
-                        ${plans.find(p => p.id === selectedPlan)?.price}/month
+                        {formatPrice(plans.find(p => p.id === selectedPlan)?.price || 0)}/month
                       </span>
                     </div>
                   </div>

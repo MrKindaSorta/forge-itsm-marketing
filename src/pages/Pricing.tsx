@@ -5,45 +5,36 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Check, ArrowRight, Plus, Minus } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { signupTracker } from '@/lib/signupTracker';
+import {
+  PLANS,
+  COMPETITORS,
+  FREE_TRIAL_DAYS,
+  BUSINESS_OVERAGE_FEE,
+  COMPETITOR_PRICING_DATE,
+  getForgeITSMCost,
+  getCompetitorAnnualCost,
+  formatPrice
+} from '@/config/pricing';
 
 export default function Pricing() {
   const [teamSize, setTeamSize] = useState(10);
 
   // Get the optimal Forge ITSM plan based on team size
   const getOptimalForgeITSMPlan = (agents: number) => {
-    if (agents <= 3) {
-      return {
-        name: "Starter",
-        monthly: 59.99,
-        yearly: 719.88,
-        perAgent: (59.99 / agents).toFixed(2),
-        agentLimit: "up to 3 agents"
-      };
-    }
-    if (agents <= 5) {
-      return {
-        name: "Professional",
-        monthly: 79.99,
-        yearly: 959.88,
-        perAgent: (79.99 / agents).toFixed(2),
-        agentLimit: "up to 5 agents"
-      };
-    }
-    // Business plan: $119.99 + ($9.99 × extra agents)
-    const extraAgents = agents - 10;
-    const monthly = 119.99 + (extraAgents * 9.99);
-    const yearly = monthly * 12;
+    const cost = getForgeITSMCost(agents);
+    const plan = PLANS[cost.plan];
+
     return {
-      name: "Business",
-      monthly: monthly,
-      yearly: yearly,
-      perAgent: (monthly / agents).toFixed(2),
-      agentLimit: `${agents} agents`
+      name: plan.name,
+      monthly: cost.monthlyPrice,
+      yearly: cost.yearlyPrice,
+      perAgent: (cost.monthlyPrice / agents).toFixed(2),
+      agentLimit: cost.extraAgents > 0 ? `${agents} agents` : `up to ${plan.includedAgents} agents`
     };
   };
 
   // Calculate savings vs competitors
-  const calculateSavings = (competitorPricePerAgent: number) => {
+  const calculateSavingsVsCompetitor = (competitorPricePerAgent: number) => {
     const competitorYearly = competitorPricePerAgent * teamSize * 12;
     const forgeYearly = getOptimalForgeITSMPlan(teamSize).yearly;
     const savings = competitorYearly - forgeYearly;
@@ -60,18 +51,18 @@ export default function Pricing() {
 
   // Competitor data
   const competitors = [
-    { name: "Zendesk Suite – Professional", pricePerAgent: 115, ref: "1", url: "https://www.zendesk.com/pricing/" },
-    { name: "Freshdesk – Pro", pricePerAgent: 49, ref: "2", url: "https://www.freshworks.com/freshdesk/pricing/" },
-    { name: "Jira Service Management – Standard", pricePerAgent: 20, ref: "3", url: "https://www.atlassian.com/software/jira/service-management/pricing" },
-    { name: "Zoho Desk – Professional", pricePerAgent: 23, ref: "4", url: "https://www.zoho.com/desk/pricing.html" },
-    { name: "HelpDesk.com – Team", pricePerAgent: 29, ref: "5", url: "https://www.helpdesk.com/pricing/" }
+    { name: `${COMPETITORS.zendesk.name} Suite – ${COMPETITORS.zendesk.planName}`, pricePerAgent: COMPETITORS.zendesk.pricePerAgent, ref: "1", url: "https://www.zendesk.com/pricing/" },
+    { name: `${COMPETITORS.freshdesk.name} – ${COMPETITORS.freshdesk.planName}`, pricePerAgent: COMPETITORS.freshdesk.pricePerAgent, ref: "2", url: "https://www.freshworks.com/freshdesk/pricing/" },
+    { name: `${COMPETITORS.jira.name} – ${COMPETITORS.jira.planName}`, pricePerAgent: COMPETITORS.jira.pricePerAgent, ref: "3", url: "https://www.atlassian.com/software/jira/service-management/pricing" },
+    { name: `${COMPETITORS.zoho.name} – ${COMPETITORS.zoho.planName}`, pricePerAgent: COMPETITORS.zoho.pricePerAgent, ref: "4", url: "https://www.zoho.com/desk/pricing.html" },
+    { name: `${COMPETITORS.helpdesk.name} – ${COMPETITORS.helpdesk.planName}`, pricePerAgent: COMPETITORS.helpdesk.pricePerAgent, ref: "5", url: "https://www.helpdesk.com/pricing/" }
   ];
 
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="Cheap ITSM Pricing - Affordable Help Desk from $59/mo | Forge ITSM"
-        description="Affordable, simple ITSM pricing starting at $59.99/mo. Cheap alternative to Zendesk ($115/agent) and Freshdesk ($49/agent). Save up to $12,360/year with transparent, flat-rate pricing."
+        title={`Cheap ITSM Pricing - Affordable Help Desk from ${formatPrice(PLANS.starter.monthlyPrice, false)}/mo | Forge ITSM`}
+        description={`Affordable, simple ITSM pricing starting at ${formatPrice(PLANS.starter.monthlyPrice)}. Cheap alternative to Zendesk (${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent) and Freshdesk (${formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/agent). Save up to $12,360/year with transparent, flat-rate pricing.`}
         keywords="cheap ITSM, affordable help desk, cheap alternative to ServiceNow, ITSM pricing, affordable ticketing system, cheap help desk software, simple ITSM pricing"
         canonical="https://forge-itsm.com/pricing"
       />
@@ -98,44 +89,22 @@ export default function Pricing() {
           {/* Starter Plan */}
           <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl">Starter</CardTitle>
-              <CardDescription>Perfect for small IT teams</CardDescription>
+              <CardTitle className="text-2xl">{PLANS.starter.name}</CardTitle>
+              <CardDescription>{PLANS.starter.description}</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">$59.99</div>
+                <div className="text-4xl font-bold">{formatPrice(PLANS.starter.monthlyPrice)}</div>
                 <div className="text-sm text-muted-foreground">/month</div>
                 <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span className="font-semibold">Up to 3 Agents</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited End Users</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited Tickets</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>SLA Management</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Knowledge Base</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Custom Fields</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Reports & Analytics</span>
-                </div>
+                {PLANS.starter.features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-green-500" />
+                    <span className={feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
+                  </div>
+                ))}
               </div>
               <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Starter Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
@@ -146,44 +115,22 @@ export default function Pricing() {
           {/* Professional Plan */}
           <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl">Professional</CardTitle>
-              <CardDescription>For growing IT departments</CardDescription>
+              <CardTitle className="text-2xl">{PLANS.professional.name}</CardTitle>
+              <CardDescription>{PLANS.professional.description}</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">$79.99</div>
+                <div className="text-4xl font-bold">{formatPrice(PLANS.professional.monthlyPrice)}</div>
                 <div className="text-sm text-muted-foreground">/month</div>
                 <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span className="font-semibold">Up to 5 Agents</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited End Users</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited Tickets</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>SLA Management</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Knowledge Base</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Custom Fields</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Reports & Analytics</span>
-                </div>
+                {PLANS.professional.features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-green-500" />
+                    <span className={feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
+                  </div>
+                ))}
               </div>
               <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Professional Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
@@ -194,44 +141,22 @@ export default function Pricing() {
           {/* Business Plan */}
           <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl">Business</CardTitle>
-              <CardDescription>For established IT teams</CardDescription>
+              <CardTitle className="text-2xl">{PLANS.business.name}</CardTitle>
+              <CardDescription>{PLANS.business.description}</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">$119.99</div>
-                <div className="text-sm text-muted-foreground">/month + $9.99/additional agent</div>
+                <div className="text-4xl font-bold">{formatPrice(PLANS.business.monthlyPrice)}</div>
+                <div className="text-sm text-muted-foreground">/month + {formatPrice(BUSINESS_OVERAGE_FEE)}/additional agent</div>
                 <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span className="font-semibold">Up to 10 Agents</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited End Users</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Unlimited Tickets</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>SLA Management</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Knowledge Base</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Custom Fields</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
-                  <span>Reports & Analytics</span>
-                </div>
+                {PLANS.business.features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-green-500" />
+                    <span className={feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
+                  </div>
+                ))}
               </div>
               <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Business Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
@@ -242,7 +167,7 @@ export default function Pricing() {
 
         <div className="text-center mt-8">
           <p className="text-muted-foreground">
-            All plans include a <span className="font-semibold text-foreground">30-day free trial</span>. Cancel anytime.
+            All plans include a <span className="font-semibold text-foreground">{FREE_TRIAL_DAYS}-day free trial</span>. Cancel anytime.
           </p>
         </div>
       </section>
@@ -356,7 +281,7 @@ export default function Pricing() {
 
                   {/* Competitor Rows */}
                   {competitors.map((competitor) => {
-                    const savings = calculateSavings(competitor.pricePerAgent);
+                    const savings = calculateSavingsVsCompetitor(competitor.pricePerAgent);
                     return (
                       <tr key={competitor.name} className="border-b border-border/30 hover:bg-muted/20 transition-colors">
                         <td className="p-4">
@@ -412,7 +337,7 @@ export default function Pricing() {
 
             {/* Disclaimer */}
             <p className="text-sm text-muted-foreground text-center mt-6">
-              Competitor prices based on publicly available pricing as of January 2025. Prices may vary based on region, features selected, and promotional offers. Please verify current pricing on vendor websites.
+              Competitor prices based on publicly available pricing as of {COMPETITOR_PRICING_DATE}. Prices may vary based on region, features selected, and promotional offers. Please verify current pricing on vendor websites.
             </p>
 
             {/* Source Citations */}
@@ -420,19 +345,19 @@ export default function Pricing() {
               <h3 className="font-semibold mb-3 text-sm">Sources:</h3>
               <ol className="text-xs space-y-2 text-muted-foreground">
                 <li>
-                  <sup className="text-primary">1</sup> Zendesk Suite Professional: <a href="https://www.zendesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zendesk Official Pricing</a> ($115/agent/mo)
+                  <sup className="text-primary">1</sup> {COMPETITORS.zendesk.name} Suite {COMPETITORS.zendesk.planName}: <a href="https://www.zendesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zendesk Official Pricing</a> ({formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent/mo)
                 </li>
                 <li>
-                  <sup className="text-primary">2</sup> Freshdesk Pro: <a href="https://www.freshworks.com/freshdesk/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Freshworks Official Pricing</a> ($49/agent/mo, billed annually)
+                  <sup className="text-primary">2</sup> {COMPETITORS.freshdesk.name} {COMPETITORS.freshdesk.planName}: <a href="https://www.freshworks.com/freshdesk/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Freshworks Official Pricing</a> ({formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/agent/mo, billed annually)
                 </li>
                 <li>
-                  <sup className="text-primary">3</sup> Jira Service Management Standard: <a href="https://www.atlassian.com/software/jira/service-management/pricing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Atlassian Service Management Pricing</a> ($20/agent/mo)
+                  <sup className="text-primary">3</sup> {COMPETITORS.jira.name} {COMPETITORS.jira.planName}: <a href="https://www.atlassian.com/software/jira/service-management/pricing" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Atlassian Service Management Pricing</a> ({formatPrice(COMPETITORS.jira.pricePerAgent, false)}/agent/mo)
                 </li>
                 <li>
-                  <sup className="text-primary">4</sup> Zoho Desk Professional: <a href="https://www.zoho.com/desk/pricing.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zoho Desk Pricing & Editions</a> ($23/agent/mo)
+                  <sup className="text-primary">4</sup> {COMPETITORS.zoho.name} {COMPETITORS.zoho.planName}: <a href="https://www.zoho.com/desk/pricing.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Zoho Desk Pricing & Editions</a> ({formatPrice(COMPETITORS.zoho.pricePerAgent, false)}/agent/mo)
                 </li>
                 <li>
-                  <sup className="text-primary">5</sup> HelpDesk.com Team: <a href="https://www.helpdesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">HelpDesk Official Pricing</a> ($29/user/mo, billed annually)
+                  <sup className="text-primary">5</sup> {COMPETITORS.helpdesk.name} {COMPETITORS.helpdesk.planName}: <a href="https://www.helpdesk.com/pricing/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">HelpDesk Official Pricing</a> ({formatPrice(COMPETITORS.helpdesk.pricePerAgent, false)}/user/mo, billed annually)
                 </li>
               </ol>
               <p className="text-xs text-muted-foreground mt-4 italic">
@@ -539,7 +464,7 @@ export default function Pricing() {
         <div className="container mx-auto px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Ready to save money?</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Start your 30-day free trial. Cancel anytime.
+            Start your {FREE_TRIAL_DAYS}-day free trial. Cancel anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Pricing - Bottom CTA')}>

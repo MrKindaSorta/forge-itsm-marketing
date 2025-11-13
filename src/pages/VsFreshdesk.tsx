@@ -5,6 +5,7 @@ import { Check, X, ArrowRight, Shield, Sparkles, Clock } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { signupTracker } from '@/lib/signupTracker';
 import { BreadcrumbSchema } from '@/components/SchemaMarkup';
+import { PLANS, COMPETITORS, BUSINESS_OVERAGE_FEE, formatPrice } from '@/config/pricing';
 
 export default function VsFreshdesk() {
   const breadcrumbs = [
@@ -60,8 +61,8 @@ export default function VsFreshdesk() {
                 <CardContent className="p-8">
                   <div className="space-y-4">
                     <div>
-                      <div className="text-2xl font-bold">Freshdesk Growth</div>
-                      <div className="text-4xl font-bold mt-2">$18</div>
+                      <div className="text-2xl font-bold">{COMPETITORS.freshdeskGrowth.name} {COMPETITORS.freshdeskGrowth.planName}</div>
+                      <div className="text-4xl font-bold mt-2">{formatPrice(COMPETITORS.freshdeskGrowth.pricePerAgent, false)}</div>
                       <div className="text-muted-foreground">/agent/month</div>
                     </div>
                     <div className="pt-4 space-y-2 text-sm">
@@ -94,9 +95,9 @@ export default function VsFreshdesk() {
                 <CardContent className="p-8">
                   <div className="space-y-4">
                     <div>
-                      <div className="text-2xl font-bold">Freshdesk Pro</div>
+                      <div className="text-2xl font-bold">{COMPETITORS.freshdeskPro.name} {COMPETITORS.freshdeskPro.planName}</div>
                       <div className="text-sm text-muted-foreground mb-2">(What you actually need)</div>
-                      <div className="text-4xl font-bold mt-2">$59</div>
+                      <div className="text-4xl font-bold mt-2">{formatPrice(COMPETITORS.freshdeskPro.pricePerAgent, false)}</div>
                       <div className="text-muted-foreground">/agent/month</div>
                     </div>
                     <div className="pt-4 space-y-2 text-sm">
@@ -118,7 +119,7 @@ export default function VsFreshdesk() {
                       </div>
                     </div>
                     <div className="pt-4 text-sm font-semibold text-destructive">
-                      10 agents = $590/month = $7,080/year
+                      10 agents = {formatPrice(COMPETITORS.freshdeskPro.pricePerAgent * 10, false)}/month = {formatPrice(COMPETITORS.freshdeskPro.pricePerAgent * 10 * 12, false)}/year
                     </div>
                   </div>
                 </CardContent>
@@ -140,10 +141,10 @@ export default function VsFreshdesk() {
               <Card className="glass-card border-2 border-primary shadow-lg">
                 <CardContent className="p-6 space-y-4">
                   <div>
-                    <div className="text-xl font-bold text-primary">Starter</div>
-                    <div className="text-4xl font-bold mt-2">$59.99</div>
+                    <div className="text-xl font-bold text-primary">{PLANS.starter.name}</div>
+                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.starter.monthlyPrice)}</div>
                     <div className="text-sm text-muted-foreground">/month</div>
-                    <div className="text-xs text-muted-foreground mt-1">Up to 3 agents</div>
+                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.starter.includedAgents} agents</div>
                   </div>
                   <div className="pt-4 space-y-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -173,10 +174,10 @@ export default function VsFreshdesk() {
               <Card className="glass-card border-2 border-primary shadow-lg">
                 <CardContent className="p-6 space-y-4">
                   <div>
-                    <div className="text-xl font-bold text-primary">Professional</div>
-                    <div className="text-4xl font-bold mt-2">$79.99</div>
+                    <div className="text-xl font-bold text-primary">{PLANS.professional.name}</div>
+                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.professional.monthlyPrice)}</div>
                     <div className="text-sm text-muted-foreground">/month</div>
-                    <div className="text-xs text-muted-foreground mt-1">Up to 5 agents</div>
+                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.professional.includedAgents} agents</div>
                   </div>
                   <div className="pt-4 space-y-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -198,10 +199,10 @@ export default function VsFreshdesk() {
               <Card className="glass-card border-2 border-primary shadow-lg">
                 <CardContent className="p-6 space-y-4">
                   <div>
-                    <div className="text-xl font-bold text-primary">Business</div>
-                    <div className="text-4xl font-bold mt-2">$119.99</div>
+                    <div className="text-xl font-bold text-primary">{PLANS.business.name}</div>
+                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.business.monthlyPrice)}</div>
                     <div className="text-sm text-muted-foreground">/month</div>
-                    <div className="text-xs text-muted-foreground mt-1">Up to 10 agents</div>
+                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.business.includedAgents} agents</div>
                   </div>
                   <div className="pt-4 space-y-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -210,7 +211,7 @@ export default function VsFreshdesk() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-green-500" />
-                      <span>$9.99 per extra agent</span>
+                      <span>{formatPrice(BUSINESS_OVERAGE_FEE)} per extra agent</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Check className="h-4 w-4 text-green-500" />
@@ -225,21 +226,21 @@ export default function VsFreshdesk() {
               <div className="text-2xl font-bold mb-4">Cost for 10-Agent Team</div>
               <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 <div>
-                  <div className="text-sm text-muted-foreground mb-2">Forge ITSM Business</div>
-                  <div className="text-4xl font-bold text-primary">$119.99/mo</div>
-                  <div className="text-2xl font-bold text-primary mt-2">$1,440/year</div>
+                  <div className="text-sm text-muted-foreground mb-2">Forge ITSM {PLANS.business.name}</div>
+                  <div className="text-4xl font-bold text-primary">{formatPrice(PLANS.business.monthlyPrice)}/mo</div>
+                  <div className="text-2xl font-bold text-primary mt-2">{formatPrice(PLANS.business.yearlyPrice, false)}/year</div>
                   <div className="text-sm text-green-600 dark:text-green-400 mt-2">All features included</div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground mb-2">Freshdesk Pro</div>
-                  <div className="text-4xl font-bold text-destructive">$590/mo</div>
-                  <div className="text-2xl font-bold text-destructive mt-2">$7,080/year</div>
+                  <div className="text-sm text-muted-foreground mb-2">{COMPETITORS.freshdeskPro.name} {COMPETITORS.freshdeskPro.planName}</div>
+                  <div className="text-4xl font-bold text-destructive">{formatPrice(COMPETITORS.freshdeskPro.pricePerAgent * 10, false)}/mo</div>
+                  <div className="text-2xl font-bold text-destructive mt-2">{formatPrice(COMPETITORS.freshdeskPro.pricePerAgent * 10 * 12, false)}/year</div>
                   <div className="text-sm text-muted-foreground mt-2">For same features</div>
                 </div>
               </div>
               <div className="mt-8 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-2 border-green-200 dark:border-green-800">
                 <div className="text-xl font-bold text-green-800 dark:text-green-200">
-                  Save $5,640 per year with Forge ITSM
+                  Save {formatPrice((COMPETITORS.freshdeskPro.pricePerAgent * 10 * 12) - PLANS.business.yearlyPrice, false)} per year with Forge ITSM
                 </div>
               </div>
             </div>
@@ -262,15 +263,15 @@ export default function VsFreshdesk() {
                     <th className="text-left p-4 font-bold">Feature</th>
                     <th className="p-4 text-center">
                       <div className="font-bold text-primary">Forge ITSM</div>
-                      <div className="text-sm font-normal text-muted-foreground">$59.99</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(PLANS.starter.monthlyPrice)}</div>
                     </th>
                     <th className="p-4 text-center">
-                      <div className="font-bold">Freshdesk Growth</div>
-                      <div className="text-sm font-normal text-muted-foreground">$18/agent</div>
+                      <div className="font-bold">{COMPETITORS.freshdeskGrowth.name} {COMPETITORS.freshdeskGrowth.planName}</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(COMPETITORS.freshdeskGrowth.pricePerAgent, false)}/agent</div>
                     </th>
                     <th className="p-4 text-center">
-                      <div className="font-bold">Freshdesk Pro</div>
-                      <div className="text-sm font-normal text-muted-foreground">$59/agent</div>
+                      <div className="font-bold">{COMPETITORS.freshdeskPro.name} {COMPETITORS.freshdeskPro.planName}</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(COMPETITORS.freshdeskPro.pricePerAgent, false)}/agent</div>
                     </th>
                   </tr>
                 </thead>

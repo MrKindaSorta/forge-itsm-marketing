@@ -1,3 +1,5 @@
+import { PLANS, BUSINESS_OVERAGE_FEE, FREE_TRIAL_DAYS, formatPrice } from '@/config/pricing';
+
 export default function Terms() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
@@ -37,8 +39,8 @@ export default function Terms() {
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-foreground">4. Subscriptions and Payments</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Trial:</strong> 30-day free trial; charges will occur automatically after trial expiry if not cancelled. If there is an issue with cancellation reach out immediately. forgeundergroundproject@gmail.com</li>
-            <li><strong>Paid Plans:</strong> Monthly or annual billing via Stripe. Prices: Starter $59.99/mo (3 agents); Professional $79.99/mo (10 agents); Business $119.99/mo + $9.99 per additional agent.</li>
+            <li><strong>Trial:</strong> {FREE_TRIAL_DAYS}-day free trial; charges will occur automatically after trial expiry if not cancelled. If there is an issue with cancellation reach out immediately. forgeundergroundproject@gmail.com</li>
+            <li><strong>Paid Plans:</strong> Monthly or annual billing via Stripe. Prices: {PLANS.starter.name} {formatPrice(PLANS.starter.monthlyPrice)}/mo ({PLANS.starter.includedAgents} agents); {PLANS.professional.name} {formatPrice(PLANS.professional.monthlyPrice)}/mo ({PLANS.professional.includedAgents} agents); {PLANS.business.name} {formatPrice(PLANS.business.monthlyPrice)}/mo + {formatPrice(BUSINESS_OVERAGE_FEE)} per additional agent.</li>
             <li><strong>Payments:</strong> Auto-renew unless canceled. Late payments may cause termination.</li>
             <li><strong>Taxes:</strong> You pay all applicable taxes.</li>
             <li><strong>Changes:</strong> Upgrade immediate; downgrade next cycle.</li>

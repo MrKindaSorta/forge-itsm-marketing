@@ -5,6 +5,7 @@ import { Check, X, ArrowRight, TrendingDown, Zap, Users2 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { signupTracker } from '@/lib/signupTracker';
 import { BreadcrumbSchema } from '@/components/SchemaMarkup';
+import { PLANS, COMPETITORS, formatPrice } from '@/config/pricing';
 
 export default function VsServiceNow() {
   const breadcrumbs = [
