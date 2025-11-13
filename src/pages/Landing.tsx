@@ -29,8 +29,6 @@ export default function Landing() {
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight">
               Simple, Fast, Easy ITSM Ticketing
-              <br />
-              <span className="text-primary bg-clip-text">for Small & Medium Business</span>
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
