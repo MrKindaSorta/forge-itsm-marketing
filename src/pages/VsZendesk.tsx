@@ -5,7 +5,7 @@ import { Check, X, ArrowRight, DollarSign, Zap, Users } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { signupTracker } from '@/lib/signupTracker';
 import { BreadcrumbSchema } from '@/components/SchemaMarkup';
-import { PLANS, COMPETITORS, BUSINESS_OVERAGE_FEE, formatPrice } from '@/config/pricing';
+import { PLANS, COMPETITORS, formatPrice } from '@/config/pricing';
 
 export default function VsZendesk() {
   const breadcrumbs = [

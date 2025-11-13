@@ -12,7 +12,6 @@ import {
   BUSINESS_OVERAGE_FEE,
   COMPETITOR_PRICING_DATE,
   getForgeITSMCost,
-  getCompetitorAnnualCost,
   formatPrice
 } from '@/config/pricing';
 
