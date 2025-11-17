@@ -2,21 +2,21 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, ArrowRight, Plus, Minus } from 'lucide-react';
+import { Check, ArrowRight, Plus, Minus, Sparkles } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { signupTracker } from '@/lib/signupTracker';
 import {
   PLANS,
   COMPETITORS,
   FREE_TRIAL_DAYS,
-  BUSINESS_OVERAGE_FEE,
+  OVERAGE_FEE,
   COMPETITOR_PRICING_DATE,
   getForgeITSMCost,
   formatPrice
 } from '@/config/pricing';
 
 export default function Pricing() {
-  const [teamSize, setTeamSize] = useState(10);
+  const [teamSize, setTeamSize] = useState(5);
 
   // Get the optimal Forge ITSM plan based on team size
   const getOptimalForgeITSMPlan = (agents: number) => {
@@ -27,7 +27,7 @@ export default function Pricing() {
       name: plan.name,
       monthly: cost.monthlyPrice,
       yearly: cost.yearlyPrice,
-      perAgent: (cost.monthlyPrice / agents).toFixed(2),
+      perAgent: agents > 0 ? (cost.monthlyPrice / agents).toFixed(2) : '0.00',
       agentLimit: cost.extraAgents > 0 ? `${agents} agents` : `up to ${plan.includedAgents} agents`
     };
   };
@@ -37,7 +37,7 @@ export default function Pricing() {
     const competitorYearly = competitorPricePerAgent * teamSize * 12;
     const forgeYearly = getOptimalForgeITSMPlan(teamSize).yearly;
     const savings = competitorYearly - forgeYearly;
-    const percentSavings = ((savings / competitorYearly) * 100).toFixed(0);
+    const percentSavings = competitorYearly > 0 ? ((savings / competitorYearly) * 100).toFixed(0) : '0';
 
     return {
       competitorYearly,
@@ -60,113 +60,101 @@ export default function Pricing() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title={`Cheap ITSM Pricing - Affordable Help Desk from ${formatPrice(PLANS.starter.monthlyPrice, false)}/mo | Forge ITSM`}
-        description={`Affordable, simple ITSM pricing starting at ${formatPrice(PLANS.starter.monthlyPrice)}. Cheap alternative to Zendesk (${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent) and Freshdesk (${formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/agent). Save up to $12,360/year with transparent, flat-rate pricing.`}
-        keywords="cheap ITSM, affordable help desk, cheap alternative to ServiceNow, ITSM pricing, affordable ticketing system, cheap help desk software, simple ITSM pricing"
+        title={`Free ITSM Software - Affordable Help Desk from $0 | Forge ITSM`}
+        description={`Free ITSM for small teams, paid plans from ${formatPrice(PLANS.paid.monthlyPrice)}. Cheap alternative to Zendesk (${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent) and Freshdesk (${formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/agent). Save thousands per year with transparent pricing.`}
+        keywords="free ITSM, affordable help desk, cheap alternative to ServiceNow, ITSM pricing, affordable ticketing system, free help desk software, simple ITSM pricing"
         canonical="https://forge-itsm.com/pricing"
       />
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-6">
+          <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border border-green-200 dark:border-green-800 mb-4">
+            <p className="text-green-800 dark:text-green-200 font-semibold flex items-center gap-2 justify-center">
+              <Sparkles className="h-4 w-4" />
+              Start Free Forever – No Credit Card Required
+            </p>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
             Simple, Honest Pricing
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            No hidden fees. No per-user charges for end users. Just straightforward pricing that scales with your team.
+            Free for small teams. Affordable for growing teams. No hidden fees. No per-user charges for end users.
           </p>
-          <div className="inline-block px-4 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-            <p className="text-green-800 dark:text-green-200 font-semibold">
-              💰 Save up to $12,360 per year compared to leading competitors
-            </p>
-          </div>
         </div>
       </section>
 
       {/* Pricing Cards */}
       <section className="container mx-auto px-4 pb-20">
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Starter Plan */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Free Plan */}
           <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl">{PLANS.starter.name}</CardTitle>
-              <CardDescription>{PLANS.starter.description}</CardDescription>
+              <CardTitle className="text-2xl">{PLANS.free.name}</CardTitle>
+              <CardDescription>{PLANS.free.description}</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">{formatPrice(PLANS.starter.monthlyPrice)}</div>
-                <div className="text-sm text-muted-foreground">/month</div>
-                <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
+                <div className="text-5xl font-bold">$0</div>
+                <div className="text-sm text-muted-foreground">/month forever</div>
+                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mt-2">
+                  ✓ No credit card required
+                </div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                {PLANS.starter.features.map((feature) => (
+                {PLANS.free.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span className={feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
+                    <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className={feature.includes('Agent') ? 'font-semibold' : ''}>{feature}</span>
                   </div>
                 ))}
               </div>
-              <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Starter Plan')}>
-                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
+              <Link to="/signup?plan=free" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Free Plan')}>
+                <Button variant="outline" className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow border-2">
+                  Start Free
+                </Button>
               </Link>
             </CardContent>
           </Card>
 
-          {/* Professional Plan */}
-          <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
+          {/* Paid Plan */}
+          <Card className="relative glass-card hover:scale-105 transition-transform duration-300 border-2 border-primary shadow-xl">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground rounded-full text-sm font-semibold">
+              Most Popular
+            </div>
             <CardHeader>
-              <CardTitle className="text-2xl">{PLANS.professional.name}</CardTitle>
-              <CardDescription>{PLANS.professional.description}</CardDescription>
+              <CardTitle className="text-2xl">{PLANS.paid.name}</CardTitle>
+              <CardDescription>{PLANS.paid.description}</CardDescription>
               <div className="pt-4">
-                <div className="text-4xl font-bold">{formatPrice(PLANS.professional.monthlyPrice)}</div>
+                <div className="text-5xl font-bold">{formatPrice(PLANS.paid.monthlyPrice)}</div>
                 <div className="text-sm text-muted-foreground">/month</div>
+                <div className="text-xs text-muted-foreground mt-1">+ ${formatPrice(OVERAGE_FEE)}/additional agent</div>
                 <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                {PLANS.professional.features.map((feature) => (
+                {PLANS.paid.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span className={feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
+                    <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className={feature.includes('Agent') || feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
                   </div>
                 ))}
               </div>
-              <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Professional Plan')}>
-                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          {/* Business Plan */}
-          <Card className="relative glass-card hover:scale-105 transition-transform duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl">{PLANS.business.name}</CardTitle>
-              <CardDescription>{PLANS.business.description}</CardDescription>
-              <div className="pt-4">
-                <div className="text-4xl font-bold">{formatPrice(PLANS.business.monthlyPrice)}</div>
-                <div className="text-sm text-muted-foreground">/month + {formatPrice(BUSINESS_OVERAGE_FEE)}/additional agent</div>
-                <div className="text-xs text-muted-foreground mt-1">+ sales tax</div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                {PLANS.business.features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span className={feature.includes('agents') ? 'font-semibold' : ''}>{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <Link to="/signup" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Business Plan')}>
-                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">Get Started</Button>
+              <Link to="/signup?plan=paid" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Paid Plan')}>
+                <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">
+                  Start {FREE_TRIAL_DAYS}-Day Free Trial
+                </Button>
               </Link>
             </CardContent>
           </Card>
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 space-y-2">
           <p className="text-muted-foreground">
-            All plans include a <span className="font-semibold text-foreground">{FREE_TRIAL_DAYS}-day free trial</span>. Cancel anytime.
+            Professional plan includes a <span className="font-semibold text-foreground">{FREE_TRIAL_DAYS}-day free trial</span>. No credit card required.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Cancel anytime. No contracts. No hidden fees.
           </p>
         </div>
       </section>
@@ -196,8 +184,8 @@ export default function Pricing() {
 
                 <div className="flex items-center gap-4">
                   <button
-                    onClick={() => setTeamSize(prev => Math.max(3, prev - 1))}
-                    disabled={teamSize === 3}
+                    onClick={() => setTeamSize(prev => Math.max(1, prev - 1))}
+                    disabled={teamSize === 1}
                     className="p-3 rounded-lg border border-primary/30 hover:bg-primary/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     aria-label="Decrease team size"
                   >
@@ -223,14 +211,14 @@ export default function Pricing() {
               <div className="space-y-2">
                 <input
                   type="range"
-                  min="3"
+                  min="1"
                   max="50"
                   value={teamSize}
                   onChange={(e) => setTeamSize(parseInt(e.target.value))}
                   className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>3 agents</span>
+                  <span>1 agent</span>
                   <span>50 agents</span>
                 </div>
               </div>
@@ -241,7 +229,7 @@ export default function Pricing() {
                   <span className="text-muted-foreground"> — {forgePlan.agentLimit}</span>
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  ${forgePlan.yearly.toLocaleString()}/year + applicable sales tax
+                  {forgePlan.monthly === 0 ? 'Free forever' : `${formatPrice(forgePlan.monthly)}/month or $${forgePlan.yearly.toLocaleString()}/year`} + applicable sales tax
                 </p>
               </div>
             </div>
@@ -264,14 +252,16 @@ export default function Pricing() {
                         🎯 Forge ITSM – {forgePlan.name}
                       </div>
                       <div className="text-sm text-muted-foreground mt-1">
-                        ${forgePlan.perAgent}/agent/mo · {forgePlan.agentLimit}
+                        {forgePlan.monthly === 0 ? 'Free forever' : `$${forgePlan.perAgent}/agent/mo · ${forgePlan.agentLimit}`}
                       </div>
                     </td>
                     <td className="p-4 text-center">
                       <div className="text-2xl font-bold text-primary">
-                        ${forgePlan.yearly.toLocaleString()}
+                        {forgePlan.yearly === 0 ? 'FREE' : `$${forgePlan.yearly.toLocaleString()}`}
                       </div>
-                      <div className="text-xs text-muted-foreground mt-1">per year + tax</div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        {forgePlan.yearly === 0 ? 'forever' : 'per year + tax'}
+                      </div>
                     </td>
                     <td className="p-4 text-center text-muted-foreground">
                       —
@@ -328,7 +318,7 @@ export default function Pricing() {
                     Sales Tax Information
                   </p>
                   <p className="text-sm text-blue-800 dark:text-blue-200">
-                    Prices shown are before tax. Sales tax will be calculated automatically at checkout based on your location and applicable rates. Tax rates vary by state and country.
+                    Prices shown are before tax. Sales tax will be calculated automatically at checkout based on your location and applicable rates (Professional plan only). Free plan has no charges or taxes.
                   </p>
                 </div>
               </div>
@@ -360,7 +350,7 @@ export default function Pricing() {
                 </li>
               </ol>
               <p className="text-xs text-muted-foreground mt-4 italic">
-                * Forge ITSM uses flat-rate pricing (one price per team, not per agent). Per-agent prices shown for comparison purposes only.
+                * Forge ITSM Free plan: $0 for up to 2 agents. Professional plan: flat-rate pricing with per-agent overages. Per-agent prices shown for comparison purposes only.
               </p>
               <p className="text-xs text-muted-foreground mt-2 italic">
                 All competitor pricing information is sourced from publicly available vendor websites. Forge ITSM is not affiliated with any competitors listed. Prices are subject to change by the respective vendors.
@@ -383,18 +373,51 @@ export default function Pricing() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Agents are IT staff who work on and resolve tickets. End users who submit tickets don't count toward your agent limit - you can have unlimited end users at no extra cost.
+                    Agents are IT staff who work on and resolve tickets. End users who submit tickets don't count toward your agent limit - you can have unlimited end users at no extra cost on both Free and Professional plans.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Can I change plans later?</CardTitle>
+                  <CardTitle className="text-lg">Is the Free plan really free?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Yes! You can upgrade or downgrade at any time. Upgrades take effect immediately, and downgrades take effect at the start of your next billing cycle.
+                    Yes! The Free plan is completely free forever for up to 2 agents. No credit card required, no trial period, no hidden fees. You get full access to all features including SLA management, knowledge base, custom fields, and reports.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Can I upgrade from Free to Professional?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Absolutely! You can upgrade at any time from your billing page. Your upgrade takes effect immediately, and you'll get a {FREE_TRIAL_DAYS}-day free trial of the Professional plan before any charges begin.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">How do additional agents work on the Professional plan?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    The Professional plan includes 3 agents. Each additional agent costs ${formatPrice(OVERAGE_FEE)}/month. For example, if you need 5 agents, you'll pay ${formatPrice(PLANS.paid.monthlyPrice)} + (2 × ${formatPrice(OVERAGE_FEE)}) = ${formatPrice(PLANS.paid.monthlyPrice + (2 * OVERAGE_FEE))}/month.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Can I downgrade from Professional back to Free?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Yes, but you'll need to reduce your agent count to 2 or fewer first. Once your team size meets the Free plan requirements, you can downgrade anytime from your billing page.
                   </p>
                 </CardContent>
               </Card>
@@ -405,7 +428,7 @@ export default function Pricing() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    We accept all major credit cards (Visa, Mastercard, American Express) through our secure Stripe payment processor.
+                    We accept all major credit cards (Visa, Mastercard, American Express) through our secure Stripe payment processor. The Free plan requires no payment method.
                   </p>
                 </CardContent>
               </Card>
@@ -416,7 +439,7 @@ export default function Pricing() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    No contract required. You can cancel anytime and you'll retain access until the end of your current billing period. No cancellation fees, ever.
+                    No contract required. You can cancel anytime and you'll retain access until the end of your current billing period. No cancellation fees, ever. Free plan users can use the service indefinitely.
                   </p>
                 </CardContent>
               </Card>
@@ -449,7 +472,7 @@ export default function Pricing() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    No, prices shown are before tax. Sales tax is calculated automatically at checkout based on your billing location. We use Stripe Tax to ensure accurate tax rates for your state or country. You'll see the exact tax amount before completing your purchase.
+                    The Free plan has no charges or taxes. For the Professional plan, prices shown are before tax. Sales tax is calculated automatically at checkout based on your billing location. We use Stripe Tax to ensure accurate tax rates for your state or country. You'll see the exact tax amount before completing your purchase.
                   </p>
                 </CardContent>
               </Card>
@@ -461,14 +484,20 @@ export default function Pricing() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">Ready to save money?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Ready to get started?</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Start your {FREE_TRIAL_DAYS}-day free trial. Cancel anytime.
+            Start free, upgrade when you need to. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Pricing - Bottom CTA')}>
+            <Link to="/signup?plan=free" onClick={() => signupTracker.trackButtonClick('Pricing - Bottom CTA Free')}>
+              <Button size="xl" variant="outline" className="gap-2 border-2">
+                Start Free
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/signup?plan=paid" onClick={() => signupTracker.trackButtonClick('Pricing - Bottom CTA Paid')}>
               <Button size="xl" className="gap-2">
-                Start Free Trial
+                Start {FREE_TRIAL_DAYS}-Day Trial
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>

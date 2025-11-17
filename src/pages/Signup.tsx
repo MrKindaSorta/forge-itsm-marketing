@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ArrowLeft, X } from 'lucide-react';
 import { signupTracker } from '@/lib/signupTracker';
-import { PLANS, BUSINESS_OVERAGE_FEE, FREE_TRIAL_DAYS, formatPrice } from '@/config/pricing';
+import { PLANS, OVERAGE_FEE, FREE_TRIAL_DAYS, formatPrice } from '@/config/pricing';
 
 export default function Signup() {
   const [step, setStep] = useState(1);
@@ -28,26 +28,21 @@ export default function Signup() {
 
   const plans = [
     {
-      id: PLANS.starter.id,
-      name: PLANS.starter.name,
-      price: PLANS.starter.monthlyPrice,
-      agents: PLANS.starter.includedAgents,
-      features: [`Up to ${PLANS.starter.includedAgents} Agents`, 'Unlimited Users', 'All Features', 'Email Support']
+      id: PLANS.free.id,
+      name: PLANS.free.name,
+      price: PLANS.free.monthlyPrice,
+      agents: PLANS.free.includedAgents,
+      features: ['Up to 2 Agents', 'Unlimited End Users', 'Unlimited Tickets', 'All Features', 'Community Support'],
+      badge: 'No Credit Card'
     },
     {
-      id: PLANS.professional.id,
-      name: PLANS.professional.name,
-      price: PLANS.professional.monthlyPrice,
-      agents: PLANS.professional.includedAgents,
+      id: PLANS.paid.id,
+      name: PLANS.paid.name,
+      price: PLANS.paid.monthlyPrice,
+      agents: PLANS.paid.includedAgents,
       popular: true,
-      features: [`Up to ${PLANS.professional.includedAgents} Agents`, 'Unlimited Users', 'All Features', 'Priority Support']
-    },
-    {
-      id: PLANS.business.id,
-      name: PLANS.business.name,
-      price: PLANS.business.monthlyPrice,
-      agents: PLANS.business.includedAgents,
-      features: [`Up to ${PLANS.business.includedAgents} Agents`, 'Unlimited Users', 'All Features', 'Priority Support', `${formatPrice(BUSINESS_OVERAGE_FEE)}/additional agent`]
+      features: ['3 Agents Included', `${formatPrice(OVERAGE_FEE)}/additional agent`, 'Unlimited End Users', 'Unlimited Tickets', 'All Features', 'Priority Support'],
+      badge: '30-Day Free Trial'
     }
   ];
 
@@ -183,7 +178,7 @@ export default function Signup() {
       // Hash password before sending
       const { hash, salt } = await hashPasswordForTransport(formData.password);
 
-      // Create Stripe checkout session
+      // Create Stripe checkout session or provision directly for Free plan
       const sessionResponse = await fetch('https://itsm-backend.joshua-r-klimek.workers.dev/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -199,7 +194,8 @@ export default function Signup() {
         }),
       });
 
-      const { url, error: sessionError } = await sessionResponse.json();
+      const responseData = await sessionResponse.json();
+      const { url, success, subdomain: provisionedSubdomain, redirectUrl, error: sessionError } = responseData;
 
       if (sessionError) {
         setError(sessionError);
@@ -207,14 +203,26 @@ export default function Signup() {
         return;
       }
 
-      // Track step 3 completion and Stripe redirect
+      // Track step 3 completion
       await signupTracker.trackStepCompleted(3, {
         subdomain: formData.subdomain,
         companyName: formData.companyName,
         plan: selectedPlan
       });
 
-      // Redirect to Stripe Checkout URL
+      // Handle Free plan (provisioned immediately)
+      if (selectedPlan === 'free' && success && redirectUrl) {
+        await signupTracker.trackSignupCompleted({
+          subdomain: provisionedSubdomain || formData.subdomain,
+          plan: 'free',
+          method: 'direct_provision'
+        });
+        // Redirect directly to tenant subdomain
+        window.location.href = redirectUrl;
+        return;
+      }
+
+      // Handle Paid plan (redirect to Stripe)
       if (url) {
         await signupTracker.trackStripeRedirect({
           subdomain: formData.subdomain,
@@ -222,8 +230,8 @@ export default function Signup() {
         });
         window.location.href = url;
       } else {
-        setError('Failed to get checkout URL');
-        await signupTracker.trackFormError('stripe_checkout', 'Failed to get checkout URL');
+        setError('Failed to complete signup');
+        await signupTracker.trackFormError('signup_failed', 'No URL or redirect provided');
         setLoading(false);
       }
     } catch (err) {
@@ -270,10 +278,10 @@ export default function Signup() {
             <div className="space-y-6">
               <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold">Choose Your Plan</h1>
-                <p className="text-muted-foreground">Start with a {FREE_TRIAL_DAYS}-day free trial. No credit card required.</p>
+                <p className="text-muted-foreground">Start free, or try Professional with a {FREE_TRIAL_DAYS}-day free trial.</p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 {plans.map((plan) => (
                   <Card
                     key={plan.id}
@@ -292,8 +300,15 @@ export default function Signup() {
                     <CardHeader>
                       <CardTitle className="text-xl">{plan.name}</CardTitle>
                       <CardDescription>
-                        <div className="text-3xl font-bold text-foreground mt-2">{formatPrice(plan.price)}</div>
-                        <div className="text-sm">/month</div>
+                        <div className="text-3xl font-bold text-foreground mt-2">
+                          {plan.price === 0 ? '$0' : formatPrice(plan.price)}
+                        </div>
+                        <div className="text-sm">/month {plan.price === 0 && 'forever'}</div>
+                        {plan.badge && (
+                          <Badge variant="secondary" className="mt-2">
+                            {plan.badge}
+                          </Badge>
+                        )}
                       </CardDescription>
                     </CardHeader>
                     <CardContent>

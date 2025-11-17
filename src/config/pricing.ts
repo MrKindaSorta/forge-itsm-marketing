@@ -20,66 +20,56 @@ export interface Plan {
   popular?: boolean;
 }
 
-export const PLANS: Record<'starter' | 'professional' | 'business', Plan> = {
-  starter: {
-    id: 'starter',
-    name: 'Starter',
-    monthlyPrice: 59.99,
-    yearlyPrice: 719.88,
-    includedAgents: 3,
-    description: 'Perfect for small IT teams',
+export const PLANS: Record<'free' | 'paid', Plan> = {
+  free: {
+    id: 'free',
+    name: 'Free',
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    includedAgents: 2,
+    description: 'Perfect for small teams getting started',
     features: [
-      'Up to 3 Agents',
+      'Up to 2 Agents',
       'Unlimited End Users',
       'Unlimited Tickets',
       'SLA Management',
       'Knowledge Base',
       'Custom Fields',
       'Reports & Analytics',
+      'Community Support',
     ],
   },
-  professional: {
-    id: 'professional',
+  paid: {
+    id: 'paid',
     name: 'Professional',
-    monthlyPrice: 79.99,
-    yearlyPrice: 959.88,
-    includedAgents: 5,
-    description: 'For growing IT departments',
+    monthlyPrice: 19.99,
+    yearlyPrice: 239.88, // Monthly × 12
+    includedAgents: 3,
+    description: 'For growing teams with advanced needs',
     features: [
-      'Up to 5 Agents',
+      '3 Agents Included',
+      'Additional agents at $4.99/month',
       'Unlimited End Users',
       'Unlimited Tickets',
       'SLA Management',
       'Knowledge Base',
       'Custom Fields',
       'Reports & Analytics',
+      'Priority Support',
     ],
     popular: true,
   },
-  business: {
-    id: 'business',
-    name: 'Business',
-    monthlyPrice: 119.99,
-    yearlyPrice: 1439.88,
-    includedAgents: 10,
-    description: 'For established IT teams',
-    features: [
-      'Up to 10 Agents',
-      'Unlimited End Users',
-      'Unlimited Tickets',
-      'SLA Management',
-      'Knowledge Base',
-      'Custom Fields',
-      'Reports & Analytics',
-    ],
-  },
 };
 
-// Business plan overage fee
-export const BUSINESS_OVERAGE_FEE = 9.99;
+// Overage fee for paid plan
+export const OVERAGE_FEE = 4.99;
 
-// Free trial duration
+// Free trial duration (for paid plan only)
 export const FREE_TRIAL_DAYS = 30;
+
+// Agent limits
+export const FREE_PLAN_AGENT_LIMIT = 2;
+export const PAID_PLAN_AGENT_LIMIT = 3;
 
 // ========================================
 // COMPETITOR PRICING
@@ -156,8 +146,8 @@ export const COMPETITOR_PRICING_DATE = 'January 2025';
 export function calculateAnnualPrice(planId: keyof typeof PLANS, extraAgents: number = 0): number {
   const plan = PLANS[planId];
 
-  if (planId === 'business' && extraAgents > 0) {
-    const monthlyTotal = plan.monthlyPrice + (extraAgents * BUSINESS_OVERAGE_FEE);
+  if (planId === 'paid' && extraAgents > 0) {
+    const monthlyTotal = plan.monthlyPrice + (extraAgents * OVERAGE_FEE);
     return monthlyTotal * 12;
   }
 
@@ -165,17 +155,17 @@ export function calculateAnnualPrice(planId: keyof typeof PLANS, extraAgents: nu
 }
 
 /**
- * Calculate monthly cost for business plan with extra agents
+ * Calculate monthly cost for paid plan with extra agents
  */
-export function getBusinessPlanCost(totalAgents: number): number {
-  const plan = PLANS.business;
+export function getPaidPlanCost(totalAgents: number): number {
+  const plan = PLANS.paid;
 
   if (totalAgents <= plan.includedAgents) {
     return plan.monthlyPrice;
   }
 
   const extraAgents = totalAgents - plan.includedAgents;
-  return plan.monthlyPrice + (extraAgents * BUSINESS_OVERAGE_FEE);
+  return plan.monthlyPrice + (extraAgents * OVERAGE_FEE);
 }
 
 /**
@@ -184,16 +174,24 @@ export function getBusinessPlanCost(totalAgents: number): number {
 export function calculateSavings(
   competitorKey: keyof typeof COMPETITORS,
   teamSize: number,
-  forgePlan: keyof typeof PLANS = 'business'
+  forgePlan: keyof typeof PLANS = 'paid'
 ): number {
   const competitor = COMPETITORS[competitorKey];
-  const forgeCost = PLANS[forgePlan].monthlyPrice;
+  const forgePlan_obj = PLANS[forgePlan];
+
+  // Calculate Forge cost based on team size
+  let forgeMonthlyCost = forgePlan_obj.monthlyPrice;
+
+  if (forgePlan === 'paid' && teamSize > forgePlan_obj.includedAgents) {
+    const extraAgents = teamSize - forgePlan_obj.includedAgents;
+    forgeMonthlyCost = forgePlan_obj.monthlyPrice + (extraAgents * OVERAGE_FEE);
+  }
 
   // Competitor annual cost
   const competitorAnnual = competitor.pricePerAgent * teamSize * 12;
 
-  // Forge annual cost (assuming business plan for larger teams)
-  const forgeAnnual = forgeCost * 12;
+  // Forge annual cost
+  const forgeAnnual = forgeMonthlyCost * 12;
 
   return competitorAnnual - forgeAnnual;
 }
@@ -233,9 +231,8 @@ export function formatPrice(amount: number, showCents: boolean = true): string {
  * Get recommended plan based on team size
  */
 export function getRecommendedPlan(agentCount: number): keyof typeof PLANS {
-  if (agentCount <= PLANS.starter.includedAgents) return 'starter';
-  if (agentCount <= PLANS.professional.includedAgents) return 'professional';
-  return 'business';
+  if (agentCount <= PLANS.free.includedAgents) return 'free';
+  return 'paid';
 }
 
 /**
@@ -253,9 +250,9 @@ export function getForgeITSMCost(agentCount: number): {
   let monthlyPrice = plan.monthlyPrice;
   let extraAgents = 0;
 
-  if (planKey === 'business' && agentCount > plan.includedAgents) {
+  if (planKey === 'paid' && agentCount > plan.includedAgents) {
     extraAgents = agentCount - plan.includedAgents;
-    monthlyPrice = getBusinessPlanCost(agentCount);
+    monthlyPrice = getPaidPlanCost(agentCount);
   }
 
   return {
@@ -265,3 +262,7 @@ export function getForgeITSMCost(agentCount: number): {
     extraAgents,
   };
 }
+
+// Legacy function name for backwards compatibility
+export const getBusinessPlanCost = getPaidPlanCost;
+export const BUSINESS_OVERAGE_FEE = OVERAGE_FEE;
