@@ -44,9 +44,6 @@ function getPageName(pathname: string): string {
   if (pathname.startsWith('/pricing')) return 'Pricing';
   if (pathname.startsWith('/features')) return 'Features';
   if (pathname.startsWith('/product-tour')) return 'Product Tour';
-  if (pathname.startsWith('/vs-zendesk')) return 'VS Zendesk';
-  if (pathname.startsWith('/vs-freshdesk')) return 'VS Freshdesk';
-  if (pathname.startsWith('/vs-servicenow')) return 'VS ServiceNow';
   if (pathname.startsWith('/about')) return 'About';
   if (pathname.startsWith('/contact')) return 'Contact';
   if (pathname === '/signup/success') return 'Signup Success'; // Check exact match first
