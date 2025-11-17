@@ -85,7 +85,7 @@ export default function ProductTour() {
           </p>
           <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Product Tour - Hero CTA')}>
             <Button size="xl" className="gap-2">
-              Start 30-Day Free Trial
+              Get Started Free
               <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
@@ -200,12 +200,12 @@ export default function ProductTour() {
         <div className="container mx-auto px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Ready to Transform Your IT Support?</h2>
           <p className="text-xl max-w-2xl mx-auto opacity-90">
-            Start your 30-day free trial today. No credit card required.
+            Get started free today. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Product Tour - Bottom CTA')}>
               <Button size="xl" variant="secondary" className="gap-2">
-                Start Free Trial
+                Get Started Free
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>

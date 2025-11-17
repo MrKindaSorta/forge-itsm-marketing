@@ -64,7 +64,7 @@ export const PLANS: Record<'free' | 'paid', Plan> = {
 // Overage fee for paid plan
 export const OVERAGE_FEE = 4.99;
 
-// Free trial duration (for paid plan only)
+// Trial duration for Professional plan only
 export const FREE_TRIAL_DAYS = 30;
 
 // Agent limits

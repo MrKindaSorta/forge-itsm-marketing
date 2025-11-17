@@ -142,7 +142,7 @@ export default function Pricing() {
               </div>
               <Link to="/signup?plan=paid" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Paid Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">
-                  Start {FREE_TRIAL_DAYS}-Day Free Trial
+                  Get Started Free
                 </Button>
               </Link>
             </CardContent>
@@ -151,7 +151,7 @@ export default function Pricing() {
 
         <div className="text-center mt-8 space-y-2">
           <p className="text-muted-foreground">
-            Professional plan includes a <span className="font-semibold text-foreground">{FREE_TRIAL_DAYS}-day free trial</span>. No credit card required.
+            Professional plan includes a <span className="font-semibold text-foreground">{FREE_TRIAL_DAYS}-day trial</span> before billing starts.
           </p>
           <p className="text-sm text-muted-foreground">
             Cancel anytime. No contracts. No hidden fees.
@@ -395,7 +395,7 @@ export default function Pricing() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Absolutely! You can upgrade at any time from your billing page. Your upgrade takes effect immediately, and you'll get a {FREE_TRIAL_DAYS}-day free trial of the Professional plan before any charges begin.
+                    Absolutely! You can upgrade at any time from your billing page. Your upgrade takes effect immediately, and you'll get a {FREE_TRIAL_DAYS}-day trial of the Professional plan before any charges begin.
                   </p>
                 </CardContent>
               </Card>
@@ -497,7 +497,7 @@ export default function Pricing() {
             </Link>
             <Link to="/signup?plan=paid" onClick={() => signupTracker.trackButtonClick('Pricing - Bottom CTA Paid')}>
               <Button size="xl" className="gap-2">
-                Start {FREE_TRIAL_DAYS}-Day Trial
+                Start Professional Trial
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>

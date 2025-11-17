@@ -110,8 +110,8 @@ export default function Contact() {
       answer: "Yes. There are no long-term contracts. Cancel anytime from your billing portal."
     },
     {
-      question: "Do I need a credit card for the free trial?",
-      answer: "No. The 30-day free trial requires no credit card. You'll only be asked for payment details when you decide to continue after the trial."
+      question: "Do I need a credit card for the free tier?",
+      answer: "No. The Free plan requires no credit card and is free forever. The Professional plan includes a 30-day trial, also with no credit card required upfront."
     },
     {
       question: "What happens to my data if I cancel?",

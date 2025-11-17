@@ -43,7 +43,7 @@ export default function Landing() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Landing - Hero CTA')}>
                 <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all">
-                  Start 30-Day Free Trial
+                  Get Started Free
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
@@ -227,13 +227,13 @@ export default function Landing() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Landing - Bottom CTA')}>
               <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-xl hover:shadow-2xl hover:shadow-primary/30 transition-all">
-                Start 30-Day Free Trial
+                Get Started Free
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
           </div>
           <p className="text-sm text-muted-foreground pt-4">
-            30-day free trial • No credit card required • Cancel anytime
+            Start free forever • No credit card required • Upgrade anytime
           </p>
         </div>
       </section>
