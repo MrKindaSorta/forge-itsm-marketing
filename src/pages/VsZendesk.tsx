@@ -18,7 +18,7 @@ export default function VsZendesk() {
     <div className="flex flex-col">
       <SEOHead
         title="Forge ITSM vs Zendesk: Save $12,360/Year with Better ITSM Software"
-        description={`Detailed comparison: Forge ITSM vs Zendesk. Get all the same features for ${formatPrice(PLANS.starter.monthlyPrice)}/mo vs Zendesk's ${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent. No per-user fees, no feature gatekeeping. See why IT teams are switching.`}
+        description={`Detailed comparison: Forge ITSM vs Zendesk. Get all the same features for ${formatPrice(PLANS.paid.monthlyPrice)}/mo vs Zendesk's ${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent. No per-user fees, no feature gatekeeping. See why IT teams are switching.`}
         keywords="Zendesk alternative, Forge ITSM vs Zendesk, Zendesk comparison, Zendesk pricing, cheaper than Zendesk, best Zendesk alternative, ITSM alternative to Zendesk"
         canonical="https://forge-itsm.com/vs-zendesk"
       />

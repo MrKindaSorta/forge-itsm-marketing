@@ -141,10 +141,10 @@ export default function VsFreshdesk() {
               <Card className="glass-card border-2 border-primary shadow-lg">
                 <CardContent className="p-6 space-y-4">
                   <div>
-                    <div className="text-xl font-bold text-primary">{PLANS.starter.name}</div>
-                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.starter.monthlyPrice)}</div>
+                    <div className="text-xl font-bold text-primary">{PLANS.paid.name}</div>
+                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.paid.monthlyPrice)}</div>
                     <div className="text-sm text-muted-foreground">/month</div>
-                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.starter.includedAgents} agents</div>
+                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.paid.includedAgents} agents</div>
                   </div>
                   <div className="pt-4 space-y-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -174,10 +174,10 @@ export default function VsFreshdesk() {
               <Card className="glass-card border-2 border-primary shadow-lg">
                 <CardContent className="p-6 space-y-4">
                   <div>
-                    <div className="text-xl font-bold text-primary">{PLANS.professional.name}</div>
-                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.professional.monthlyPrice)}</div>
+                    <div className="text-xl font-bold text-primary">{PLANS.paid.name}</div>
+                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.paid.monthlyPrice)}</div>
                     <div className="text-sm text-muted-foreground">/month</div>
-                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.professional.includedAgents} agents</div>
+                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.paid.includedAgents} agents</div>
                   </div>
                   <div className="pt-4 space-y-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -199,10 +199,10 @@ export default function VsFreshdesk() {
               <Card className="glass-card border-2 border-primary shadow-lg">
                 <CardContent className="p-6 space-y-4">
                   <div>
-                    <div className="text-xl font-bold text-primary">{PLANS.business.name}</div>
-                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.business.monthlyPrice)}</div>
+                    <div className="text-xl font-bold text-primary">{PLANS.paid.name}</div>
+                    <div className="text-4xl font-bold mt-2">{formatPrice(PLANS.paid.monthlyPrice)}</div>
                     <div className="text-sm text-muted-foreground">/month</div>
-                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.business.includedAgents} agents</div>
+                    <div className="text-xs text-muted-foreground mt-1">Up to {PLANS.paid.includedAgents} agents</div>
                   </div>
                   <div className="pt-4 space-y-2 text-sm">
                     <div className="flex items-center gap-2">
@@ -226,9 +226,9 @@ export default function VsFreshdesk() {
               <div className="text-2xl font-bold mb-4">Cost for 10-Agent Team</div>
               <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 <div>
-                  <div className="text-sm text-muted-foreground mb-2">Forge ITSM {PLANS.business.name}</div>
-                  <div className="text-4xl font-bold text-primary">{formatPrice(PLANS.business.monthlyPrice)}/mo</div>
-                  <div className="text-2xl font-bold text-primary mt-2">{formatPrice(PLANS.business.yearlyPrice, false)}/year</div>
+                  <div className="text-sm text-muted-foreground mb-2">Forge ITSM {PLANS.paid.name}</div>
+                  <div className="text-4xl font-bold text-primary">{formatPrice(PLANS.paid.monthlyPrice)}/mo</div>
+                  <div className="text-2xl font-bold text-primary mt-2">{formatPrice(PLANS.paid.yearlyPrice, false)}/year</div>
                   <div className="text-sm text-green-600 dark:text-green-400 mt-2">All features included</div>
                 </div>
                 <div>
@@ -240,7 +240,7 @@ export default function VsFreshdesk() {
               </div>
               <div className="mt-8 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border-2 border-green-200 dark:border-green-800">
                 <div className="text-xl font-bold text-green-800 dark:text-green-200">
-                  Save {formatPrice((COMPETITORS.freshdeskPro.pricePerAgent * 10 * 12) - PLANS.business.yearlyPrice, false)} per year with Forge ITSM
+                  Save {formatPrice((COMPETITORS.freshdeskPro.pricePerAgent * 10 * 12) - PLANS.paid.yearlyPrice, false)} per year with Forge ITSM
                 </div>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function VsFreshdesk() {
                     <th className="text-left p-4 font-bold">Feature</th>
                     <th className="p-4 text-center">
                       <div className="font-bold text-primary">Forge ITSM</div>
-                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(PLANS.starter.monthlyPrice)}</div>
+                      <div className="text-sm font-normal text-muted-foreground">{formatPrice(PLANS.paid.monthlyPrice)}</div>
                     </th>
                     <th className="p-4 text-center">
                       <div className="font-bold">{COMPETITORS.freshdeskGrowth.name} {COMPETITORS.freshdeskGrowth.planName}</div>

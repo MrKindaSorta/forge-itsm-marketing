@@ -195,7 +195,7 @@ export default function Signup() {
       });
 
       const responseData = await sessionResponse.json();
-      const { url, success, subdomain: provisionedSubdomain, redirectUrl, error: sessionError } = responseData;
+      const { url, success, redirectUrl, error: sessionError } = responseData;
 
       if (sessionError) {
         setError(sessionError);
@@ -212,11 +212,6 @@ export default function Signup() {
 
       // Handle Free plan (provisioned immediately)
       if (selectedPlan === 'free' && success && redirectUrl) {
-        await signupTracker.trackSignupCompleted({
-          subdomain: provisionedSubdomain || formData.subdomain,
-          plan: 'free',
-          method: 'direct_provision'
-        });
         // Redirect directly to tenant subdomain
         window.location.href = redirectUrl;
         return;

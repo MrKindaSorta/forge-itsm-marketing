@@ -1,4 +1,4 @@
-import { PLANS, BUSINESS_OVERAGE_FEE, FREE_TRIAL_DAYS, formatPrice } from '@/config/pricing';
+import { PLANS, OVERAGE_FEE, FREE_TRIAL_DAYS, formatPrice } from '@/config/pricing';
 
 export default function Terms() {
   return (
@@ -40,7 +40,7 @@ export default function Terms() {
           <h2 className="text-2xl font-semibold text-foreground">4. Subscriptions and Payments</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Trial:</strong> {FREE_TRIAL_DAYS}-day free trial; charges will occur automatically after trial expiry if not cancelled. If there is an issue with cancellation reach out immediately. forgeundergroundproject@gmail.com</li>
-            <li><strong>Paid Plans:</strong> Monthly or annual billing via Stripe. Prices: {PLANS.starter.name} {formatPrice(PLANS.starter.monthlyPrice)}/mo ({PLANS.starter.includedAgents} agents); {PLANS.professional.name} {formatPrice(PLANS.professional.monthlyPrice)}/mo ({PLANS.professional.includedAgents} agents); {PLANS.business.name} {formatPrice(PLANS.business.monthlyPrice)}/mo + {formatPrice(BUSINESS_OVERAGE_FEE)} per additional agent.</li>
+            <li><strong>Plans:</strong> {PLANS.free.name} plan: {formatPrice(PLANS.free.monthlyPrice)}/mo ({PLANS.free.includedAgents} agents, no overages). {PLANS.paid.name} plan: {formatPrice(PLANS.paid.monthlyPrice)}/mo ({PLANS.paid.includedAgents} agents) + {formatPrice(OVERAGE_FEE)} per additional agent. Monthly billing via Stripe for paid plans.</li>
             <li><strong>Payments:</strong> Auto-renew unless canceled. Late payments may cause termination.</li>
             <li><strong>Taxes:</strong> You pay all applicable taxes.</li>
             <li><strong>Changes:</strong> Upgrade immediate; downgrade next cycle.</li>
