@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Facebook } from 'lucide-react';
 import { signupTracker } from '../lib/signupTracker';
+import { TrustBadges } from './TrustBadges';
 
 export default function Footer() {
   const trackFooterClick = (linkName: string) => {
@@ -115,6 +116,11 @@ export default function Footer() {
               © {new Date().getFullYear()} Forge ITSM. Built with care for IT professionals.
             </p>
           </div>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="mt-8 pt-8 border-t border-border/40">
+          <TrustBadges />
         </div>
       </div>
     </footer>

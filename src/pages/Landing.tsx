@@ -28,6 +28,12 @@ export default function Landing() {
               IT Ticketing That Actually Makes Sense
             </Badge>
 
+            <div className="flex justify-center">
+              <Badge variant="outline" className="text-xs sm:text-sm px-3 py-1.5 bg-background/50 border-primary/30">
+                ✨ Join 500+ IT teams using Forge ITSM
+              </Badge>
+            </div>
+
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight">
               Simple, Fast, Easy ITSM Ticketing
             </h1>

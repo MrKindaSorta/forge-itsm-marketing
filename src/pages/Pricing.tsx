@@ -142,7 +142,7 @@ export default function Pricing() {
               </div>
               <Link to="/signup?plan=paid" className="block" onClick={() => signupTracker.trackButtonClick('Pricing - Paid Plan')}>
                 <Button className="w-full mt-6 shadow-md hover:shadow-lg transition-shadow">
-                  Get Started Free
+                  Start Free 30-Day Trial
                 </Button>
               </Link>
             </CardContent>

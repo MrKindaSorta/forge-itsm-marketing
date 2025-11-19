@@ -20,6 +20,7 @@ export default function Signup() {
     firstName: '',
     lastName: '',
     email: '',
+    confirmEmail: '',
     password: '',
     confirmPassword: '',
     companyName: '',
@@ -59,22 +60,20 @@ export default function Signup() {
     }
   }, [step, selectedPlan, formData.email]);
 
-  // Password validation function
+  // Password validation function - Simplified for better UX
   const validatePassword = (password: string): string | null => {
-    if (password.length < 12) {
-      return 'Password must be at least 12 characters';
+    if (password.length < 8) {
+      return 'Password must be at least 8 characters';
     }
-    if (!/[a-z]/.test(password)) {
-      return 'Password must contain at least one lowercase letter';
-    }
-    if (!/[A-Z]/.test(password)) {
-      return 'Password must contain at least one uppercase letter';
-    }
-    if (!/[0-9]/.test(password)) {
-      return 'Password must contain at least one number';
-    }
-    if (!/[^a-zA-Z0-9]/.test(password)) {
-      return 'Password must contain at least one special character (!@#$%^&*)';
+    // Check that at least 3 of 4 character types are present
+    let typeCount = 0;
+    if (/[a-z]/.test(password)) typeCount++;
+    if (/[A-Z]/.test(password)) typeCount++;
+    if (/[0-9]/.test(password)) typeCount++;
+    if (/[^a-zA-Z0-9]/.test(password)) typeCount++;
+
+    if (typeCount < 3) {
+      return 'Password must contain at least 3 of: lowercase, uppercase, numbers, special characters';
     }
     return null;
   };
@@ -82,26 +81,20 @@ export default function Signup() {
   // Real-time password strength checker
   const passwordRequirements = useMemo(() => {
     const password = formData.password;
+    const hasLower = /[a-z]/.test(password);
+    const hasUpper = /[A-Z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecial = /[^a-zA-Z0-9]/.test(password);
+    const typeCount = [hasLower, hasUpper, hasNumber, hasSpecial].filter(Boolean).length;
+
     return [
       {
-        label: 'At least 12 characters',
-        met: password.length >= 12,
+        label: 'At least 8 characters',
+        met: password.length >= 8,
       },
       {
-        label: 'Contains uppercase letter (A-Z)',
-        met: /[A-Z]/.test(password),
-      },
-      {
-        label: 'Contains lowercase letter (a-z)',
-        met: /[a-z]/.test(password),
-      },
-      {
-        label: 'Contains number (0-9)',
-        met: /[0-9]/.test(password),
-      },
-      {
-        label: 'Contains special character (!@#$%^&*)',
-        met: /[^a-zA-Z0-9]/.test(password),
+        label: 'Contains at least 3 of: uppercase, lowercase, numbers, special characters',
+        met: typeCount >= 3,
       },
     ];
   }, [formData.password]);
@@ -145,6 +138,13 @@ export default function Signup() {
     setError('');
 
     try {
+      // Validate emails match
+      if (formData.email !== formData.confirmEmail) {
+        setError('Email addresses do not match');
+        setLoading(false);
+        return;
+      }
+
       // Validate passwords match
       if (formData.password !== formData.confirmPassword) {
         setError('Passwords do not match');
@@ -379,6 +379,30 @@ export default function Signup() {
                   </div>
 
                   <div className="space-y-2">
+                    <Label htmlFor="confirmEmail">Confirm Email Address *</Label>
+                    <Input
+                      id="confirmEmail"
+                      type="email"
+                      placeholder="Confirm your email"
+                      value={formData.confirmEmail}
+                      onChange={(e) => setFormData({...formData, confirmEmail: e.target.value})}
+                      required
+                    />
+                    {formData.confirmEmail && formData.email !== formData.confirmEmail && (
+                      <p className="text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <X className="h-3.5 w-3.5" />
+                        Emails do not match
+                      </p>
+                    )}
+                    {formData.confirmEmail && formData.email === formData.confirmEmail && (
+                      <p className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+                        <Check className="h-3.5 w-3.5" />
+                        Emails match
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
                     <Label htmlFor="password">Password *</Label>
                     <Input
                       id="password"
@@ -458,38 +482,6 @@ export default function Signup() {
                       onChange={(e) => setFormData({...formData, companyName: e.target.value})}
                       required
                     />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="companySize">Company Size</Label>
-                    <select
-                      id="companySize"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    >
-                      <option value="">Select size...</option>
-                      <option value="1-10">1-10 employees</option>
-                      <option value="11-50">11-50 employees</option>
-                      <option value="51-200">51-200 employees</option>
-                      <option value="201-500">201-500 employees</option>
-                      <option value="500+">500+ employees</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="industry">Industry</Label>
-                    <select
-                      id="industry"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    >
-                      <option value="">Select industry...</option>
-                      <option value="technology">Technology</option>
-                      <option value="healthcare">Healthcare</option>
-                      <option value="finance">Finance</option>
-                      <option value="education">Education</option>
-                      <option value="retail">Retail</option>
-                      <option value="manufacturing">Manufacturing</option>
-                      <option value="other">Other</option>
-                    </select>
                   </div>
 
                   <div className="space-y-2">
