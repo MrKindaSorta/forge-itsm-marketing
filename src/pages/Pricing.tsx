@@ -14,6 +14,8 @@ import {
   getForgeITSMCost,
   formatPrice
 } from '@/config/pricing';
+import { motion } from 'framer-motion';
+import { AnimatedNumber } from '@/components/AnimatedNumber';
 
 export default function Pricing() {
   const [teamSize, setTeamSize] = useState(5);
@@ -193,7 +195,9 @@ export default function Pricing() {
                   </button>
 
                   <div className="text-center min-w-[100px]">
-                    <div className="text-3xl font-bold text-primary">{teamSize}</div>
+                    <div className="text-3xl font-bold text-primary">
+                      <AnimatedNumber value={teamSize} />
+                    </div>
                     <div className="text-sm text-muted-foreground">agents</div>
                   </div>
 
@@ -257,7 +261,14 @@ export default function Pricing() {
                     </td>
                     <td className="p-4 text-center">
                       <div className="text-2xl font-bold text-primary">
-                        {forgePlan.yearly === 0 ? 'FREE' : `$${forgePlan.yearly.toLocaleString()}`}
+                        {forgePlan.yearly === 0 ? 'FREE' : (
+                          <>
+                            $<AnimatedNumber
+                              value={forgePlan.yearly}
+                              format={(val) => val.toLocaleString()}
+                            />
+                          </>
+                        )}
                       </div>
                       <div className="text-xs text-muted-foreground mt-1">
                         {forgePlan.yearly === 0 ? 'forever' : 'per year + tax'}
@@ -283,20 +294,32 @@ export default function Pricing() {
                         </td>
                         <td className="p-4 text-center text-muted-foreground">
                           <div className="text-lg">
-                            ${savings.competitorYearly.toLocaleString()}
+                            $<AnimatedNumber
+                              value={savings.competitorYearly}
+                              format={(val) => val.toLocaleString()}
+                            />
                           </div>
                         </td>
                         <td className="p-4 text-center">
-                          <div className="inline-flex flex-col items-center gap-1">
+                          <motion.div
+                            className="inline-flex flex-col items-center gap-1"
+                            key={`${competitor.name}-${savings.savings}`}
+                            initial={{ scale: 1 }}
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 0.3 }}
+                          >
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
                               <span className="text-green-700 dark:text-green-300 font-semibold text-sm">
-                                💸 Save ${savings.savings.toLocaleString()}
+                                💸 Save $<AnimatedNumber
+                                  value={savings.savings}
+                                  format={(val) => val.toLocaleString()}
+                                />
                               </span>
                             </div>
                             <div className="text-xs text-green-600 dark:text-green-400 font-medium">
-                              {savings.percentSavings}% less
+                              <AnimatedNumber value={parseInt(savings.percentSavings)} />% less
                             </div>
-                          </div>
+                          </motion.div>
                         </td>
                       </tr>
                     );

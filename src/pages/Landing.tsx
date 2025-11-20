@@ -6,6 +6,7 @@ import { SEOHead } from '@/components/SEOHead';
 import { OrganizationSchema, SoftwareApplicationSchema } from '@/components/SchemaMarkup';
 import { signupTracker } from '@/lib/signupTracker';
 import { PLANS, COMPETITORS, formatPrice } from '@/config/pricing';
+import { motion } from 'framer-motion';
 
 export default function Landing() {
   return (
@@ -20,45 +21,99 @@ export default function Landing() {
       <SoftwareApplicationSchema />
       {/* Hero Section - Simplicity Focused */}
       <section className="relative overflow-hidden bg-mesh-gradient">
-        <div className="absolute inset-0 bg-dot-pattern opacity-50" />
+        <motion.div
+          className="absolute inset-0 bg-dot-pattern opacity-50"
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            ease: 'linear'
+          }}
+        />
         <div className="container relative mx-auto px-4 py-20 md:py-28 lg:py-36">
-          <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8 animate-fade-in-up">
-            <Badge variant="secondary" className="text-sm px-4 py-1.5 bg-primary/10 border-primary/20 hover:bg-primary/15 transition-colors">
-              <Sparkles className="h-3.5 w-3.5 mr-1.5 inline" />
-              IT Ticketing That Actually Makes Sense
-            </Badge>
+          <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              <Badge variant="secondary" className="text-sm px-4 py-1.5 bg-primary/10 border-primary/20 hover:bg-primary/15 transition-colors">
+                <Sparkles className="h-3.5 w-3.5 mr-1.5 inline" />
+                IT Ticketing That Actually Makes Sense
+              </Badge>
+            </motion.div>
 
-            <div className="flex justify-center">
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+            >
               <Badge variant="outline" className="text-xs sm:text-sm px-3 py-1.5 bg-background/50 border-primary/30">
                 ✨ Join 500+ IT teams using Forge ITSM
               </Badge>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+            >
               Free ITSM Software & IT Ticketing System
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <motion.p
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35, ease: 'easeOut' }}
+            >
               Stop fighting with overcomplicated enterprise software.
               <br className="hidden sm:block" />
               Stop settling for feature-lacking free tools.
               <br className="hidden sm:block" />
               Get a <strong className="text-foreground">simple help desk system</strong> and <strong className="text-foreground">ticket management software</strong> that's actually pleasant to use.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
+            >
               <Link to="/signup" onClick={() => signupTracker.trackButtonClick('Landing - Hero CTA')}>
-                <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all">
-                  Get Started Free
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                >
+                  <Button size="lg" className="gap-2 h-14 px-8 text-lg shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all group">
+                    Get Started Free
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                      <ArrowRight className="h-5 w-5" />
+                    </motion.div>
+                  </Button>
+                </motion.div>
               </Link>
               <Link to="/features">
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-border/60 hover:bg-muted/50 transition-all">
-                  See All Features
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                >
+                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-border/60 hover:bg-muted/50 transition-all">
+                    See All Features
+                  </Button>
+                </motion.div>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -66,22 +121,39 @@ export default function Landing() {
       {/* Why We're Different - Bold & Opinionated */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               Free ITSM Software – <span className="text-primary">Just Tickets, No Fluff</span>
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
               Free help desk software and IT ticketing system that focuses on what matters: resolving tickets quickly without complexity.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {/* Card 1 - Complete ITSM Platform */}
-            <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
+            <motion.div
+              className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            >
               <div className="space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
+                <motion.div
+                  className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                >
                   <Zap className="h-6 w-6 text-primary" />
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold">Affordable Help Desk with Unlimited End Users</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   <Link to="/pricing" className="text-primary hover:underline">Cheap ITSM alternative</Link> with transparent, flat-rate pricing. Every plan includes SLA management, ticket automation, custom fields, reporting dashboards, and knowledge base. No per-user fees, no hidden costs, no "upgrade to unlock" <strong className="text-foreground">nonsense</strong>.
@@ -90,14 +162,25 @@ export default function Landing() {
                   All features included • Predictable costs
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 2 - Simple Yet Powerful */}
-            <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
+            <motion.div
+              className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            >
               <div className="space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
+                <motion.div
+                  className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                >
                   <Clock className="h-6 w-6 text-primary" />
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold">Simple Help Desk Software That Actually Gets Used</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   <Link to="/features" className="text-primary hover:underline">Easy ticketing system</Link> that takes 5 minutes to deploy—not weeks. Clean, intuitive interface built by IT professionals for IT teams. Agents actually enjoy using it because it's <Link to="/product-tour" className="text-primary hover:underline">simple</Link>, fast, and gets out of their way. No enterprise bloat, no complex training, no consultants <strong className="text-foreground">required</strong>.
@@ -106,14 +189,25 @@ export default function Landing() {
                   Quick deployment • Zero learning curve
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3 - Cloudflare Infrastructure */}
-            <div className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1">
+            <motion.div
+              className="group glass-card rounded-xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            >
               <div className="space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20">
+                <motion.div
+                  className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                >
                   <Shield className="h-6 w-6 text-primary" />
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold">Enterprise-Grade Cloud Infrastructure</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Secure, cloud-based ITSM powered by Cloudflare's global CDN and edge network. Lightning-fast performance worldwide, 99.9% uptime SLA, enterprise-grade security, and automatic scaling. Enterprise reliability at <strong className="text-foreground">SMB pricing</strong>.
@@ -122,7 +216,7 @@ export default function Landing() {
                   Cloudflare-powered • 99.9% uptime
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

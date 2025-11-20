@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/sheet';
 import SubdomainLoginModal from '@/components/SubdomainLoginModal';
 import { signupTracker } from '@/lib/signupTracker';
+import { motion } from 'framer-motion';
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -29,9 +30,13 @@ export default function Navigation() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg group-hover:shadow-primary/50 transition-shadow">
+            <motion.div
+              className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg group-hover:shadow-primary/50 transition-shadow"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
               <span className="text-primary-foreground font-bold">F</span>
-            </div>
+            </motion.div>
             <span className="font-bold text-xl group-hover:text-primary transition-colors">Forge ITSM</span>
           </Link>
 
@@ -41,9 +46,15 @@ export default function Navigation() {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group/link"
               >
                 {link.label}
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-0.5 bg-primary"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: '100%' }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                />
               </Link>
             ))}
           </div>

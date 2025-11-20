@@ -100,10 +100,10 @@ export default function About() {
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
                 <p className="text-lg font-semibold text-foreground">
-                  We're Forge Underground—a small team of 3-4 developers with over 20 years of combined experience in IT operations and software development.
+                  We're Forge Underground—a small team of developers with over 20 years of combined experience in IT operations and software development.
                 </p>
                 <p>
-                  We're not backed by venture capital. We're not trying to build the next billion-dollar unicorn. We're building honest software at honest prices, funded by our customers and improved based on real feedback from real IT professionals.
+                  We're not backed by venture capital. We're not trying to build the next billion-dollar unicorn. We're building something usable and accessible, funded by our customers and improved based on real feedback from real IT professionals.
                 </p>
                 <p>
                   Every feature in Forge ITSM is designed based on hands-on IT experience—not boardroom theories. We understand the pain points because we've lived them.
