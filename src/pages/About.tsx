@@ -9,9 +9,9 @@ export default function About() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="About Forge ITSM - Built by IT Professionals for IT Teams"
-        description="Learn about Forge ITSM. Created by an IT professional with 10+ years experience who was tired of overpriced, overcomplicated ticketing systems. Simple, honest, and powerful ITSM software."
-        keywords="about Forge ITSM, IT professional software, ITSM company, help desk developer, ticketing system creator"
+        title="About Forge ITSM | Free IT Ticketing Software for Small Business"
+        description="Learn about Forge ITSM. Free ITSM software created by an IT professional with 10+ years experience who was tired of overpriced, overcomplicated ticketing systems. Simple, honest, and powerful help desk software."
+        keywords="free itsm software, about Forge ITSM, IT ticketing software, free help desk software, ITSM company, simple ticketing system"
         canonical="https://forge-itsm.com/about"
       />
       {/* Hero Section */}

@@ -22,22 +22,22 @@ interface Screenshot {
 const screenshots: Screenshot[] = [
   {
     src: DashboardImg,
-    title: 'easy ITSM ticketing dashboard showing simple interface',
+    title: 'Free ITSM software dashboard showing IT ticketing system interface',
     description: 'Monitor all tickets, SLAs, and team performance at a glance with real-time metrics and status indicators.'
   },
   {
     src: TicketDashboardImg,
-    title: 'simple help desk ticket view with clean layout',
+    title: 'Simple help desk software ticket management view with filtering',
     description: 'Powerful filtering, bulk actions, and real-time updates. Manage your entire ticket queue efficiently.'
   },
   {
     src: PortalImg,
-    title: 'affordable ITSM user portal for end users',
+    title: 'Free IT ticketing software user portal for end users',
     description: 'Clean self-service interface for end users to submit and track tickets without complexity.'
   },
   {
     src: ReportsImg,
-    title: 'cheap ITSM analytics dashboard for small teams',
+    title: 'Free ITSM platform analytics dashboard with reports',
     description: 'Comprehensive insights into your IT support performance with detailed charts and metrics.'
   }
 ];

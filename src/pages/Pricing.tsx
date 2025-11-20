@@ -60,9 +60,9 @@ export default function Pricing() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title={`Free ITSM Software - Affordable Help Desk from $0 | Forge ITSM`}
-        description={`Free ITSM for small teams, paid plans from ${formatPrice(PLANS.paid.monthlyPrice)}. Cheap alternative to Zendesk (${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent) and Freshdesk (${formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/agent). Save thousands per year with transparent pricing.`}
-        keywords="free ITSM, affordable help desk, cheap alternative to ServiceNow, ITSM pricing, affordable ticketing system, free help desk software, simple ITSM pricing"
+        title={`Free Help Desk Software - $0 or ${formatPrice(PLANS.paid.monthlyPrice, false)}/mo | ITSM Pricing - Forge ITSM`}
+        description={`Free ITSM software for small teams, paid plans from ${formatPrice(PLANS.paid.monthlyPrice)}. Cheap alternative to Zendesk (${formatPrice(COMPETITORS.zendesk.pricePerAgent, false)}/agent) and Freshdesk (${formatPrice(COMPETITORS.freshdesk.pricePerAgent, false)}/agent). Save thousands per year with transparent pricing.`}
+        keywords="free itsm software, free help desk software, affordable help desk, cheap alternative to ServiceNow, ITSM pricing, affordable ticketing system, simple ITSM pricing"
         canonical="https://forge-itsm.com/pricing"
       />
       {/* Hero Section */}

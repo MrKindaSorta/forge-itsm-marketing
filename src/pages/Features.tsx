@@ -13,9 +13,9 @@ export default function Features() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="Complete IT Ticketing System Features | SLA, Knowledge Base & More"
-        description="Explore Forge ITSM features: ticket management, SLA tracking, knowledge base, real-time notifications, custom fields, automation, reports, and more. All features included in every plan."
-        keywords="IT ticketing features, ITSM features, SLA management, help desk features, knowledge base software, ticket automation, IT service desk, ticket tracking system"
+        title="IT Ticketing System Features | Free Help Desk Software - Forge ITSM"
+        description="Free ITSM software with all features included: ticket management, SLA tracking, knowledge base, real-time notifications, custom fields, automation, and reports. No add-ons required."
+        keywords="it ticketing software, free help desk software, ITSM features, SLA management, help desk features, knowledge base software, ticket automation, IT service desk, ticket management system"
         canonical="https://forge-itsm.com/features"
       />
       {/* Hero Section */}

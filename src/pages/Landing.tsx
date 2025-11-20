@@ -11,9 +11,9 @@ export default function Landing() {
   return (
     <div className="flex flex-col">
       <SEOHead
-        title="Simple ITSM & Easy Ticketing System for Small Business | Forge ITSM"
-        description={`Free ITSM ticketing system for SMBs. Clean help desk with unlimited users, knowledge base, and reports. Start free or upgrade to ${formatPrice(PLANS.paid.monthlyPrice, false)}/mo. No bloat like ServiceNow.`}
-        keywords="easy ticketing system, simple ITSM, cheap ITSM, affordable help desk, simple help desk software, cheap alternative to ServiceNow, ITSM for small business, easy ITSM ticketing, just tickets"
+        title="Free ITSM Software | Simple IT Ticketing System for Small Business - Forge ITSM"
+        description={`Free ITSM software for small teams. Simple IT ticketing system with unlimited users, knowledge base, and reports. Start free or upgrade to ${formatPrice(PLANS.paid.monthlyPrice, false)}/mo. No bloat like ServiceNow.`}
+        keywords="free itsm software, it ticketing software, simple ITSM, cheap ITSM, affordable help desk, simple help desk software, cheap alternative to ServiceNow, ITSM for small business, free help desk, ticket management software"
         canonical="https://forge-itsm.com"
       />
       <OrganizationSchema />
@@ -35,7 +35,7 @@ export default function Landing() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-              Simple, Fast, Easy ITSM Ticketing
+              Free ITSM Software & IT Ticketing System
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -43,7 +43,7 @@ export default function Landing() {
               <br className="hidden sm:block" />
               Stop settling for feature-lacking free tools.
               <br className="hidden sm:block" />
-              Get a ticketing system that's <strong className="text-foreground">actually pleasant to use</strong>.
+              Get a <strong className="text-foreground">simple help desk system</strong> and <strong className="text-foreground">ticket management software</strong> that's actually pleasant to use.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -68,10 +68,10 @@ export default function Landing() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Easy Ticketing System – <span className="text-primary">Just Tickets, No Fluff</span>
+              Free ITSM Software – <span className="text-primary">Just Tickets, No Fluff</span>
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
-              Simple help desk software that focuses on what matters: resolving tickets quickly without complexity.
+              Free help desk software and IT ticketing system that focuses on what matters: resolving tickets quickly without complexity.
             </p>
           </div>
 
@@ -215,6 +215,25 @@ export default function Landing() {
                   See Our Affordable Help Desk Pricing
                 </Button>
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What is ITSM Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
+              What is ITSM Software?
+            </h2>
+            <div className="prose prose-lg max-w-none text-muted-foreground">
+              <p className="text-lg leading-relaxed mb-4">
+                <strong className="text-foreground">ITSM software</strong> (IT Service Management software), also called <strong className="text-foreground">IT ticketing systems</strong> or <strong className="text-foreground">help desk software</strong>, helps IT teams track, manage, and resolve support requests efficiently. An <strong className="text-foreground">ITSM platform</strong> centralizes all service requests into one <strong className="text-foreground">ticket management software</strong> system.
+              </p>
+              <p className="text-lg leading-relaxed">
+                Forge ITSM is a <strong className="text-foreground">free ITSM platform</strong> designed for small teams who need a <strong className="text-foreground">simple help desk system</strong> without enterprise complexity. Our <strong className="text-foreground">free IT ticketing software</strong> includes everything you need: SLA management, knowledge base, automation, and reports—all in one easy-to-use <strong className="text-foreground">help desk system</strong>.
+              </p>
             </div>
           </div>
         </div>

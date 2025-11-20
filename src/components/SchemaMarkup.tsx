@@ -16,9 +16,8 @@ export function OrganizationSchema() {
       },
     ],
     sameAs: [
-      // Add your social media links here when available
-      // 'https://twitter.com/forgeitsm',
-      // 'https://linkedin.com/company/forgeitsm'
+      'https://www.linkedin.com/company/forge-underground',
+      'https://www.facebook.com/people/Forge-Underground/61583029971747/'
     ],
     contactPoint: {
       '@type': 'ContactPoint',
@@ -41,8 +40,20 @@ export function SoftwareApplicationSchema() {
     name: 'Forge ITSM',
     applicationCategory: 'BusinessApplication, TicketingSystem',
     operatingSystem: 'Web Browser',
-    keywords: 'easy ticketing system, simple ITSM, cheap ITSM, affordable help desk, simple help desk software, cheap alternative to ServiceNow, ITSM for small business',
+    keywords: 'free itsm software, it ticketing software, free help desk software, simple ITSM, ticket management software, help desk system, itsm platform, free it ticketing, cheap alternative to ServiceNow, ITSM for small business',
     offers: [
+      {
+        '@type': 'Offer',
+        name: 'Free Plan',
+        price: '0',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        seller: {
+          '@type': 'Organization',
+          name: 'Forge ITSM',
+        },
+      },
       {
         '@type': 'Offer',
         name: 'Starter Plan',
@@ -80,52 +91,9 @@ export function SoftwareApplicationSchema() {
         },
       },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      ratingCount: '22',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    review: [
-      {
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: 'Sarah M., IT Manager',
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-        },
-        reviewBody: 'We switched from Zendesk and our agents were productive on day one. The interface is so intuitive that we barely needed training. What used to take 3 clicks now takes 1.',
-      },
-      {
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: 'James T., Support Team Lead',
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-        },
-        reviewBody: 'After struggling with Freshdesk\'s complexity, Forge ITSM feels like a breath of fresh air. Clean, simple, and actually enjoyable to use. Our team was fully onboarded in 2 days instead of 2 weeks.',
-      },
-      {
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: 'Michael R., Operations Manager',
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-        },
-        reviewBody: 'Our average resolution time dropped from 14 hours to under 7 hours in the first month. That\'s real time back in our day.',
-      },
-    ],
-    description: 'Simple and affordable easy ITSM ticketing system for small business. Professional help desk with SLA management, knowledge base, and real-time notifications. No per-user fees.',
+    // Removed aggregateRating and reviews until real customer reviews are collected
+    // Google may penalize sites with fake or unverifiable reviews
+    description: 'Free ITSM software and IT ticketing system for small business. Simple help desk software with SLA management, knowledge base, and real-time notifications. Free plan available with no per-user fees.',
   };
 
   return (
